@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./AllMovies.css";
-import searchIcon from "../../Assets/search-icon.png";
 import { Link } from "react-router-dom";
 
 export default class AllMovies extends Component {
@@ -29,11 +28,14 @@ export default class AllMovies extends Component {
     const movies = this.state.movies.map((e, i) => {
       return (
         <div key={e.id}>
+        <Link to={`/movies/${e.id}`}>
           <img
             src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`}
             width="185px"
             height="278px"
+            alt=''
           />
+        </Link>
           <h3>{e.title}</h3>
           <h3>{e.release_date}</h3>
           <p>{e.overview}</p>
