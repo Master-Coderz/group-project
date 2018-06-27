@@ -1,0 +1,8 @@
+.AllMovies-search-bar {
+  width: 100vw;
+  padding-left: 15%;
+  height: 5vh;
+  background: url('../../Assets/search-icon.png') no-repeat scroll;
+  background-size: 50px;
+  background-position: 155px
+}

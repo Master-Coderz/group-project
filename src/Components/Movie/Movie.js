@@ -4,7 +4,7 @@ export default class Movie extends Component {
   render() {
     return(
       <div>
-        <h1>I am Movies</h1>
+        <h1>I am Movie Page</h1>
       </div>
     )
   }
