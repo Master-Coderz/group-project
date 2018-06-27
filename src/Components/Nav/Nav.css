@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 .db-nav {
     background-color: black;
     height: 111px;
@@ -6,13 +7,15 @@
 .nav-root {
     text-decoration: none;
     text-transform: uppercase;
-    font-weight: 300;
-    font-size: 14px;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 100;
+    font-size: 16px;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
     display: flex;
     padding: 10px;
-    background-color: black;
+    background-color: #0B1A20;
     justify-content: space-between;
+    font: antialiased;
+    line-height: 1.4em;
 }
 
 .nav-left,
@@ -22,11 +25,54 @@
     align-items: center;
 }
 
+.nav-right {
+    margin-right: 160px;
+}
+
+.nav-left {
+    margin-left: 160px;
+}
+
 .nav-link {
-    color: white;
+    color: lightgray;
+    background-color: transparent;
+    margin: 0 10px;
+    
 }
 
 .nav-link:hover {
-    color:white;
+    color: white;
     text-decoration: none;
 }
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    background-color: #0B1A20;
+    width: auto;
+    z-index: 1;
+    position: absolute;
+}
+
+.dropdown-content a {
+    color: #2F444A;
+    padding: none;
+    text-decoration: none;
+    font-size:16px;
+    text-transform: none;
+    margin: 0 5px;
+    
+}
+
+.dropdown-content a:hover {
+    color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+    width: auto;
+}
+
