@@ -1,0 +1,32 @@
+.db-nav {
+    background-color: black;
+    height: 111px;
+}
+
+.nav-root {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 14px;
+    font-family: 'Source Sans Pro', sans-serif;
+    display: flex;
+    padding: 10px;
+    background-color: black;
+    justify-content: space-between;
+}
+
+.nav-left,
+.nav-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    color:white;
+    text-decoration: none;
+}
