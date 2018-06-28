@@ -43,6 +43,7 @@ export default class Movie extends Component {
       review_content
     }
     axios.post(`/api/addReview/${this.props.match.params.id}`, body).then(() => {
+      this.setState({review_title: '', review_content: ''})
     })
   }
 
@@ -93,8 +94,8 @@ export default class Movie extends Component {
         <button onClick={this.toggleReview}>Leave a review</button>
         {this.state.toggleReview === true ?
           <div>
-            <input placeholder='title' onChange={(e) => this.handleInput('review_title', e.target.value)} />
-            <textarea placeholder='thoughts, comments, concerns...?' onChange={(e) => this.handleInput('review_content', e.target.value)} />
+            <input placeholder='title' onChange={(e) => this.handleInput('review_title', e.target.value)} value={this.state.review_title}/>
+            <textarea placeholder='thoughts, comments, concerns...?' onChange={(e) => this.handleInput('review_content', e.target.value)} value={this.state.review_content} />
             <button onClick={() => this.addReview()}>Submit</button>
           </div>
           : null}
