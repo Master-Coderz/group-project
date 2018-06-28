@@ -101,18 +101,21 @@ app.get(
     })
 );
 
-app.get( '/auth/me', function( req, res ) {
+app.get('/auth/me', function (req, res) {
     console.log(req.user)
-    if( !req.user )
-        return res.status(404).send( 'User not found' )
+    if (!req.user)
+        return res.status(404).send('User not found')
     else
-        return res.status(200).send( req.user )
+        return res.status(200).send(req.user)
 }
 );
 
 
 //endpoints 
 app.post('/api/addReview/:movie_id', controller.addReview)
+app.get('/api/getReviews/:movie_id', controller.getReviews)
+app.post('/api/addToWatchlist/:movie_id', controller.addToWatchlist)
+app.get('/api/getUser', controller.getUserInfo)
 
 
 

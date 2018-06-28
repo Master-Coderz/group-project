@@ -1,8 +1,8 @@
 module.exports = {
     addReview: (req, res) => {
-    console.log(req.user)
+        console.log(req.user)
         const db = req.app.get('db')
-            const id = req.user.id;
+        const id = req.user.id;
         let { movie_id } = req.params
         let {
             review_content,
@@ -21,6 +21,47 @@ module.exports = {
             })
             .catch((err) => {
                 res.status(500).send(err)
+            })
+    },
+
+    getReviews: (req, res) => {
+        const db = req.app.get('db')
+
+        db.get_reviews([req.params.movie_id])
+            .then((reviews) => {
+                res.status(200).send(reviews)
+            })
+            .catch((err) => {
+                res.status(500).send(err)
+            })
+    },
+
+    addToWatchlist: (req, res) => {
+        const db = req.app.get('db')
+        const user_id = req.user.id
+
+
+        db.add_to_watchlist([user_id, req.params.movie_id])
+            .then(() => {
+                res.sendStatus(200)
+            })
+            .catch(err => {
+                res.sendStatus(500)
+                console.log(err)
+            })
+    },
+
+    getUserInfo: (req, res) => {
+        const db = req.app.get('db')
+        user_id = req.user.id
+
+        db.get_user([user_id])
+            .then((userResult) => {
+                res.status(200).send(userResult)
+            })
+            .catch(err => {
+                res.sendStatus(500)
+                console.log(err)
             })
     }
 }

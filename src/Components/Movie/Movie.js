@@ -8,7 +8,8 @@ export default class Movie extends Component {
       credits: { crew: [], cast: [] },
       toggleReview: false,
       review_title: '',
-      review_content: ''
+      review_content: '',
+      reviews: []
     };
   }
 
@@ -21,8 +22,12 @@ export default class Movie extends Component {
         process.env.REACT_APP_API_KEY
         }&language=en-US&append_to_response=credits`
       );
+
       this.setState({ movie: res.data });
       this.setState({ credits: res.data.credits });
+      let reviews = await axios.get(`/api/getReviews/${this.props.match.params.id}`)
+      console.log(reviews)
+      this.setState({ reviews: reviews.data })
     } catch (err) {
       console.error("componentDidMount failed in Movie.js:", err);
     }
@@ -43,8 +48,12 @@ export default class Movie extends Component {
       review_content
     }
     axios.post(`/api/addReview/${this.props.match.params.id}`, body).then(() => {
-      this.setState({review_title: '', review_content: ''})
+      this.setState({ review_title: '', review_content: '' })
     })
+  }
+
+  addToWatchlist = () => {
+    axios.post(`/api/addToWatchlist/${this.props.match.params.id}`)
   }
 
   render() {
@@ -71,7 +80,13 @@ export default class Movie extends Component {
           </div>
         );
       });
-
+    const reviews = this.state.reviews.map((elem, i) => {
+      return <div key={elem.review_id}>
+        {elem.date_added}
+        {elem.review_title}
+        {elem.review_content}
+      </div>
+    })
     return (
       <div>
         <div className="movie-main" />
@@ -85,6 +100,7 @@ export default class Movie extends Component {
             }`}
           alt=''
         />
+        <button onClick={this.addToWatchlist}>Add To Watchlist</button>
         <p>{this.state.movie.overview}</p>
         <h2>Featured Crew</h2>
         {featuredCrew}
@@ -94,11 +110,12 @@ export default class Movie extends Component {
         <button onClick={this.toggleReview}>Leave a review</button>
         {this.state.toggleReview === true ?
           <div>
-            <input placeholder='title' onChange={(e) => this.handleInput('review_title', e.target.value)} value={this.state.review_title}/>
+            <input placeholder='title' onChange={(e) => this.handleInput('review_title', e.target.value)} value={this.state.review_title} />
             <textarea placeholder='thoughts, comments, concerns...?' onChange={(e) => this.handleInput('review_content', e.target.value)} value={this.state.review_content} />
             <button onClick={() => this.addReview()}>Submit</button>
           </div>
           : null}
+        {reviews}
       </div>
     );
   }
