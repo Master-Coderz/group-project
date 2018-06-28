@@ -4,7 +4,9 @@ const express = require('express'),
     bodyParser = require("body-parser"),
     massive = require("massive"),
     passport = require("passport"),
-    Auth0Strategy = require('passport-auth0')
+    Auth0Strategy = require('passport-auth0'),
+    controller = require("./controller");
+
 
 
 const {
@@ -18,9 +20,9 @@ const {
 
 massive(process.env.CONNECTION_STRING).then(dbInstance =>
     app.set("db", dbInstance)
-  );
-  
-  
+);
+
+
 
 const app = express();
 
@@ -49,22 +51,22 @@ passport.use(new Auth0Strategy({
     const db = app.get('db')
     db.find_user([profile.id]).then((userResult) => {
         console.log('user checked')
-        if(!userResult[0]) {
+        if (!userResult[0]) {
             db.create_user([
                 profile.id,
                 profile.name.givenName,
                 profile.name.familyName,
                 profile.picture
             ])
-            .then((createdUser) => {
-                console.log('user created')
-                return done(null, createdUser[0].id)
-            } )
+                .then((createdUser) => {
+                    console.log('user created')
+                    return done(null, createdUser[0].id)
+                })
         } else {
             console.log('user existed', userResult[0].id)
             return done(null, userResult[0].id)
         }
-    } )
+    })
 }))
 
 
@@ -74,14 +76,15 @@ passport.serializeUser((id, done) => {
 })
 
 passport.deserializeUser((id, done) => {
+
     const db = app.get("db");
     db
-      .find_user_session([id])
-      .then(loggedInUser => {
-        done(null, loggedInUser[0]);
-      })
-      .catch(err => console.log(err, "error"));
-  });
+        .find_user_session([id])
+        .then(loggedInUser => {
+            done(null, loggedInUser[0]);
+        })
+        .catch(err => console.log(err, "error"));
+});
 
 
 app.get(
@@ -99,6 +102,10 @@ app.get(
     })
 );
 
+
+
+//endpoints 
+app.post('/api/addReview/:movie_id', controller.addReview)
 
 
 
