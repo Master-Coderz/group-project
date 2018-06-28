@@ -61,6 +61,7 @@ export default class Movie extends Component {
           src={`https://image.tmdb.org/t/p/w500/${
             this.state.movie.poster_path
           }`}
+          alt=''
         />
         <p>{this.state.movie.overview}</p>
         <h2>Featured Crew</h2>
