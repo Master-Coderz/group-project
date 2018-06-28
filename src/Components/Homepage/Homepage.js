@@ -49,8 +49,16 @@ export default class Homepage extends Component {
   }
 
   render() {
-    console.log(this.state.inTheaters);
+   
+    const popularMovies = this.state.popularMovies.map((element, i)=>{
+      if(i===0 || i === 1 || i ===4 || i ===5){ 
+        return  <img className = 'popular-img-sm' alt="700x300" src={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} />
+      }
+      else{
+        return  <img className = 'popular-img-lg' alt="700x300" src={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} />
+      }
 
+    })
     const upcomingMovies = this.state.upcomingMovies.map((element, index) => {
       // console.log(element.backdrop_path, element.poster_path)
       var url = 'https://image.tmdb.org/t/p/w500/'
@@ -79,16 +87,25 @@ export default class Homepage extends Component {
         )})
 
     return (
-      <div>
+      <div className = 'homepage-root'> 
         <Carousel interval="2000" className = 'carousel'>
           {upcomingMovies}
         </Carousel>
         <div className="popular">
         <div className="column">
-        
+        <div className="column-top">
+            <a href="">{popularMovies[0]}</a>
+            <a href="">{popularMovies[1]}</a>
+        </div>
+        <div className="column-bottom"><a href="">{popularMovies[2]}</a></div>
         </div>
         <div className="column">
-
+        <div className="column-bottom">
+            <a href="">{popularMovies[3]}</a>
+        </div>
+        <div className="column-top"><a href="">{popularMovies[4]}</a>
+        <a href="">{popularMovies[5]}</a>
+        </div>
         </div>
         </div>
         <Carousel interval = '2000' className = 'carousel'>
