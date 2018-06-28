@@ -80,7 +80,7 @@ export default class Homepage extends Component {
 
     return (
       <div>
-        <Carousel slide = 'true' interval="2000" className = 'carousel'>
+        <Carousel interval="2000" className = 'carousel'>
           {upcomingMovies}
         </Carousel>
         <div className="popular">

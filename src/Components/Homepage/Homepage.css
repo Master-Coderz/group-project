@@ -1,22 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 .carousel-item {
     height: 400px;
 }
 
 .carousel-img {
-    height: 400px;
+    height: 100%;
     width: auto;
     position: absolute;
 }
-.carousel-img-background{
-    height:auto;
+
+.carousel-img-background {
+    height: auto;
     width: 100%;
     position: relative;
     z-index: -1;
     /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); */
-    opacity:0.5;
+    opacity: 0.5;
 }
-.carousel-item.active{
-    display:flex;
+
+.carousel-item.active {
+    display: flex;
     justify-content: center;
 }
 
@@ -25,5 +28,27 @@
     justify-content: center;
 }
 
+h3,
+p {
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 1px 1px black;
+
+}
+
+h3:hover {
+    margin-bottom:5px;
+
+}
+
+@media only screen and (max-width:710px) {
+    .carousel-img {
+        height: auto;
+    }
+    .carousel-img-background {
+        height: auto;
+    }
+}
 
 /* style={{backgroundImage: `url()`, backgroundSize: "cover", backgroundOpacity: 0.5}} */

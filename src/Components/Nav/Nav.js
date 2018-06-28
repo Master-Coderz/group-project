@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import logo from "./../../Assets/Screen Shot 2018-06-27 at 9.21.26 AM.png";
+import menuIcon from "./../../Assets/list-menu-final.png";
 import "./Nav.css";
+import "./SideNav.css"
 
 class Nav extends Component {
   constructor(props) {
@@ -48,6 +50,61 @@ class Nav extends Component {
             </Link>
           )}
         </div>
+
+            <img className = 'hamburger-menu'src={menuIcon} alt=""/>
+            <div className="mobile-db-logo">
+            <img className = 'secondary-logo' src={logo} alt=""/>
+            </div>
+  <div className="wrapper">
+    {/* Sidebar */}
+    <nav id="sidebar">
+        <div className="sidebar-header">
+            <h3>Bootstrap Sidebar</h3>
+        </div>
+
+        <ul className="list-unstyled components">
+            <p>Dummy Heading</p>
+            <li className="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Home</a>
+                <ul className="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        <a href="#">Home 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Home 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Home 3</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">About</a>
+            </li>
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Pages</a>
+                <ul className="collapse list-unstyled" id="pageSubmenu">
+                    <li>
+                        <a href="#">Page 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 3</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Portfolio</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+    </nav>
+
+</div>
       </div>
     );
   }

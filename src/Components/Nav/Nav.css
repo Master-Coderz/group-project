@@ -16,6 +16,7 @@
     justify-content: space-between;
     font: antialiased;
     line-height: 1.4em;
+    height:111px;
 }
 
 .nav-left,
@@ -37,13 +38,13 @@
     color: lightgray;
     background-color: transparent;
     margin: 0 10px;
-    
 }
 
 .nav-link:hover {
     color: white;
     text-decoration: none;
 }
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -55,16 +56,20 @@
     width: auto;
     z-index: 1;
     position: absolute;
+    overflow: hidden;
+    top: 35px;
+    left: 24px;
 }
 
 .dropdown-content a {
     color: #2F444A;
     padding: none;
     text-decoration: none;
-    font-size:16px;
+    font-size: 16px;
     text-transform: none;
-    margin: 0 5px;
-    
+    margin: 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .dropdown-content a:hover {
@@ -76,3 +81,30 @@
     width: auto;
 }
 
+.hamburger-menu {
+    display: none;
+    height: 100px;
+    width:100px;
+}
+.mobile-db-logo{
+    display:none;
+}
+.wrapper{
+    display:none;
+}
+
+@media only screen and (max-width:738px) {
+    .hamburger-menu {
+        display: block;
+    }
+    .mobile-db-logo{
+        display: block;
+    }
+    .nav-left,
+    .nav-right {
+        display: none;
+    }
+    .nav-root{
+        display:flex;
+    }
+}
