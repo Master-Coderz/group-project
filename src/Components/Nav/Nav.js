@@ -60,6 +60,10 @@ class Nav extends Component {
     <nav id="sidebar">
         <div className="sidebar-header">
             <h3>Bootstrap Sidebar</h3>
+        <a href='http://localhost:8888/auth'>Login</a>
+          <Link className="nav-link" to="/popular/people">
+            Sign Up
+          </Link>
         </div>
 
         <ul className="list-unstyled components">
