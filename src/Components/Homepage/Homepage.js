@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-<<<<<<< HEAD
 import { Carousel } from 'react-bootstrap'
-=======
-import {Carousel} from 'react-bootstrap';
-import './Homepage.css';
->>>>>>> master
 export default class Homepage extends Component {
   constructor() {
     super();
