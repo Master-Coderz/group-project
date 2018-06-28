@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-<<<<<<< HEAD
-import { Carousel } from 'react-bootstrap'
-=======
 import {Carousel} from 'react-bootstrap';
 import './Homepage.css';
->>>>>>> master
 export default class Homepage extends Component {
   constructor() {
     super();
@@ -56,11 +52,6 @@ export default class Homepage extends Component {
 
   render() {
     const upcomingMovies = this.state.upcomingMovies.map((element, index) => {
-<<<<<<< HEAD
-      return (
-        <Carousel.Item className='carousel-item' key={index} >
-          <img className='carousel-img' width={400} height={200} alt="700x300" src={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} />
-=======
       // console.log(element.backdrop_path, element.poster_path)
       var url = 'https://image.tmdb.org/t/p/w500/'
       return(
@@ -80,19 +71,13 @@ export default class Homepage extends Component {
           <Carousel.Item className='carousel-item' key = {index} >
           <img className = 'carousel-img-background'src={`${url}${element.backdrop_path}`} alt=""/>
           <img className = 'carousel-img' alt="700x300" src={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} />
->>>>>>> master
           <Carousel.Caption>
             <h3>{element.title}</h3>
             <p>{element.release_date}</p>
           </Carousel.Caption>
         </Carousel.Item>
-<<<<<<< HEAD
-      )
-    })
-=======
         )})
 
->>>>>>> master
     return (
       <div>
         <Carousel interval="2000" className = 'carousel'>
