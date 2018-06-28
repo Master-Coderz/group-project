@@ -26,7 +26,6 @@ export default class Movie extends Component {
       this.setState({ movie: res.data });
       this.setState({ credits: res.data.credits });
       let reviews = await axios.get(`/api/getReviews/${this.props.match.params.id}`)
-      console.log(reviews)
       this.setState({ reviews: reviews.data })
     } catch (err) {
       console.error("componentDidMount failed in Movie.js:", err);

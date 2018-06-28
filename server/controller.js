@@ -1,6 +1,5 @@
 module.exports = {
     addReview: (req, res) => {
-        console.log(req.user)
         const db = req.app.get('db')
         const id = req.user.id;
         let { movie_id } = req.params
@@ -47,7 +46,7 @@ module.exports = {
             })
             .catch(err => {
                 res.sendStatus(500)
-                console.log(err)
+                console.error(err)
             })
     },
 
@@ -61,7 +60,7 @@ module.exports = {
             })
             .catch(err => {
                 res.sendStatus(500)
-                console.log(err)
+                console.error(err)
             })
     }
 }

@@ -47,10 +47,8 @@ passport.use(new Auth0Strategy({
     callbackURL: CALLBACK_URL,
     scope: 'openid profile'
 }, function (accessToken, refreshToken, extraParams, profile, done) {
-    // console.log(profile)
     const db = app.get('db')
     db.find_user([profile.id]).then((userResult) => {
-        console.log('user checked')
         if (!userResult[0]) {
             db.create_user([
                 profile.id,
@@ -59,11 +57,9 @@ passport.use(new Auth0Strategy({
                 profile.picture
             ])
                 .then((createdUser) => {
-                    console.log('user created')
                     return done(null, createdUser[0].id)
                 })
         } else {
-            console.log('user existed', userResult[0].id)
             return done(null, userResult[0].id)
         }
     })
@@ -82,7 +78,7 @@ passport.deserializeUser((id, done) => {
         .then(loggedInUser => {
             done(null, loggedInUser[0]);
         })
-        .catch(err => console.log(err, "error"));
+        .catch(err => console.error(err));
 });
 
 
@@ -102,7 +98,6 @@ app.get(
 );
 
 app.get('/auth/me', function (req, res) {
-    console.log(req.user)
     if (!req.user)
         return res.status(404).send('User not found')
     else

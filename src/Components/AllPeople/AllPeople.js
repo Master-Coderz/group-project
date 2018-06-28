@@ -18,7 +18,6 @@ export default class AllPeople extends Component {
         process.env.REACT_APP_API_KEY
         }&language=en-US&page=1`
       );
-      console.log(res.data)
       this.setState({ people: res.data.results });
     } catch (err) {
       console.error("componentDidMount failed in AllPeople.js:", err);

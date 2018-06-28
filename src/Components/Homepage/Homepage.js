@@ -16,7 +16,6 @@ export default class Homepage extends Component {
     this.getPopular();
     this.getInTheaters();
     axios.get('/auth/me').then((res) => {
-      console.log(res)
     } )
   }
 
@@ -51,8 +50,6 @@ export default class Homepage extends Component {
   }
 
   render() {
-    console.log(this.state.inTheaters);
-
     const upcomingMovies = this.state.upcomingMovies.map((element, index) => {
       return (
         <Carousel.Item className='carousel-item' key={index} >
