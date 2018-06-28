@@ -47,7 +47,7 @@ h3:hover {
         height: auto;
     }
     .carousel-img-background {
-        height: auto;
+        height: 100%;
     }
 }
 
