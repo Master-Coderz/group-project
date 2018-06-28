@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import {Carousel} from 'react-bootstrap'
+import {Carousel} from 'react-bootstrap';
+import './Homepage.css';
 export default class Homepage extends Component {
   constructor() {
     super();
@@ -51,22 +52,48 @@ export default class Homepage extends Component {
     console.log(this.state.inTheaters);
 
     const upcomingMovies = this.state.upcomingMovies.map((element, index) => {
+      // console.log(element.backdrop_path, element.poster_path)
+      var url = 'https://image.tmdb.org/t/p/w500/'
       return(
         <Carousel.Item className='carousel-item' key = {index} >
-        <img className = 'carousel-img' width={400} height={200} alt="700x300" src={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} />
+        <img className = 'carousel-img-background'src={`${url}${element.backdrop_path}`} alt=""/>
+        <img className = 'carousel-img' alt="700x300" src={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} />
         <Carousel.Caption>
           <h3>{element.title}</h3>
           <p>{element.release_date}</p>
         </Carousel.Caption>
       </Carousel.Item>
-      )
-    } )
+      )})
+      const inTheaters = this.state.inTheaters.map((element, index) => {
+        // console.log(element.backdrop_path, element.poster_path)
+        var url = 'https://image.tmdb.org/t/p/w500/'
+        return(
+          <Carousel.Item className='carousel-item' key = {index} >
+          <img className = 'carousel-img-background'src={`${url}${element.backdrop_path}`} alt=""/>
+          <img className = 'carousel-img' alt="700x300" src={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} />
+          <Carousel.Caption>
+            <h3>{element.title}</h3>
+            <p>{element.release_date}</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        )})
+
     return (
       <div>
-        <span>I am Homepage</span>
-        <Carousel>
+        <Carousel interval="2000" className = 'carousel'>
           {upcomingMovies}
-        </Carousel>;
+        </Carousel>
+        <div className="popular">
+        <div className="column">
+        
+        </div>
+        <div className="column">
+
+        </div>
+        </div>
+        <Carousel interval = '2000' className = 'carousel'>
+          {inTheaters}
+        </Carousel>
       </div>
     );
   }
