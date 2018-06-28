@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 .db-nav {
     background-color: black;
     height: 111px;
@@ -6,13 +7,16 @@
 .nav-root {
     text-decoration: none;
     text-transform: uppercase;
-    font-weight: 300;
-    font-size: 14px;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 100;
+    font-size: 16px;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
     display: flex;
     padding: 10px;
-    background-color: black;
+    background-color: #0B1A20;
     justify-content: space-between;
+    font: antialiased;
+    line-height: 1.4em;
+    height:111px;
 }
 
 .nav-left,
@@ -22,11 +26,85 @@
     align-items: center;
 }
 
+.nav-right {
+    margin-right: 160px;
+}
+
+.nav-left {
+    margin-left: 160px;
+}
+
 .nav-link {
-    color: white;
+    color: lightgray;
+    background-color: transparent;
+    margin: 0 10px;
 }
 
 .nav-link:hover {
-    color:white;
+    color: white;
     text-decoration: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    background-color: #0B1A20;
+    width: auto;
+    z-index: 1;
+    position: absolute;
+    overflow: hidden;
+    top: 35px;
+    left: 24px;
+}
+
+.dropdown-content a {
+    color: #2F444A;
+    padding: none;
+    text-decoration: none;
+    font-size: 16px;
+    text-transform: none;
+    margin: 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.dropdown-content a:hover {
+    color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+    width: auto;
+}
+
+.hamburger-menu {
+    display: none;
+    height: 100px;
+    width:100px;
+}
+.mobile-db-logo{
+    display:none;
+}
+.wrapper{
+    display:none;
+}
+
+@media only screen and (max-width:738px) {
+    .hamburger-menu {
+        display: block;
+    }
+    .mobile-db-logo{
+        display: block;
+    }
+    .nav-left,
+    .nav-right {
+        display: none;
+    }
+    .nav-root{
+        display:flex;
+    }
 }
