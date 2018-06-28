@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+.homepage-root {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
 .carousel-item {
     height: 400px;
 }
@@ -7,6 +13,12 @@
     height: 100%;
     width: auto;
     position: absolute;
+}
+
+.carousel-caption {
+    bottom: 90px;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    text-shadow: 2px 2px black;
 }
 
 .carousel-img-background {
@@ -30,21 +42,41 @@
 
 h3,
 p {
-    font-family: 'Source Sans Pro', Arial, sans-serif;
     color: white;
     text-transform: uppercase;
-    text-shadow: 1px 1px black;
-
 }
 
 h3:hover {
-    margin-bottom:5px;
+    margin-bottom: 5px;
+}
+.popular{
+    display:flex;
+    justify-content: center;
+    margin:0;
+}
+.popular a{
+    margin-bottom:none;
+}
+.column-top {
+    display: flex;
+}
+
+.popular-img-sm {
+    height: 141px;
+    width: 250px;
+    vertical-align: bottom;
+}
+
+.popular-img-lg {
+    height: 400px;
+    width: 500px;
+    vertical-align: bottom;
 
 }
 
 @media only screen and (max-width:710px) {
     .carousel-img {
-        height: auto;
+        height: 400px;
     }
     .carousel-img-background {
         height: 100%;

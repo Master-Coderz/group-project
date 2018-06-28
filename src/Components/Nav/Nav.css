@@ -17,6 +17,7 @@
     font: antialiased;
     line-height: 1.4em;
     height:111px;
+    transition: 1s ease-in
 }
 
 .nav-left,
@@ -83,9 +84,10 @@
 
 .hamburger-menu {
     display: none;
-    height: 100px;
-    width:100px;
+    height: 50px;
+    width:50px;
 }
+
 .mobile-db-logo{
     display:none;
 }
@@ -106,5 +108,6 @@
     }
     .nav-root{
         display:flex;
+        align-items:center;
     }
 }
