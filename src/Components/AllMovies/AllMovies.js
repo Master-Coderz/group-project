@@ -18,7 +18,6 @@ export default class AllMovies extends Component {
           process.env.REACT_APP_API_KEY
         }&language=en-US&page=1`
       );
-      console.log(res);
       this.setState({ movies: res.data.results });
     } catch (err) {
       console.error("componentDidMount failed in AllMovies component:", err);

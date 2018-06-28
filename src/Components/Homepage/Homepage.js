@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import {Carousel} from 'react-bootstrap';
-import './Homepage.css';
+import { Carousel } from 'react-bootstrap'
 export default class Homepage extends Component {
   constructor() {
     super();
@@ -16,6 +15,8 @@ export default class Homepage extends Component {
     this.getUpcoming();
     this.getPopular();
     this.getInTheaters();
+    axios.get('/auth/me').then((res) => {
+    } )
   }
 
   getUpcoming() {
@@ -32,16 +33,16 @@ export default class Homepage extends Component {
 
   getPopular() {
     axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
-  ).then((res) => {
+    ).then((res) => {
       this.setState({
         popularMovies: res.data.results
       });
     });
   }
 
-  getInTheaters(){
+  getInTheaters() {
     axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
-  ).then((res) => {
+    ).then((res) => {
       this.setState({
         inTheaters: res.data.results
       });
@@ -57,7 +58,6 @@ export default class Homepage extends Component {
       else{
         return  <img className = 'popular-img-lg' alt="700x300" src={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} />
       }
-
     })
     const upcomingMovies = this.state.upcomingMovies.map((element, index) => {
       // console.log(element.backdrop_path, element.poster_path)
