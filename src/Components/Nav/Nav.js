@@ -19,9 +19,7 @@ class Nav extends Component {
           </Link>
         </div>
         <div className="nav-right">
-          <Link className="nav-link" to="/popular/people">
-            Login
-          </Link>
+        <a href='http://localhost:8888/auth'>Login</a>
           <Link className="nav-link" to="/popular/people">
             Sign Up
           </Link>
