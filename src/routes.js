@@ -5,6 +5,7 @@ import AllMovies from './Components/AllMovies/AllMovies'
 import AllPeople from './Components/AllPeople/AllPeople'
 import Movie from './Components/Movie/Movie'
 import People from './Components/People/People'
+import Account from './Components/Account/Account'
 
 export default(
   <Switch>
@@ -13,5 +14,6 @@ export default(
     <Route path='/popular/people' component={AllPeople}/>
     <Route path='/movies/:id' component={Movie}/>
     <Route path='/people/:id' component={People}/>
+    <Route path='/account' component={Account}/>
   </Switch>
 )
