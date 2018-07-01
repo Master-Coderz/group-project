@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./Movie.css"
 export default class Movie extends Component {
   constructor() {
     super();
@@ -61,9 +62,10 @@ export default class Movie extends Component {
       .map(e => {
         return (
           <div key={e.id}>
+          <li className="profile">
             <h1>{e.name}</h1>
             <p>{e.job}</p>
-            <hr />
+            </li>
           </div>
         );
       });
@@ -72,10 +74,13 @@ export default class Movie extends Component {
       .filter((e, i) => i < 6)
       .map(e => {
         return (
-          <div key={e.id}>
-            <h1>{e.name}</h1>
-            <p>{e.character}</p>
-            <hr />
+          <div className = 'billed_cast_member'key={e.id}>
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${e.profile_path}`}
+              alt=''
+            />            
+            <a href='#' className = 'top_billed_cast_name'>{e.name}</a>
+            <p className = "top_billed_cast_character">{e.character}</p>
           </div>
         );
       });
@@ -86,26 +91,45 @@ export default class Movie extends Component {
         {elem.review_content}
       </div>
     })
+    const Background = `https://image.tmdb.org/t/p/w500/${
+      this.state.movie.backdrop_path
+      }`
     return (
       <div>
-        <div className="movie-main" />
-        <span>
-          <h1>{this.state.movie.title}</h1>{" "}
-          <h2>{this.state.movie.release_date}</h2>
-        </span>
-        <img
+        <div className="custom_bg" style = {{backgroundImage:`url(${Background})`}}>
+          <div className="layer">
+        <div className="single_column">
+        <section className="images_inner">
+
+        <img className = 'movie-img'
           src={`https://image.tmdb.org/t/p/w500/${
             this.state.movie.poster_path
             }`}
           alt=''
         />
+       <section className="poster">
+
         <button onClick={this.addToWatchlist}>Add To Watchlist</button>
-        <p>{this.state.movie.overview}</p>
-        <h2>Featured Crew</h2>
-        {featuredCrew}
+        <div className="header_info">
+        <span>
+          <h1 className = 'movie_title'>{this.state.movie.title}<span className = 'movie_year'>({this.state.movie.release_date})</span></h1>{" "}
+        </span>
+        <h3 className="Overview">Overview</h3>
+        <p className='Overview-p'>{this.state.movie.overview}</p>
+        <h3 className = "featured_crew">Featured Crew</h3>
+        <div className="featuredCrew">{featuredCrew}</div>
+       
+        </div>
         <hr />
-        <h2>Top Billed Cast</h2>
-        {topBilledCast}
+        </section>
+        </section>
+        </div>
+        </div>
+        </div>
+        <div className="top_billed_scroller">
+        <h3 className = 'top_billed_cast_h3'>Top Billed Cast</h3>
+        <div className="top_billed_cast_container">{topBilledCast}</div>
+        </div>
         <button onClick={this.toggleReview}>Leave a review</button>
         {this.state.toggleReview === true ?
           <div>
@@ -115,6 +139,7 @@ export default class Movie extends Component {
           </div>
           : null}
         {reviews}
+        
       </div>
     );
   }

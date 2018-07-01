@@ -23,34 +23,69 @@ export default class AllMovies extends Component {
       console.error("componentDidMount failed in AllMovies component:", err);
     }
   };
+      formatDate(date) {
+        var monthNames = [
+          "January", "February", "March",
+          "April", "May", "June", "July",
+          "August", "September", "October",
+          "November", "December"
+        ];
+      
+        var day = date.getDate();
+        var monthIndex = date.getMonth();
+        var year = date.getFullYear();
+      
+        return day + ' ' + monthNames[monthIndex] + ' ' + year;
+      }
   render() {
+    
     const movies = this.state.movies.map((e, i) => {
+      // const date = this.formatDate(e.release_date)
       return (
-        <div key={e.id}>
-        <Link to={`/movies/${e.id}`}>
-          <img
-            src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`}
-            width="185px"
-            height="278px"
-            alt=''
-          />
+        <div  key={e.id} className="poster_card card">
+          <div className="image_content">
+          <Link to={`/movies/${e.id}`}>
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`}
+              width="185px"
+              height="278px"
+              alt=''
+            />
         </Link>
-          <h3>{e.title}</h3>
-          <h3>{e.release_date}</h3>
-          <p>{e.overview}</p>
+        </div>
+        <div className="info">
+          <div className="wrapper">
+              <div className="outer_ring">
+                <div className="user_score_chart 55b23927c3a368648e00ed60" data-percent="67.0" data-track-color="#423d0f" data-bar-color="#d2d531">
+                  <div className="percent">
+                      <span className="icon icon-r67"></span>
+                  </div>
+                <canvas height="32" width="32"></canvas></div>
+              </div>
+              <div className="flex">
+              <a id="movie_351286" className="title_result" href="/movie/351286?language=en" title="" alt="#">{e.title}</a>
+              <span>{e.release_date}</span>
+            </div>
+          </div>
+          <p className="overview">{e.overview}</p>
+          <p className="view_more"><Link className='link' to={`/movies/${e.id}`} >View More</Link></p>
+        </div>
+         
         </div>
       );
     });
     return (
-      <div>
+      <div className = "AllMovies-root">
         <div className="AllMovies-search">
           <input
             placeholder="Search for a movie or a person..."
             className="AllMovies-search-bar"
           />
         </div>
-        <h2>Popular Movies</h2>
+        <h2 className='popular-movies-h2'>Popular Movies</h2>
+        <div className="container">
         {movies}
+        </div>
       </div>
     );
   }

@@ -40,38 +40,108 @@
     justify-content: center;
 }
 
-h3,
-p {
+.title-h3,
+.release-date-p {
     color: white;
     text-transform: uppercase;
 }
 
-h3:hover {
+.title-h3:hover {
     margin-bottom: 5px;
 }
-.popular{
-    display:flex;
+
+.content-divider {
+    width: 100%;
+    height: 100px;
+    background-position: -40px -500px;
+    background-image: radial-gradient(at 30% top, rgba(31, 40, 73, 1) 0%, rgba(8, 28, 36, 1) 70%);
+}
+
+h2 {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div.inner_content {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    text-align: center;
+    padding: 20px 0;
+    background-position: -40px -500px;
+    background-image: url('./../../Assets/purple-63b164a075461641b7ef444ea97d9787adf45a9552fe215e20063e3ff02491a8.svg')
+}
+
+div.inner_content a, div.inner_content2 a {
+    color: #fff;
+    transition: all 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+div.inner_content a:hover {
+    color: #4D2F91;
+}
+
+div.inner_content2 {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    text-align: center;
+    padding: 20px 0 0 0 ;
+    background-image: url('./../../Assets/blue_pipes.jpg');
+    background-size: contain;
+
+}
+
+div.inner_content2 a:hover {
+    color: #128AB3;
+}
+
+.popular {
+    display: flex;
     justify-content: center;
-    margin:0;
+    margin: 0;
 }
-.popular a{
-    margin-bottom:none;
+
+.popular a {
+    margin-bottom: none;
 }
+
 .column-top {
     display: flex;
+}
+
+.element-title {
+    color: white;
+    text-shadow: 2px 2px black;
+    position: absolute;
 }
 
 .popular-img-sm {
     height: 141px;
     width: 250px;
+    position: relative;
     vertical-align: bottom;
 }
 
 .popular-img-lg {
-    height: 400px;
+    height: 281px;
     width: 500px;
     vertical-align: bottom;
-
 }
 
 @media only screen and (max-width:710px) {

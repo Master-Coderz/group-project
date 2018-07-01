@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Carousel } from 'react-bootstrap'
+import { Carousel } from 'react-bootstrap';
+import './Homepage.css';
 export default class Homepage extends Component {
   constructor() {
     super();
@@ -54,6 +55,7 @@ export default class Homepage extends Component {
     const popularMovies = this.state.popularMovies.map((element, i)=>{
       if(i===0 || i === 1 || i ===4 || i ===5){ 
         return  <img className = 'popular-img-sm' alt="700x300" src={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} />
+
       }
       else{
         return  <img className = 'popular-img-lg' alt="700x300" src={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} />
@@ -67,8 +69,8 @@ export default class Homepage extends Component {
         <img className = 'carousel-img-background'src={`${url}${element.backdrop_path}`} alt=""/>
         <img className = 'carousel-img' alt="700x300" src={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} />
         <Carousel.Caption>
-          <h3>{element.title}</h3>
-          <p>{element.release_date}</p>
+          <h3 classsName = "title-h3">{element.title}</h3>
+          <p className='release-date-p'>{element.release_date}</p>
         </Carousel.Caption>
       </Carousel.Item>
       )})
@@ -91,6 +93,7 @@ export default class Homepage extends Component {
         <Carousel interval="2000" className = 'carousel'>
           {upcomingMovies}
         </Carousel>
+        <div className="content-divider"><div className="inner_content"><a href="">Popular Movies</a><h2></h2></div></div>
         <div className="popular">
         <div className="column">
         <div className="column-top">
@@ -108,6 +111,7 @@ export default class Homepage extends Component {
         </div>
         </div>
         </div>
+        <div className="content-divider"><div className="inner_content2"><a href="">In Theaters</a><h2></h2></div></div>
         <Carousel interval = '2000' className = 'carousel'>
           {inTheaters}
         </Carousel>
