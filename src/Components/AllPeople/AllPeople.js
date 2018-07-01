@@ -29,9 +29,9 @@ export default class AllPeople extends Component {
   render() {
     const people = this.state.people.map((e, i) => {
       return (
-        <div key={e.id}>
-          <Link className='all_people_individual'to={`/people/${e.id}`}>
-            <img
+        <div className='all_people_individual' key={e.id}>
+          <Link to={`/people/${e.id}`}>
+            <img className = 'all_people_img'
               src={`https://image.tmdb.org/t/p/w500/${e.profile_path}`}
               width="185px"
               height="278px"
