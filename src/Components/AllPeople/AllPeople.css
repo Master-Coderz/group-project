@@ -1,0 +1,14 @@
+.all_people_container{
+    display:flex;
+    flex-wrap:wrap;
+    margin-top:5px;
+    justify-content: center;
+}
+.all_people_individual{
+    margin: 10px;
+    
+}
+.all_people_name{
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    text-align:center;
+}

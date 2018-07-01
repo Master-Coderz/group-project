@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import './AllPeople.css';
 import { Link } from 'react-router-dom'
+
 
 
 export default class AllPeople extends Component {
@@ -28,7 +30,7 @@ export default class AllPeople extends Component {
     const people = this.state.people.map((e, i) => {
       return (
         <div key={e.id}>
-          <Link to={`/people/${e.id}`}>
+          <Link className='all_people_individual'to={`/people/${e.id}`}>
             <img
               src={`https://image.tmdb.org/t/p/w500/${e.profile_path}`}
               width="185px"
@@ -36,14 +38,14 @@ export default class AllPeople extends Component {
               alt=''
             />
           </Link>
-          <h3>{e.name}</h3>
+          <h3 className = 'all_people_name'>{e.name}</h3>
 
         </div>)
 
     });
 
     return (
-      <div>
+      <div className='all_people_container'>
         {people}
       </div>
     )
