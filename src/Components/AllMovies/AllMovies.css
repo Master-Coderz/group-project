@@ -18,7 +18,8 @@
   color:black;
 }
 input::placeholder{
-margin-left:200px;
+position: relative;
+left:50px;
 }
 
 .card {
