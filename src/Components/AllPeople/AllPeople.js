@@ -45,8 +45,16 @@ export default class AllPeople extends Component {
     });
 
     return (
+      <div className="All_People_Root">
+        <div className="AllMovies-search">
+          <input
+            placeholder="Search for a movie or a person..."
+            className="AllMovies-search-bar"
+          />
+        </div>
       <div className='all_people_container'>
         {people}
+      </div>
       </div>
     )
   }
