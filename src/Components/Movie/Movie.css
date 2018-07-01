@@ -1,3 +1,8 @@
+div.custom_bg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top:111px;
+}
 .movie-img {
     display: block;
     width: 300px;
@@ -35,10 +40,6 @@ section.images {
     flex-wrap: nowrap;
 }
 
-div.custom_bg {
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
 .layer {
     background-color: rgba(46, 42, 40, 0.9);
