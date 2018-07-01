@@ -11,6 +11,7 @@
     background:rgba(251, 251, 251);
     display:flex;
     justify-content: center;
+    padding-top:50px;
 }
 
 .section_images {
@@ -141,10 +142,11 @@
     padding: 0 20px;
 }
 .featured_movie_container{
-    width:165px;
+    width:185px;
 }
 .featured_movies img{
     margin: 10px;
+    border-radius: 4px;
 }
 
 .featured_movies img:hover {
