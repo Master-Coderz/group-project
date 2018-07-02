@@ -31,15 +31,15 @@ export default class AllPeople extends Component {
       return (
         <div className='all_people_individual' key={e.id}>
           <Link to={`/people/${e.id}`}>
-            <img className = 'all_people_img'
+            <img className='all_people_img'
               src={`https://image.tmdb.org/t/p/w500/${e.profile_path}`}
               width="185px"
               height="278px"
               alt=''
-              onError={(e)=>{e.target.src="http://futureuniversity.com/wp-content/themes/envision/lib/images/default-placeholder-700x934.png"}}
-              />
+              onError={(e) => { e.target.src = "http://futureuniversity.com/wp-content/themes/envision/lib/images/default-placeholder-700x934.png" }}
+            />
           </Link>
-          <h3 className = 'all_people_name'>{e.name}</h3>
+          <h3 className='all_people_name'>{e.name}</h3>
 
         </div>)
 
@@ -53,9 +53,9 @@ export default class AllPeople extends Component {
             className="AllMovies-search-bar"
           />
         </div>
-      <div className='all_people_container'>
-        {people}
-      </div>
+        <div className='all_people_container'>
+          {people}
+        </div>
       </div>
     )
   }

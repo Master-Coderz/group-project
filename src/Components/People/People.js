@@ -83,6 +83,7 @@ export default class People extends Component {
             <p className="personal_info_p"><p>Gender</p>{this.state.person.gender===2?'Male':'Female'}</p>
             <p className="personal_info_p"><p>Place Of Birth</p>{this.state.person.place_of_birth}</p>
             <p className="personal_info_p"><p>Official Site</p>{this.state.person.homepage?this.state.person.homepage:'--'}</p>
+            <p className="personal_info_p"><p>Known Credits</p>{this.state.person.homepage?this.state.person.homepage:'--'}</p>
             <p className="personal_info_p">{this.state.person.known_for}</p>
             <p className="personal_info_p">{this.state.person.known_for}</p>
         </div>

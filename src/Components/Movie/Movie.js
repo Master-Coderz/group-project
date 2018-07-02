@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import { Doughnut } from "react-chartjs-2";
 import axios from "axios";
 import "./Movie.css";
+import Chart from 'chart.js';
 export default class Movie extends Component {
   constructor() {
     super();
     this.state = {
-      movie: {release_date:""},
+      movie: { release_date: "" },
       credits: { crew: [], cast: [] },
       toggleReview: false,
       review_title: "",
@@ -20,9 +21,9 @@ export default class Movie extends Component {
     try {
       let res = await axios.get(
         `https://api.themoviedb.org/3/movie/${
-          this.props.match.params.id
+        this.props.match.params.id
         }?api_key=${
-          process.env.REACT_APP_API_KEY
+        process.env.REACT_APP_API_KEY
         }&language=en-US&append_to_response=credits`
       );
 
@@ -64,20 +65,28 @@ export default class Movie extends Component {
   };
 
   render() {
-    const DoughnutData = [
-      {
-        value: this.state.movie.vote_average*10,
-        color: "#46BFBD",
-        highlight: "#FF5A5E",
-        label: "Red"
-      },
-      {
-        value: 100-this.state.movie.vote_average*10,
-        color: "",
-        highlight: "#5AD3D1",
-        label: "blank"
-      }
-    ];
+
+    const doughnutData = {
+      labels: [
+        'Red',
+        'Green',
+        'Yellow'
+      ],
+      datasets: [{
+        data: [300, 50, 100],
+        backgroundColor: [
+          '#FF6384',
+          '#36A2EB',
+          '#FFCE56'
+        ],
+        hoverBackgroundColor: [
+          '#FF6384',
+          '#36A2EB',
+          '#FFCE56'
+        ]
+      }]
+    };
+    ;
     const featuredCrew = this.state.credits.crew
       .filter((e, i) => i < 6)
       .map(e => {
@@ -120,10 +129,10 @@ export default class Movie extends Component {
     });
     const Background = `https://image.tmdb.org/t/p/w500/${
       this.state.movie.backdrop_path
-    }`;
+      }`;
 
-    const date = this.state.movie.release_date.slice(0,4)
-    console.log(this.state.movie.vote_average * 10);
+    const date = this.state.movie.release_date.slice(0, 4)
+
     return (
       <div>
         <div
@@ -137,7 +146,7 @@ export default class Movie extends Component {
                   className="movie-img"
                   src={`https://image.tmdb.org/t/p/w500/${
                     this.state.movie.poster_path
-                  }`}
+                    }`}
                   alt=""
                 />
                 <section className="poster">
@@ -151,7 +160,7 @@ export default class Movie extends Component {
                       </h1>{" "}
                     </span>
                     <span className="movie_buttons">
-                    <Doughnut data = {DoughnutData}></Doughnut>
+                    <Doughnut data={doughnutData} />
                       <button onClick={this.addToWatchlist}>
                         Add To Watchlist
                       </button>
