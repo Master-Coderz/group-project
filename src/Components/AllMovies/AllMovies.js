@@ -24,29 +24,6 @@ export default class AllMovies extends Component {
       console.error("componentDidMount failed in AllMovies component:", err);
     }
   };
-  formatDate(date) {
-    var newDate = parseInt(date);
-    var monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ];
-
-    var day = newDate.getDate();
-    var monthIndex = newDate.getMonth();
-    var year = newDate.getFullYear();
-
-    return monthNames[monthIndex] + " " + day + ", " + year;
-  }
 
   cutString(string) {
     if (string.length > 300) {

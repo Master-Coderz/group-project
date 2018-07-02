@@ -4,6 +4,8 @@ import { Doughnut } from "react-chartjs-2";
 import axios from "axios";
 import "./Movie.css";
 import Chart from 'chart.js';
+const moment = require("moment");
+
 export default class Movie extends Component {
   constructor() {
     super();
@@ -119,11 +121,17 @@ export default class Movie extends Component {
         );
       });
     const reviews = this.state.reviews.map((elem, i) => {
+      var review_date = moment(elem.date_added).format("LL");
       return (
-        <div key={elem.review_id}>
-          {elem.date_added}
-          {elem.review_title}
-          {elem.review_content}
+        <div className='review_card' key={elem.review_id}>
+          <div className="review_top">
+            <img src="" alt="" className="review_user_img" />
+            <p className="review_date">Review left on {review_date}</p>
+          </div>
+          <div className="review_bottom">
+            <p className="review_title">{elem.review_title}</p>
+            <p className="review_content">{elem.review_content}</p>
+          </div>
         </div>
       );
     });
@@ -132,9 +140,9 @@ export default class Movie extends Component {
       }`;
 
     const date = this.state.movie.release_date.slice(0, 4)
-
+    console.log(this.state.movie)
     return (
-      <div>
+      <div className='Movie_root'>
         <div
           className="custom_bg"
           style={{ backgroundImage: `url(${Background})` }}
@@ -160,8 +168,8 @@ export default class Movie extends Component {
                       </h1>{" "}
                     </span>
                     <span className="movie_buttons">
-                    <Doughnut data={doughnutData} />
-                      <button onClick={this.addToWatchlist}>
+                      <Doughnut data={doughnutData} />
+                      <button className='add_to_watchlist_btn' onClick={this.addToWatchlist}>
                         Add To Watchlist
                       </button>
                     </span>
@@ -176,27 +184,45 @@ export default class Movie extends Component {
             </div>
           </div>
         </div>
-        <div className="top_billed_scroller">
-          <h3 className="top_billed_cast_h3">Top Billed Cast</h3>
-          <div className="top_billed_cast_container">{topBilledCast}</div>
-        </div>
-        <button onClick={this.toggleReview}>Leave a review</button>
-        {this.state.toggleReview === true ? (
-          <div>
-            <input
-              placeholder="title"
-              onChange={e => this.handleInput("review_title", e.target.value)}
-              value={this.state.review_title}
-            />
-            <textarea
-              placeholder="thoughts, comments, concerns...?"
-              onChange={e => this.handleInput("review_content", e.target.value)}
-              value={this.state.review_content}
-            />
-            <button onClick={() => this.addReview()}>Submit</button>
+        <div className="bottom_wrapper">
+          <div className="white_column">
+            <div className="top_billed_scroller">
+              <h3 className="top_billed_cast_h3">Top Billed Cast</h3>
+              <div className="top_billed_cast_container">{topBilledCast}</div>
+            </div>
+            <div className="leave_review">
+              <button className='leave_review_btn' onClick={this.toggleReview}>Leave a review</button>
+              {this.state.toggleReview === true ? (
+                <div className='review_form'>
+                  <input
+                    placeholder="title"
+                    onChange={e => this.handleInput("review_title", e.target.value)}
+                    value={this.state.review_title}
+                  />
+                  <textarea
+                    placeholder="thoughts, comments, concerns...?"
+                    onChange={e => this.handleInput("review_content", e.target.value)}
+                    value={this.state.review_content}
+                  />
+                  <button onClick={() => this.addReview()}>Submit</button>
+                </div>
+              ) : null}
+            </div>
+            <div className="reviews_container">
+              {reviews}
+            </div>
           </div>
-        ) : null}
-        {reviews}
+          <div className="grey_column">
+            <div className="grey_column_content">
+              <p className="grey_column_title">Facts</p>
+              <p className="grey_column_status"><p>Status</p>{this.state.movie.status}</p>
+              <p className="grey_column_release_information"><p>Release Date</p>{moment(this.state.movie.release_date).format('LL')}</p>
+              <p className="grey_column_release_information"><p>Original Language</p>{this.state.movie.original_language}</p>
+              <p className="grey_column_release_information"><p>Budget</p>$ {this.state.movie.budget}</p>
+              <p className="grey_column_release_information"><p>Runtime</p>{this.state.movie.runtime} Minutes</p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
