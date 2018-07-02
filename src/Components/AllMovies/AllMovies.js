@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./AllMovies.css";
 import { Link } from "react-router-dom";
+const moment = require('moment');
 
 export default class AllMovies extends Component {
   constructor() {
@@ -23,24 +24,25 @@ export default class AllMovies extends Component {
       console.error("componentDidMount failed in AllMovies component:", err);
     }
   };
-      formatDate(date) {
-        var monthNames = [
-          "January", "February", "March",
-          "April", "May", "June", "July",
-          "August", "September", "October",
-          "November", "December"
-        ];
-      
-        var day = date.getDate();
-        var monthIndex = date.getMonth();
-        var year = date.getFullYear();
-      
-        return day + ' ' + monthNames[monthIndex] + ' ' + year;
-      }
+  formatDate(date) {
+    var newDate = parseInt(date)
+    var monthNames = [
+      "January", "February", "March",
+      "April", "May", "June", "July",
+      "August", "September", "October",
+      "November", "December"
+    ];
+  
+    var day = newDate.getDate();
+    var monthIndex = newDate.getMonth();
+    var year = newDate.getFullYear();
+  
+    return monthNames[monthIndex]  + ' ' + day + ', ' + year;
+  }
   render() {
     
     const movies = this.state.movies.map((e, i) => {
-      // const date = this.formatDate(e.release_date)
+      var date = moment(e.release_date).format('LL')
       return (
         <div  key={e.id} className="poster_card card">
           <div className="image_content">
@@ -64,7 +66,7 @@ export default class AllMovies extends Component {
               </div>
               <div className="flex">
               <a id="movie_351286" className="title_result" href="/movie/351286?language=en" title="" alt="#">{e.title}</a>
-              <span>{e.release_date}</span>
+              <span>{date}</span>
             </div>
           </div>
           <p className="overview">{e.overview}</p>

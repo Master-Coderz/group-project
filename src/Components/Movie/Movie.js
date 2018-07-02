@@ -7,7 +7,7 @@ export default class Movie extends Component {
   constructor() {
     super();
     this.state = {
-      movie: {},
+      movie: {release_date:""},
       credits: { crew: [], cast: [] },
       toggleReview: false,
       review_title: "",
@@ -36,6 +36,7 @@ export default class Movie extends Component {
       console.error("componentDidMount failed in Movie.js:", err);
     }
   };
+
 
   toggleReview = () => {
     this.setState({ toggleReview: !this.state.toggleReview });
@@ -120,6 +121,8 @@ export default class Movie extends Component {
     const Background = `https://image.tmdb.org/t/p/w500/${
       this.state.movie.backdrop_path
     }`;
+
+    const date = this.state.movie.release_date.slice(0,4)
     console.log(this.state.movie.vote_average * 10);
     return (
       <div>
@@ -143,7 +146,7 @@ export default class Movie extends Component {
                       <h1 className="movie_title">
                         {this.state.movie.title}
                         <span className="movie_year">
-                          ({this.state.movie.release_date})
+                          ({date})
                         </span>
                       </h1>{" "}
                     </span>
