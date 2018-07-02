@@ -39,10 +39,21 @@ export default class AllMovies extends Component {
   
     return monthNames[monthIndex]  + ' ' + day + ', ' + year;
   }
+
+  cutString(string){
+    if(string.length > 300){
+      string = string.slice(0,250)+'...'
+    }
+    else{
+      null
+    }
+    return string
+  }
   render() {
     
     const movies = this.state.movies.map((e, i) => {
       var date = moment(e.release_date).format('LL')
+      var overview = this.cutString(e.overview)
       return (
         <div  key={e.id} className="poster_card card">
           <div className="image_content">
@@ -69,7 +80,7 @@ export default class AllMovies extends Component {
               <span>{date}</span>
             </div>
           </div>
-          <p className="overview">{e.overview}</p>
+          <p className="overview">{overview}</p>
           <p className="view_more"><Link className='link' to={`/movies/${e.id}`} >View More</Link></p>
         </div>
          
