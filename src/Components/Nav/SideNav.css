@@ -1,66 +1,93 @@
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    background: rgba(13, 28, 35, 0.9);
+    color: white;
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+    z-index: 2;
+    text-transform: uppercase;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    transition: all .35s ease-in-out ;
+    left: -300px;
+}
+.sidebar-show{
+    transform: translate(300px);
 
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #fafafa;
 }
 
-p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1em;
-    font-weight: 300;
-    line-height: 1.7em;
-    color: #999;
+.sideMenu-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-a, a:hover, a:focus {
-    color: inherit;
+.sideMenuIcon {
+    height: 50px;
+    width: 50px;
+    margin-bottom: 20px;
+    position: relative;
+    left: -3px;
+    top: 10px;
+}
+
+.side-link {
+    padding: 10px 0 10px 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-side-link {
     text-decoration: none;
-    transition: all 0.3s;
+    color: white;
 }
 
-#sidebar {
-    /* don't forget to add all the previously mentioned styles here too */
-    background: #7386D5;
-    color: #fff;
-    transition: all 0.3s;
+.main-side-link:hover {
+    text-decoration: none;
+    color: #2F444A;
 }
 
-#sidebar .sidebar-header {
-    padding: 20px;
-    background: #6d7fcc;
-}
-
-#sidebar ul.components {
-    padding: 20px 0;
-    border-bottom: 1px solid #47748b;
-}
-
-#sidebar ul p {
-    color: #fff;
-    padding: 10px;
-}
-
-#sidebar ul li a {
-    padding: 10px;
-    font-size: 1.1em;
+.side-links {
     display: block;
-}
-#sidebar ul li a:hover {
-    color: #7386D5;
-    background: #fff;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
 }
 
-#sidebar ul li.active > a, a[aria-expanded="true"] {
-    color: #fff;
-    background: #6d7fcc;
+.side-links>a {
+    color: #2F444A;
+    padding: none;
+    text-decoration: none;
+    font-size: 16px;
+    text-transform: none;
+    margin: 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 3px 0 3px 10px;
 }
-ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: #6d7fcc;
-}
-@media only screen and (max-width:738px) {
 
+.side-link:hover {
+    border: 0.5px dotted white;
+    color: lightgray;
+}
+
+.side-links>a:hover {
+    color: lightgray;
+}
+
+@media only screen and (max-width:738px) {}
+
+@media only screen and (max-width:414px) {
+    .sidebar {
+        width: 35vw;
+    }
+}
+
+@media only screen and (min-width:739px) {
+    .sidebar {
+        display: none;
+    }
 }
