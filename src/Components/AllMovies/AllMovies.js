@@ -33,6 +33,7 @@ export default class AllMovies extends Component {
             width="185px"
             height="278px"
             alt=''
+            
           />
         </Link>
           <h3>{e.title}</h3>

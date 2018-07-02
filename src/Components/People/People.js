@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
+import {Link} from 'react-router-dom'
 
 export default class People extends Component {
   constructor() {
@@ -33,10 +33,14 @@ export default class People extends Component {
       .map(e => {
         return (
           <div key={e.id}>
+          <Link to={`/movies/${e.id}`}>
             <h1>{e.title}</h1>
             <img src={`https://image.tmdb.org/t/p/w500/${
               e.poster_path
-              }`} width='200px' alt=''/>
+              }`} width='200px' alt=''
+
+              />
+          </Link>
           </div>
         );
       });
