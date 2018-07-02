@@ -36,7 +36,7 @@ export default class AllPeople extends Component {
               width="185px"
               height="278px"
               alt=''
-              onerror="this.onerror=null;this.src='http://futureuniversity.com/wp-content/themes/envision/lib/images/default-placeholder-700x934.png';"
+              onError={(e)=>{e.target.src="http://futureuniversity.com/wp-content/themes/envision/lib/images/default-placeholder-700x934.png"}}
               />
           </Link>
           <h3 className = 'all_people_name'>{e.name}</h3>
