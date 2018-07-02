@@ -115,6 +115,7 @@ export default class Homepage extends Component {
         <Carousel interval = '2000' className = 'carousel'>
           {inTheaters}
         </Carousel>
+        <div className = 'footer_img' />
       </div>
     );
   }

@@ -1,3 +1,5 @@
+
+
 div.custom_bg {
     background-repeat: no-repeat;
     background-size: cover;
@@ -57,6 +59,9 @@ section.images {
     display: flex;
     align-items: flex-start;
     flex-wrap: nowrap;
+}
+.movie_buttons{
+    margin-bottom:20px;
 }
 
 .Overview {
@@ -156,6 +161,8 @@ section.images {
 
 .top_billed_cast_container {
     display: flex;
+    flex-wrap:wrap;
+    justify-content: flex-start;
     width:100%;
 }
 

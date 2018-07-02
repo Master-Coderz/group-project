@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import './AllPeople.css';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 
 
