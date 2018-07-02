@@ -1,9 +1,9 @@
 import React, { Component } from "react";
+import Search from '../Search'
 import axios from "axios";
 import "./AllMovies.css";
 import { Link } from "react-router-dom";
 const moment = require("moment");
-
 export default class AllMovies extends Component {
   constructor() {
     super();
@@ -16,9 +16,10 @@ export default class AllMovies extends Component {
     try {
       const res = await axios.get(
         `https://api.themoviedb.org/3/movie/top_rated?api_key=${
-          process.env.REACT_APP_API_KEY
-        }&language=en-US&page=1`
+        process.env.REACT_APP_API_KEY
+        }&language=en-US`
       );
+      console.log(res);
       this.setState({ movies: res.data.results });
     } catch (err) {
       console.error("componentDidMount failed in AllMovies component:", err);
@@ -112,12 +113,7 @@ export default class AllMovies extends Component {
     });
     return (
       <div className="AllMovies-root">
-        <div className="AllMovies-search">
-          <input
-            placeholder="Search for a movie or a person..."
-            className="AllMovies-search-bar"
-          />
-        </div>
+        <Search />
         <h2 className="popular-movies-h2">Popular Movies</h2>
         <div className="container">{movies}</div>
       </div>

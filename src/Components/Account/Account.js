@@ -6,7 +6,8 @@ export default class Account extends Component {
     super();
 
     this.state = {
-      userInfo: []
+      userInfo: [],
+      watchlist: []
     };
   }
 
@@ -17,23 +18,54 @@ export default class Account extends Component {
         userInfo: res.data
       })
     } )
+    this.getWatchlist()
   }
-  render() {
-    console.log(this.state.userInfo)
 
+  getWatchlist(){
+    axios.get('/api/getWatchlist')
+    .then((res) => {
+      this.setState({
+        watchlist: res.data
+      })
+    } )
+  }
+
+
+
+  render() {
+    console.log(this.state.watchlist)
+    const userWatchlist = this.state.watchlist.map((e, i) => {
+      return(
+        <div key={e.id}>
+        <img src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`}/>
+        <h1>{e.movie_title}</h1>
+        </div>
+      )
+    } )
     const userInfo = this.state.userInfo.map((e, i) => {
       return(
         <div key={e.id}>
-        <h1>{e.firstname}</h1>
+        <span>{e.firstname}</span>
         <h1>{e.lastname}</h1>
         <img src={e.profilepic}/>
 
         </div>
       )
     } )
+
+    // const userWatchlist = this.state.watchlist.map((e, i ) => {
+    //   return(
+    //     <div key={e.id}>
+    //     <img src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`}/>
+    //     </div>
+    //   )
+    // })
    return (
      <div>
     {userInfo}
+    <div>Watchlist</div>
+    {userWatchlist}
+    <h1></h1>
      </div>
    )
   }
