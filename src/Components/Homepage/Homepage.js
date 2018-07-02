@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Carousel } from 'react-bootstrap'
+import { Carousel } from 'react-bootstrap';
+import './Homepage.css';
 export default class Homepage extends Component {
   constructor() {
     super();
@@ -16,7 +17,7 @@ export default class Homepage extends Component {
     this.getPopular();
     this.getInTheaters();
     axios.get('/auth/me').then((res) => {
-    } )
+    })
   }
 
   getUpcoming() {
@@ -50,67 +51,73 @@ export default class Homepage extends Component {
   }
 
   render() {
-   
-    const popularMovies = this.state.popularMovies.map((element, i)=>{
-      if(i===0 || i === 1 || i ===4 || i ===5){ 
-        return  <img className = 'popular-img-sm' alt="700x300" src={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} />
+
+    const popularMovies = this.state.popularMovies.map((element, i) => {
+      if (i === 0 || i === 1 || i === 4 || i === 5) {
+        return <img className='popular-img-sm' alt="700x300" src={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} />
+
       }
-      else{
-        return  <img className = 'popular-img-lg' alt="700x300" src={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} />
+      else {
+        return <img className='popular-img-lg' alt="700x300" src={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} />
       }
     })
     const upcomingMovies = this.state.upcomingMovies.map((element, index) => {
       // console.log(element.backdrop_path, element.poster_path)
       var url = 'https://image.tmdb.org/t/p/w500/'
-      return(
-        <Carousel.Item className='carousel-item' key = {index} >
-        <img className = 'carousel-img-background'src={`${url}${element.backdrop_path}`} alt=""/>
-        <img className = 'carousel-img' alt="700x300" src={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} />
-        <Carousel.Caption>
-          <h3>{element.title}</h3>
-          <p>{element.release_date}</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      )})
-      const inTheaters = this.state.inTheaters.map((element, index) => {
-        // console.log(element.backdrop_path, element.poster_path)
-        var url = 'https://image.tmdb.org/t/p/w500/'
-        return(
-          <Carousel.Item className='carousel-item' key = {index} >
-          <img className = 'carousel-img-background'src={`${url}${element.backdrop_path}`} alt=""/>
-          <img className = 'carousel-img' alt="700x300" src={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} />
+      return (
+        <Carousel.Item className='carousel-item' key={index} >
+          <img className='carousel-img-background' src={`${url}${element.backdrop_path}`} alt="" />
+          <img className='carousel-img' alt="700x300" src={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} />
+          <Carousel.Caption>
+            <h3 classsName="title-h3">{element.title}</h3>
+            <p className='release-date-p'>{element.release_date}</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      )
+    })
+    const inTheaters = this.state.inTheaters.map((element, index) => {
+      // console.log(element.backdrop_path, element.poster_path)
+      var url = 'https://image.tmdb.org/t/p/w500/'
+      return (
+        <Carousel.Item className='carousel-item' key={index} >
+          <img className='carousel-img-background' src={`${url}${element.backdrop_path}`} alt="" />
+          <img className='carousel-img' alt="700x300" src={`https://image.tmdb.org/t/p/w500/${element.poster_path}`} />
           <Carousel.Caption>
             <h3>{element.title}</h3>
             <p>{element.release_date}</p>
           </Carousel.Caption>
         </Carousel.Item>
-        )})
+      )
+    })
 
     return (
-      <div className = 'homepage-root'> 
-        <Carousel interval="2000" className = 'carousel'>
+      <div className='homepage-root'>
+        <Carousel interval="2000" className='carousel'>
           {upcomingMovies}
         </Carousel>
+        <div className="content-divider"><div className="inner_content"><a href="">Popular Movies</a><h2></h2></div></div>
         <div className="popular">
-        <div className="column">
-        <div className="column-top">
-            <a href="">{popularMovies[0]}</a>
-            <a href="">{popularMovies[1]}</a>
+          <div className="column">
+            <div className="column-top">
+              <a href="">{popularMovies[0]}</a>
+              <a href="">{popularMovies[1]}</a>
+            </div>
+            <div className="column-bottom"><a href="">{popularMovies[2]}</a></div>
+          </div>
+          <div className="column">
+            <div className="column-bottom">
+              <a href="">{popularMovies[3]}</a>
+            </div>
+            <div className="column-top"><a href="">{popularMovies[4]}</a>
+              <a href="">{popularMovies[5]}</a>
+            </div>
+          </div>
         </div>
-        <div className="column-bottom"><a href="">{popularMovies[2]}</a></div>
-        </div>
-        <div className="column">
-        <div className="column-bottom">
-            <a href="">{popularMovies[3]}</a>
-        </div>
-        <div className="column-top"><a href="">{popularMovies[4]}</a>
-        <a href="">{popularMovies[5]}</a>
-        </div>
-        </div>
-        </div>
-        <Carousel interval = '2000' className = 'carousel'>
+        <div className="content-divider"><div className="inner_content2"><a href="">In Theaters</a><h2></h2></div></div>
+        <Carousel interval='2000' className='carousel'>
           {inTheaters}
         </Carousel>
+        <div className='footer_img' />
       </div>
     );
   }
