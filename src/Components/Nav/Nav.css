@@ -17,7 +17,11 @@
     font: antialiased;
     line-height: 1.4em;
     height:111px;
-    transition: 1s ease-in
+    transition: 1s ease-in;
+    position:fixed;
+    top:0;
+    z-index:1;
+    width:100%;
 }
 
 .nav-left,

@@ -51,7 +51,10 @@ class Nav extends Component {
           </div>
         </div>
         <div className="nav-right">
-       <a href='http://localhost:8888/auth'>Login</a>
+          {/* <Link className="nav-link" to="/popular/people">
+            Login
+          </Link> */}
+          <a className='nav-link' href="http://localhost:8888/auth">Login</a>
           {this.state.loggedIn === false ? null : (
             <Link className="nav-link" to="/popular/people">
               My Profile

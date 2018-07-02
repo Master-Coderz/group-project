@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom'
+import './AllPeople.css';
+import { Link } from 'react-router-dom';
+
 
 
 export default class AllPeople extends Component {
@@ -27,24 +29,33 @@ export default class AllPeople extends Component {
   render() {
     const people = this.state.people.map((e, i) => {
       return (
-        <div key={e.id}>
+        <div className='all_people_individual' key={e.id}>
           <Link to={`/people/${e.id}`}>
-            <img
+            <img className='all_people_img'
               src={`https://image.tmdb.org/t/p/w500/${e.profile_path}`}
               width="185px"
               height="278px"
               alt=''
+              onError={(e) => { e.target.src = "http://futureuniversity.com/wp-content/themes/envision/lib/images/default-placeholder-700x934.png" }}
             />
           </Link>
-          <h3>{e.name}</h3>
+          <h3 className='all_people_name'>{e.name}</h3>
 
         </div>)
 
     });
 
     return (
-      <div>
-        {people}
+      <div className="All_People_Root">
+        <div className="AllMovies-search">
+          <input
+            placeholder="Search for a movie or a person..."
+            className="AllMovies-search-bar"
+          />
+        </div>
+        <div className='all_people_container'>
+          {people}
+        </div>
       </div>
     )
   }
