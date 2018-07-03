@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Doughnut } from "react-chartjs-2";
+import { Doughnut, Bar } from "react-chartjs-2";
 import axios from "axios";
 import "./Movie.css";
 import Chart from 'chart.js';
@@ -10,7 +10,7 @@ export default class Movie extends Component {
   constructor() {
     super();
     this.state = {
-      movie: { release_date: "" },
+      movie: { release_date: "", budget: "", vote_average: "" },
       credits: { crew: [], cast: [] },
       toggleReview: false,
       review_title: "",
@@ -66,25 +66,17 @@ export default class Movie extends Component {
     axios.post(`/api/addToWatchlist/${this.props.match.params.id}`);
   };
 
+
   render() {
 
     const doughnutData = {
-      labels: [
-        'Red',
-        'Green',
-        'Yellow'
-      ],
       datasets: [{
-        data: [300, 50, 100],
+        label: 'Red',
+        data: [84, 16],
+
         backgroundColor: [
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56'
-        ],
-        hoverBackgroundColor: [
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56'
+          '#00DB76',
+          '#0A4827'
         ]
       }]
     };
@@ -167,12 +159,38 @@ export default class Movie extends Component {
                         </span>
                       </h1>{" "}
                     </span>
-                    <span className="movie_buttons">
-                      <Doughnut data={doughnutData} />
+                    <div className="movie_buttons">
+                      <div className="doughnut_bg"></div>
+                      <div className="doughnut_container">
+                        <Doughnut data={doughnutData} options={{
+                          layout: {
+                            padding: {
+                              left: 0,
+                            }
+                          },
+                          cutoutPercentage: 75,
+                          elements: {
+                            arc: {
+                              borderWidth: 0
+                            }
+                          },
+                          tooltips: {
+                            enabled: false,
+                          }
+                        }} />
+
+                        <div className="rating">{this.state.movie.vote_average * 10} <span className="percentage">%</span></div>
+                      </div>
                       <button className='add_to_watchlist_btn' onClick={this.addToWatchlist}>
-                        Add To Watchlist
+                        <img src="" alt="" />
                       </button>
-                    </span>
+                      <button className='add_to_watchlist_btn' onClick={this.addToWatchlist}>
+                        <img src="" alt="" />
+                      </button>
+                      <button className='add_to_watchlist_btn' onClick={this.addToWatchlist}>
+                        <img src="" alt="" />
+                      </button>
+                    </div>
                     <h3 className="Overview">Overview</h3>
                     <p className="Overview-p">{this.state.movie.overview}</p>
                     <h3 className="featured_crew">Featured Crew</h3>
@@ -192,21 +210,23 @@ export default class Movie extends Component {
             </div>
             <div className="leave_review">
               <button className='leave_review_btn' onClick={this.toggleReview}>Leave a review</button>
-              {this.state.toggleReview === true ? (
-                <div className='review_form'>
-                  <input
-                    placeholder="title"
-                    onChange={e => this.handleInput("review_title", e.target.value)}
-                    value={this.state.review_title}
-                  />
-                  <textarea
-                    placeholder="thoughts, comments, concerns...?"
-                    onChange={e => this.handleInput("review_content", e.target.value)}
-                    value={this.state.review_content}
-                  />
+
+              <div className={this.state.toggleReview ? 'review_form rf_show' : 'review_form rf_hidden'}>
+                <input
+                  placeholder="title"
+                  onChange={e => this.handleInput("review_title", e.target.value)}
+                  value={this.state.review_title}
+                />
+                <textarea
+                  placeholder="thoughts, comments, concerns...?"
+                  onChange={e => this.handleInput("review_content", e.target.value)}
+                  value={this.state.review_content}
+                />
+                <div className="submit_button_div">
                   <button onClick={() => this.addReview()}>Submit</button>
                 </div>
-              ) : null}
+              </div>
+
             </div>
             <div className="reviews_container">
               {reviews}
