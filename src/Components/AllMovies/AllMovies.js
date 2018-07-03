@@ -17,8 +17,9 @@ export default class AllMovies extends Component {
       const res = await axios.get(
         `https://api.themoviedb.org/3/movie/top_rated?api_key=${
           process.env.REACT_APP_API_KEY
-        }&language=en-US&page=1`
+        }&original_language=en-US&page=1`
       );
+      console.log(res)
       this.setState({ movies: res.data.results });
     } catch (err) {
       console.error("componentDidMount failed in AllMovies component:", err);
@@ -57,7 +58,10 @@ export default class AllMovies extends Component {
     return string;
   }
   render() {
-    const movies = this.state.movies.map((e, i) => {
+    const movies = this.state.movies.filter((elem, i) => {
+      console.log(elem)
+      return elem.original_language === 'en'
+    }).map((e, i) => {
       var date = moment(e.release_date).format("LL");
       var overview = this.cutString(e.overview);
       return (

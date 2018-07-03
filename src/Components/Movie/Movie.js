@@ -180,6 +180,9 @@ export default class Movie extends Component {
           <h3 className="top_billed_cast_h3">Top Billed Cast</h3>
           <div className="top_billed_cast_container">{topBilledCast}</div>
         </div>
+        <div className='facts'>
+          <span>Facts</span>
+        </div>
         <button onClick={this.toggleReview}>Leave a review</button>
         {this.state.toggleReview === true ? (
           <div>
