@@ -13,11 +13,13 @@ export default class Movie extends Component {
       toggleReview: false,
       review_title: "",
       review_content: "",
-      reviews: []
+      reviews: [],
+      video: []
     };
   }
 
   componentDidMount = async () => {
+    this.getMovieVideo()
     try {
       let res = await axios.get(
         `https://api.themoviedb.org/3/movie/${
@@ -26,7 +28,7 @@ export default class Movie extends Component {
         process.env.REACT_APP_API_KEY
         }&language=en-US&append_to_response=credits`
       );
-
+      console.log(res)
       this.setState({ movie: res.data });
       this.setState({ credits: res.data.credits });
       let reviews = await axios.get(
@@ -38,6 +40,15 @@ export default class Movie extends Component {
     }
   };
 
+
+  getMovieVideo() {
+    axios.get(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}/videos?api_key=7e09033ae18d3f476763f2bf4ee67f60&language=en-US`)
+      .then((res) => {
+        this.setState({
+          video: res.data.results[0]
+        })
+      })
+  }
 
   toggleReview = () => {
     this.setState({ toggleReview: !this.state.toggleReview });
@@ -61,7 +72,8 @@ export default class Movie extends Component {
   };
 
   addToWatchlist = () => {
-    axios.post(`/api/addToWatchlist/${this.props.match.params.id}`);
+    let { poster_path, title } = this.state.movie
+    axios.post(`/api/addToWatchlist/${this.props.match.params.id}`, { poster_path, title });
   };
 
   render() {
@@ -87,6 +99,8 @@ export default class Movie extends Component {
       }]
     };
     ;
+
+
     const featuredCrew = this.state.credits.crew
       .filter((e, i) => i < 6)
       .map(e => {
@@ -160,11 +174,14 @@ export default class Movie extends Component {
                       </h1>{" "}
                     </span>
                     <span className="movie_buttons">
-                    <Doughnut data={doughnutData} />
+                      <Doughnut data={doughnutData} />
                       <button onClick={this.addToWatchlist}>
                         Add To Watchlist
                       </button>
                     </span>
+                    {this.state.video ?
+                      < iframe src={`http://www.youtube.com/embed/${this.state.video.key}`}
+                        width="560" height="315" frameborder="0" allowfullscreen></iframe> : null}
                     <h3 className="Overview">Overview</h3>
                     <p className="Overview-p">{this.state.movie.overview}</p>
                     <h3 className="featured_crew">Featured Crew</h3>
@@ -184,23 +201,25 @@ export default class Movie extends Component {
           <span>Facts</span>
         </div>
         <button onClick={this.toggleReview}>Leave a review</button>
-        {this.state.toggleReview === true ? (
-          <div>
-            <input
-              placeholder="title"
-              onChange={e => this.handleInput("review_title", e.target.value)}
-              value={this.state.review_title}
-            />
-            <textarea
-              placeholder="thoughts, comments, concerns...?"
-              onChange={e => this.handleInput("review_content", e.target.value)}
-              value={this.state.review_content}
-            />
-            <button onClick={() => this.addReview()}>Submit</button>
-          </div>
-        ) : null}
+        {
+          this.state.toggleReview === true ? (
+            <div>
+              <input
+                placeholder="title"
+                onChange={e => this.handleInput("review_title", e.target.value)}
+                value={this.state.review_title}
+              />
+              <textarea
+                placeholder="thoughts, comments, concerns...?"
+                onChange={e => this.handleInput("review_content", e.target.value)}
+                value={this.state.review_content}
+              />
+              <button onClick={() => this.addReview()}>Submit</button>
+            </div>
+          ) : null
+        }
         {reviews}
-      </div>
+      </div >
     );
   }
 }
