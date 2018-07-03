@@ -240,6 +240,7 @@ section.images {
     width:80%;
     position:relative;
     bottom: 280px;
+    
 }
 .reviews_container_hidden{
     display:flex;
@@ -248,6 +249,9 @@ section.images {
     padding-bottom: 40px;
     box-sizing:contain;
     width:80%;
+}
+.rewiews_hidden{
+    transition: all 0.35s ease-in-out;
 }
 .review_card{
     padding: 20px;
