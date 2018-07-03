@@ -182,7 +182,7 @@ export default class Movie extends Component {
                         <div className="rating">{this.state.movie.vote_average * 10} <span className="percentage">%</span></div>
                       </div>
                       <button className='add_to_watchlist_btn' onClick={this.addToWatchlist}>
-                        <img src="" alt="" />
+                        
                       </button>
                       <button className='add_to_watchlist_btn' onClick={this.addToWatchlist}>
                         <img src="" alt="" />
@@ -228,7 +228,7 @@ export default class Movie extends Component {
               </div>
 
             </div>
-            <div className= {this.state.toggleReview ? 'reviews_container_hidden reviews_hidden' : 'reviews_container'}>
+            <div className={this.state.toggleReview ? 'reviews_container_hidden reviews_hidden' : 'reviews_container'}>
               {reviews}
             </div>
           </div>
