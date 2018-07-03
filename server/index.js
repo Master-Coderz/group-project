@@ -111,7 +111,7 @@ app.post('/api/addReview/:movie_id', controller.addReview)
 app.get('/api/getReviews/:movie_id', controller.getReviews)
 app.post('/api/addToWatchlist/:movie_id', controller.addToWatchlist)
 app.get('/api/getUser', controller.getUserInfo)
-
+app.get('/api/getWatchlist', controller.getWatchlist)
 
 
 

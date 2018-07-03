@@ -1,29 +1,47 @@
 import React, { Component } from "react";
+import Search from '../Search'
 import axios from "axios";
 import "./AllMovies.css";
 import { Link } from "react-router-dom";
-const moment = require("moment");
+import InfiniteScroll from 'react-infinite-scroll-component';
 
+const moment = require("moment");
 export default class AllMovies extends Component {
   constructor() {
     super();
     this.state = {
-      movies: []
+      movies: [],
+      page: 1
     };
   }
 
-  componentDidMount = async () => {
+  componentDidMount(){
+    this.getMovies()
+  }
+
+
+  getMovies = async () => {
     try {
       const res = await axios.get(
         `https://api.themoviedb.org/3/movie/top_rated?api_key=${
-          process.env.REACT_APP_API_KEY
-        }&language=en-US&page=1`
+        process.env.REACT_APP_API_KEY
+        }&language=en-US&page=${this.state.page}`
       );
+      console.log(res);
       this.setState({ movies: res.data.results });
     } catch (err) {
       console.error("componentDidMount failed in AllMovies component:", err);
     }
   };
+
+  loadMore = () => {
+    this.setState({
+      page: this.state.page + 1
+    })
+    this.getMovies()
+    window.scrollTo(0, 0)
+  }
+
   formatDate(date) {
     var newDate = parseInt(date);
     var monthNames = [
@@ -57,6 +75,7 @@ export default class AllMovies extends Component {
     return string;
   }
   render() {
+    console.log(this.state.page)
     const movies = this.state.movies.map((e, i) => {
       var date = moment(e.release_date).format("LL");
       var overview = this.cutString(e.overview);
@@ -112,14 +131,11 @@ export default class AllMovies extends Component {
     });
     return (
       <div className="AllMovies-root">
-        <div className="AllMovies-search">
-          <input
-            placeholder="Search for a movie or a person..."
-            className="AllMovies-search-bar"
-          />
-        </div>
+        <Search />
         <h2 className="popular-movies-h2">Popular Movies</h2>
         <div className="container">{movies}</div>
+        <button onClick={this.loadMore}>Load More...</button>
+    
       </div>
     );
   }
