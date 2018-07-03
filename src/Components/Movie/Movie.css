@@ -14,6 +14,7 @@ div.custom_bg {
     margin-left: 20px;
 }
 
+
 .single_column {
     width: 100%;
     margin: 0 auto;
@@ -58,10 +59,50 @@ section.images {
 .images_inner {
     display: flex;
     align-items: flex-start;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 .movie_buttons{
     margin-bottom:20px;
+    display:flex;
+}
+.doughnut_bg{
+    left: 105px;
+    top: 5px;
+    border-radius: 50%;
+    position: relative;
+    height: 70px;
+    width: 70px;
+    background-color: #021D23;
+}
+.doughnut_container{
+    width: 140px;
+    height: 70px;
+    position:relative;
+}
+.rating{
+    position: absolute;
+    font-size: 16px;
+    top: 44%;
+    left: 41%;
+}
+.add_to_watchlist_btn{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    position: relative;
+    top: 14px;
+    opacity:0.9;
+    margin:0 15px 0 10px;
+    background:transparent
+}
+.add_to_watchlist_btn:hover{
+    background: #FFFFFF;
+}
+.percentage{
+    font-size: 10px;
+    position: relative;
+    top: -5px;
+    left: -2px;
 }
 
 .Overview {
@@ -90,7 +131,8 @@ section.images {
 }
 
 .movie_year {
-    color: #9E9C9B
+    color: #9E9C9B;
+    font-size:25px;
 }
 
 .featured_crew {
@@ -189,3 +231,274 @@ section.images {
     font-family: 'Source Sans Pro', Arial, sans-serif;
 
 }
+.reviews_container{
+    display:flex;
+    flex-direction: column;
+    padding-left: 40px;
+    padding-bottom: 40px;
+    box-sizing:contain;
+    width:80%;
+    position:relative;
+    bottom: 280px;
+    
+}
+.reviews_container_hidden{
+    display:flex;
+    flex-direction: column;
+    padding-left: 40px;
+    padding-bottom: 40px;
+    box-sizing:contain;
+    width:80%;
+}
+.rewiews_hidden{
+    transition: all 0.35s ease-in-out;
+}
+.review_card{
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    margin:10px;
+    width:90%;
+}
+.review_card p{
+    width:80%;
+    margin-top:5px;
+    word-break: break-all
+}
+.review_top{
+    width:100%;
+    display:flex;
+    align-items:center;
+}
+.review_user_img{
+    height: 64px;
+    width: 64px;
+    margin-right:10px;
+    background-color: #00DD72;
+    border-radius: 50%;
+}
+.review_bottom{
+    margin-left:74px;
+}
+.white_column{
+    height:100%;
+    width:auto;
+    display:flex;
+    flex-direction:column;
+}
+.grey_column{
+    height:100%;
+    background: #d9d9d9;
+    width:30%;
+    display:flex;
+    flex-direction:column;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+
+}
+.bottom_wrapper{
+    display:flex;
+    height:1000px;
+    justify-content: space-between;
+}
+.grey_column_content{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-left:30px;
+    font-size:16px;
+    line-height:1em;
+    padding-top:30px;
+}
+.grey_column_content p{
+    margin: 10px 0;
+    font-weight:700;
+}
+.grey_column_title{
+    font-weight: 700;
+    font-size: 25px;
+}
+.leave_review_btn{
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    color: white;
+    background-color: #18568E;
+    border-radius: 5px;
+    border:1px solid gray;
+    padding:5px;
+    width:auto;
+    height:32px;
+    cursor:pointer;
+    margin:10px 0 5px 20px;
+    }
+.review_form{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    height:auto;
+    width:80%;
+    margin-left:20px;
+
+}
+.rf_show{
+    visibility: visible;
+    transition: all .35s ease-in-out;
+    opacity:1;
+}
+.rf_hidden{
+    visibility: hidden;
+    opacity: 0;
+    transition: all .35s ease-out;
+}
+.review_form input{
+    text-align:left;
+    width:40%;
+    margin-bottom:5px;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    border-radius:2px;
+}
+.review_form input::placeholder, textarea::placeholder{
+    text-align:left;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-style: italic;
+
+}
+.review_form textarea{
+    height:200px;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    border-radius:2px;
+
+}
+.review_form button{
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    color: white;
+    background-color: #00DD72;
+    border-radius: 5px;
+    padding:5px;
+    width:180px;
+    height:40px;
+    cursor:pointer;
+    margin:10px 0;
+    font-size:20px;
+}
+.review_form button:hover{
+    background:black;
+    opacity:0.3;
+}
+textarea:focus, input:focus, button:focus{
+    outline: none;
+}
+.submit_button_div{
+    width:100%;
+    display:flex;
+    justify-content: flex-end;
+}
+@media only screen and (max-width:710px) {
+    section.poster{
+        width: 100%;
+    }
+    .featured_crew{
+        padding-left:0px;
+    }
+    .featuredCrew{
+        padding-left: 10px;
+    }
+    .images_inner {
+        justify-content:center;
+    }
+    .Overview{
+        padding-left: 40px;
+    }
+    .Overview-p {
+       word-break: break-word;
+       padding: 0 10px;
+    }
+    .top_billed_cast_container{
+        justify-content: center;
+    }
+    .grey_column{
+        width:500px;
+    }
+    .review_card{
+        font-size:12px;
+        margin: 10px 0px;
+    }
+    .reviews_container{
+        width:98%;
+        padding-left: 0;
+    }
+    .review_form button{
+        width:100px;
+        height: 40px;
+    }
+    .review_bottom{
+        margin-left:10px;
+    }
+    .review_card p{
+        width:100%;
+    }
+    .images_inner{
+        width:90%;
+    }
+    section.poster{
+        padding-left: 0px;
+    }
+    .movie-img{
+        margin:0px;
+        width: 250px;
+        height: auto;
+    }
+    .top_billed_cast_container{
+        width: 100%;
+        justify-content: center;
+    }
+    .white_column{
+        align-items:center;
+    }
+    .billed_cast_member{
+        width:100px;
+        height:auto;
+    }
+    .billed_cast_member img{
+        height:140px;
+    }
+    .grey_column_content{
+        padding-left:10px;
+        padding-top:10px;
+    }
+    .leave_review_btn{
+        height: 30px;
+    }
+    .review_user_img{
+        width:40px;
+        height:40px;
+    }
+    .movie_title{
+        text-align: center;
+    }
+    .top_billed_cast_name{
+        padding: 5px 0 0 0;
+    }
+    .top_billed_cast_character{
+        padding: 5px 0 0 0;
+    }
+    .movie_buttons{
+        position: relative;
+        left: -10px;
+    }
+    .add_to_watchlist_btn{
+        width:40px;
+        height: 40px;
+    }
+    .doughnut_bg{
+        display:none;
+    }
+    }
+    @media only screen and (max-width:1024px) {
+        .movie-img{
+            margin-left:40px;
+        }
+    }
+    @media only screen and (max-width:811px) {
+    .movie-img{
+        margin-left:0;
+    }
+    }
