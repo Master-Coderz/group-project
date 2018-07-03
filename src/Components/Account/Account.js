@@ -37,7 +37,7 @@ export default class Account extends Component {
     const userWatchlist = this.state.watchlist.map((e, i) => {
       return(
         <div key={e.id}>
-        <img src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`}/>
+        <img src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`} alt=''/>
         <h1>{e.movie_title}</h1>
         </div>
       )
