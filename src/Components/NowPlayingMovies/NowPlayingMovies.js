@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Search from '../Search'
 import axios from "axios";
-import "./AllMovies.css";
+import "./NowPlayingMovies.css";
 import { Link } from "react-router-dom";
 
 const moment = require("moment");
-export default class AllMovies extends Component {
+export default class NowPlayingMovies extends Component {
   constructor() {
     super();
     this.state = {
@@ -22,28 +22,20 @@ export default class AllMovies extends Component {
   getMovies = async () => {
     try {
       const res = await axios.get(
-        `https://api.themoviedb.org/3/movie/top_rated?api_key=${
+        `https://api.themoviedb.org/3/movie/now_playing?api_key=${
         process.env.REACT_APP_API_KEY
         }&language=en-US&page=${this.state.page}`
       );
       console.log(res);
       this.setState({ movies: res.data.results });
     } catch (err) {
-      console.error("componentDidMount failed in AllMovies component:", err);
+      console.error("componentDidMount failed in NowPlayingMovies component:", err);
     }
   };
 
-  nextPage = () => {
+  loadMore = () => {
     this.setState({
-      page: this.state.page += 1
-    })
-    this.getMovies()
-    window.scrollTo(0, 0)
-  }
-
-  previousPage = () => {
-    this.setState({
-      page: this.state.page -= 1
+      page: this.state.page + 1
     })
     this.getMovies()
     window.scrollTo(0, 0)
@@ -82,8 +74,10 @@ export default class AllMovies extends Component {
     return string;
   }
   render() {
-    console.log(this.state.page)
-    const movies = this.state.movies.map((e, i) => {
+    const movies = this.state.movies.filter((elem, i) => {
+      console.log(elem)
+      return elem.original_language === 'en'
+    }).map((e, i) => {
       var date = moment(e.release_date).format("LL");
       var overview = this.cutString(e.overview);
       return (
@@ -137,12 +131,11 @@ export default class AllMovies extends Component {
       );
     });
     return (
-      <div className="AllMovies-root">
+      <div className="NowPlayingMovies-root">
         <Search />
-        <h2 className="popular-movies-h2">Popular Movies</h2>
+        <h2 className="popular-movies-h2">Now Playing</h2>
         <div className="container">{movies}</div>
-        <span><button onClick={this.previousPage}>Previous Page</button>
-        <button onClick={this.nextPage}>Next Page</button></span> 
+        <button onClick={this.loadMore}>Load More...</button>
     
       </div>
     );

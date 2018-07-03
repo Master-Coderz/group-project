@@ -1,0 +1,152 @@
+.TopRatedMovies-root {
+  background-color: #F4F4F4;
+  margin-top:130px;
+}
+
+.AllMovies-search-bar {
+  width: 100vw;
+  padding-left: 15%;
+  height: 5vh;
+  background: url('../../Assets/search-icon.png') no-repeat scroll;
+  background-size: 50px;
+  background-position: -8px;
+  background-color: white;
+  border-radius: 0;
+  padding: 0 30px;
+  height: 46px;
+  font-family: Arial, sans-serif;
+  font-style: italic;
+  color:black;
+  position: fixed;
+  top:111px;
+  z-index:1;
+}
+input::placeholder{
+position: relative;
+left:50px;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 483px;
+  background-color: #fff;
+  box-sizing: border-box;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  margin-top: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+div.info {
+  width: 298px;
+  height: 278px;
+  position: relative;
+  box-sizing: border-box;
+  padding: 10px 16px 16px 16px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.image_content {
+  width: 185px;
+  height: 278px;
+}
+
+.wrapper {
+  display: flex;
+  background-color: white;
+}
+
+div.wrapper div.flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-left: 10px;
+  background-color: white;
+}
+
+div.wrapper a {
+  width: 100%;
+  display: block;
+  font-weight: 600;
+  font-size: 1.1em;
+  line-height: 1.1em;
+}
+
+.overview {
+  padding: 0;
+  width: 100%;
+  word-wrap: break-word;
+  color: #4d4d4d;
+  font-size: 0.9em;
+  line-height: 1.2em;
+  max-height: 6em;
+  margin-top: 30px;
+  box-sizing: content-box;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 40px
+}
+
+p.view_more {
+  border-top: 1px solid #e3e3e3;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 16px;
+  width: 100%;
+}
+
+.link,
+.title_result {
+  color: black;
+  text-decoration: none;
+}
+
+.link:hover,
+.title_result {
+  color: black;
+  text-decoration: none;
+}
+
+.info a {
+  color: black;
+  text-decoration: none;
+}
+
+.info a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.container {
+  background-color: #F4F4F4
+}
+
+.popular-movies-h2 {
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-size: 1.5em;
+  margin: 0 0 4px 20px;
+  font-weight: 600;
+  position: relative;
+  top: 40px;
+}
+
+.flex span {
+  color: #6E6E6E
+}
+@media only screen and (max-width:497px) {
+  .info {
+      font-size:12px;
+  }
+  .carousel-img-background {
+      height: 100%;
+  }
+}
