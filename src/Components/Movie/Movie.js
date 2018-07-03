@@ -228,7 +228,7 @@ export default class Movie extends Component {
               </div>
 
             </div>
-            <div className="reviews_container">
+            <div className= {this.state.toggleReview ? 'reviews_container_hidden' : 'reviews_container'}>
               {reviews}
             </div>
           </div>

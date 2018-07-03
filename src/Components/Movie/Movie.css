@@ -238,6 +238,16 @@ section.images {
     padding-bottom: 40px;
     box-sizing:contain;
     width:80%;
+    position:relative;
+    bottom: 280px;
+}
+.reviews_container_hidden{
+    display:flex;
+    flex-direction: column;
+    padding-left: 40px;
+    padding-bottom: 40px;
+    box-sizing:contain;
+    width:80%;
 }
 .review_card{
     padding: 20px;
