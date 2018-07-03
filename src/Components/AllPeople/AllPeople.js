@@ -10,21 +10,42 @@ export default class AllPeople extends Component {
     super();
 
     this.state = {
-      people: []
+      people: [],
+      page: 1
     };
   }
-  componentDidMount = async () => {
+  componentDidMount(){
+    this.getPeople()
+  }
+
+  getPeople =  async () => {
     try {
       const res = await axios.get(
         `https://api.themoviedb.org/3/person/popular?api_key=${
         process.env.REACT_APP_API_KEY
-        }&language=en-US&page=1`
+        }&language=en-US&page=${this.state.page}`
       );
       this.setState({ people: res.data.results });
     } catch (err) {
       console.error("componentDidMount failed in AllPeople.js:", err);
     }
   };
+
+  nextPage = () => {
+    this.setState({
+      page: this.state.page += 1
+    })
+    this.getPeople()
+    window.scrollTo(0, 0)
+  }
+
+  previousPage = () => {
+    this.setState({
+      page: this.state.page -= 1
+    })
+    this.getPeople()
+    window.scrollTo(0, 0)
+  }
 
   render() {
     const people = this.state.people.map((e, i) => {
@@ -56,6 +77,9 @@ export default class AllPeople extends Component {
         <div className='all_people_container'>
           {people}
         </div>
+        <span><button onClick={this.previousPage}>Previous Page</button>
+        <button onClick={this.nextPage}>Next Page</button></span> 
+
       </div>
     )
   }
