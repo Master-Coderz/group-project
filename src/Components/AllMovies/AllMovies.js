@@ -3,7 +3,6 @@ import Search from '../Search'
 import axios from "axios";
 import "./AllMovies.css";
 import { Link } from "react-router-dom";
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 const moment = require("moment");
 export default class AllMovies extends Component {
