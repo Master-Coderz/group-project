@@ -15,76 +15,76 @@ class Nav extends Component {
     };
   }
 
-      show_sidebar(e){
-      this.setState({
-        show_sidebar:!this.state.show_sidebar
-      });
-      }
+  show_sidebar(e) {
+    this.setState({
+      show_sidebar: !this.state.show_sidebar
+    });
+  }
 
   render() {
     return (
       <div>
-    
-      <div className="nav-root">
-        <div className="nav-left">
-          <Link to="/">
-            <img className="logo" src={logo} alt="" />
+
+        <div className="nav-root">
+          <div className="nav-left">
+            <Link to="/">
+              <img className="logo" src={logo} alt="" />
+            </Link>
+            <div className='dropdown'>
+              <Link className="nav-link link-1" to="/top_rated/movies">
+                Movies
           </Link>
-          <div className = 'dropdown'>
-          <Link className="nav-link link-1" to="/popular/movies">
-            Movies
+              <div className="dropdown-content">
+                <a href="#/popular/movies">Popular</a>
+                <a href="#/top_rated/movies">Top Rated</a>
+                <a href="#/upcoming/movies">Upcoming</a>
+                <a href="#/now_playing/movies">Now Playing</a>
+              </div>
+            </div>
+            <div className="dropdown">
+              <Link className="nav-link link-1" to="/popular/people">
+                People
           </Link>
-          <div className="dropdown-content">
-            <a href="#">Popular</a>
-            <a href="#">Top Rated</a>
-            <a href="#">Upcoming</a>
-            <a href="#">Now Playing</a>
-          </div>
-          </div>
-          <div className="dropdown">
-          <Link className="nav-link link-1" to="/popular/people">
-            People
-          </Link>
-            <div className="dropdown-content">
-              <a href="#">Popular People</a>
+              <div className="dropdown-content">
+                <a href="#/popular/people">Popular People</a>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="nav-right">
-          {/* <Link className="nav-link" to="/popular/people">
+          <div className="nav-right">
+            {/* <Link className="nav-link" to="/popular/people">
             Login
           </Link> */}
-          <a className='nav-link' href="http://localhost:8888/auth">Login</a>
-          {this.state.loggedIn === false ? null : (
-            <Link className="nav-link" to="/popular/people">
-              My Profile
+            <a className='nav-link' href="http://localhost:8888/auth">Login</a>
+            {this.state.loggedIn === false ? null : (
+              <Link className="nav-link" to="/popular/people">
+                My Profile
             </Link>
-          )}
+            )}
+          </div>
+          <img className='hamburger-menu' onClick={e => this.show_sidebar()} src={menuIcon} alt="" />
+          <div className="mobile-db-logo">
+            <img className='secondary-logo' src={logo} alt="" />
+          </div>
         </div>
-            <img className = 'hamburger-menu' onClick={e => this.show_sidebar()} src={menuIcon} alt=""/>
-            <div className="mobile-db-logo">
-            <img className = 'secondary-logo' src={logo} alt=""/>
-        </div>
-      </div>
-      <div className={this.state.show_sidebar===false?'sidebar':'sidebar sidebar-show'}>
+        <div className={this.state.show_sidebar === false ? 'sidebar' : 'sidebar sidebar-show'}>
           <div className="side-link"><Link className='main-side-link' to="/popular/movies">
             Movies
           </Link>
-          <ul className='side-links'>
-            <a href="#">Popular</a>
-            <a href="#">Top Rated</a>
-            <a href="#">Upcoming</a>
-            <a href="#">Now Playing</a>
-          </ul>
+            <ul className='side-links'>
+              <a href="#">Popular</a>
+              <a href="#">Top Rated</a>
+              <a href="#">Upcoming</a>
+              <a href="#">Now Playing</a>
+            </ul>
           </div>
           <div className="side-link"><Link className='main-side-link' to="/popular/movies">
             People
           </Link>
-          <ul className='side-links'>
-            <a href="#">Popular People</a>
-          </ul></div>
+            <ul className='side-links'>
+              <a href="#">Popular People</a>
+            </ul></div>
           <div className="side-link">Login</div>
-      </div>
+        </div>
       </div>
     );
   }
