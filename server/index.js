@@ -89,6 +89,15 @@ app.get(
         failureRedirect: "http://localhost:3000"
     })
 );
+app.get("/auth/logout", (req, res) => {
+    console.log("logging out");
+    req.logOut();
+
+    res.redirect(
+        302,
+        `https://carter-childs.auth0.com/v2/logout?returnTo=http%3A%2F%2Flocalhost:3000/&client_id=${CLIENT_ID}`
+    );
+});
 app.get(
     "/auth/callback",
     passport.authenticate("auth0", {

@@ -7,7 +7,7 @@
   width: 100vw;
   padding-left: 15%;
   height: 5vh;
-  background: url('../../Assets/search-icon.png') no-repeat scroll;
+  /* background: url('../../Assets/search-icon.png') no-repeat scroll; */
   background-size: 50px;
   background-position: -8px;
   background-color: white;
@@ -23,9 +23,13 @@
   padding-left: 45px
   
 }
-input::placeholder{
+.AllMovies-search-bar input{
+  position: relative;
+  left:10%;
+}
+.AllMovies-search-bar input::placeholder{
 position: relative;
-left:50px;
+left:20%;
 }
 
 .card {
