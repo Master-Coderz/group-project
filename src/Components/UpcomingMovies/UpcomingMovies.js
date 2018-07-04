@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Search from '../Search'
+import Search from './../SearchMovies/Search'
 import axios from "axios";
 import "./UpcomingMovies.css";
 import { Link } from "react-router-dom";
@@ -14,7 +14,7 @@ export default class UpcomingMovies extends Component {
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getMovies()
   }
 
@@ -136,7 +136,7 @@ export default class UpcomingMovies extends Component {
         <h2 className="popular-movies-h2">Upcoming Movies</h2>
         <div className="container">{movies}</div>
         <button onClick={this.loadMore}>Load More...</button>
-    
+
       </div>
     );
   }

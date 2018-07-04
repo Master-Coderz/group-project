@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import './Search.css'
 
 export default class Search extends Component {
   constructor() {
@@ -23,10 +24,10 @@ export default class Search extends Component {
     let searchResults = this.state.searchResults.filter((e, i) => {
       return (e.media_type !== 'tv')
     }).map((e, i) => {
-      return(
-      <div key={e.id}>
-        <a href={`/#/movies/${e.id}`}>{e.title}</a>
-      </div>)
+      return (
+        <div key={e.id}>
+          <a href={`/#/movies/${e.id}`}>{e.title}</a>
+        </div>)
     })
 
     console.log(searchResults)
@@ -34,7 +35,7 @@ export default class Search extends Component {
       <div>
         <div className="AllMovies-search">
           <input
-            placeholder="Search for a movie or a person..."
+            placeholder="Search for a movie..."
             className="AllMovies-search-bar"
             onChange={e => this.handleSearch('searchInput', e.target.value)}
             value={this.state.searchInput}

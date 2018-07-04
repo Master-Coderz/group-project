@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Search from '../Search'
+import Search from './../SearchMovies/Search'
 import axios from "axios";
 import "./PopularMovies.css";
 import { Link } from "react-router-dom";
@@ -14,7 +14,7 @@ export default class PopularMovies extends Component {
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getMovies()
   }
 
@@ -144,8 +144,8 @@ export default class PopularMovies extends Component {
         <h2 className="popular-movies-h2">Popular Movies</h2>
         <div className="container">{movies}</div>
         <span><button onClick={this.previousPage}>Previous Page</button>
-        <button onClick={this.nextPage}>Next Page</button></span> 
-    
+          <button onClick={this.nextPage}>Next Page</button></span>
+
       </div>
     );
   }

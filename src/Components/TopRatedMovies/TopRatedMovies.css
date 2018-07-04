@@ -20,6 +20,8 @@
   position: fixed;
   top:111px;
   z-index:1;
+  padding-left: 45px
+  
 }
 input::placeholder{
 position: relative;

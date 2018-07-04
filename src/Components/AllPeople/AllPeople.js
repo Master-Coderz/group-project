@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import './AllPeople.css';
 import { Link } from 'react-router-dom';
+import SearchPeople from './../SearchPeople/SearchPeople'
 
 
 
@@ -14,11 +15,11 @@ export default class AllPeople extends Component {
       page: 1
     };
   }
-  componentDidMount(){
+  componentDidMount() {
     this.getPeople()
   }
 
-  getPeople =  async () => {
+  getPeople = async () => {
     try {
       const res = await axios.get(
         `https://api.themoviedb.org/3/person/popular?api_key=${
@@ -68,19 +69,14 @@ export default class AllPeople extends Component {
 
     return (
       <div className="All_People_Root">
-        <div className="AllMovies-search">
-          <input
-            placeholder="Search for a movie or a person..."
-            className="AllMovies-search-bar"
-          />
-        </div>
-        <div className='all_people_container'>
-          {people}
-        </div>
-        <span><button onClick={this.previousPage}>Previous Page</button>
-        <button onClick={this.nextPage}>Next Page</button></span> 
+        <SearchPeople/>
+          <div className='all_people_container'>
+            {people}
+          </div>
+          <span><button onClick={this.previousPage}>Previous Page</button>
+            <button onClick={this.nextPage}>Next Page</button></span>
 
-      </div>
-    )
-  }
-}
+      </div >
+        )
+      }
+    }
