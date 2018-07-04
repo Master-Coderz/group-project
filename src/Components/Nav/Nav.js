@@ -54,11 +54,11 @@ class Nav extends Component {
             {/* <Link className="nav-link" to="/popular/people">
             Login
           </Link> */}
-            <a className='nav-link' href="http://localhost:8888/auth">Login</a>
+            {this.state.loggedIn === true ? <a className='nav-link' href="http://localhost:8888/auth/logout">Logout</a> :<a className='nav-link' href="http://localhost:8888/auth">Login</a>}
             {this.state.loggedIn === false ? null : (
               <Link className="nav-link" to="/popular/people">
-                My Profile
-            </Link>
+              My Profile
+              </Link>
             )}
           </div>
           <img className='hamburger-menu' onClick={e => this.show_sidebar()} src={menuIcon} alt="" />
@@ -84,6 +84,7 @@ class Nav extends Component {
               <a href="#">Popular People</a>
             </ul></div>
           <div className="side-link">Login</div>
+          {this.state.loggedIn === true ? <div className="account_nav_link side-link">Account</div> : null}
         </div>
       </div>
     );

@@ -94,17 +94,63 @@ section.images {
     opacity:0.9;
     margin:0 15px 0 10px;
     background:transparent;
-    background-image: url('./../../Assets/heart.png');
+    background-image: url('./../../Assets/fullWhiteHeart.png');
     background-size:20px 20px;
     background-position: center;
     background-repeat: no-repeat;
     border: 2.5px solid white;
-
-
 }
 
 .add_to_watchlist_btn:hover{
     background: #FFFFFF;
+    background-image: url('./../../Assets/valentines-heart.png');
+    background-size:20px 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.add_to_watchlist_btn_2{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    position: relative;
+    top: 14px;
+    opacity:0.9;
+    margin:0 15px 0 10px;
+    background:transparent;
+    background-image: url('./../../Assets/filledWhiteMenu.png');
+    background-size:20px 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 2.5px solid white;
+}
+.add_to_watchlist_btn_2:hover{
+    background: #FFFFFF;
+    background-image: url('./../../Assets/bullet-list.svg');
+    background-size:20px 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.add_to_watchlist_btn_3{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    position: relative;
+    top: 14px;
+    opacity:0.9;
+    margin:0 15px 0 10px;
+    background:transparent;
+    background-image: url('./../../Assets/favourites-filled-star-symbol-white.png');
+    background-size:20px 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 2.5px solid white;
+}
+.add_to_watchlist_btn_3:hover{
+    background: #FFFFFF;
+    background-image: url('./../../Assets/favourites-filled-star-symbol.png');
+    background-size:20px 20px;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .percentage{
     font-size: 10px;
@@ -344,7 +390,7 @@ section.images {
     flex-direction:column;
     justify-content: center;
     height:auto;
-    width:80%;
+    width:94%;
     margin-left:20px;
 
 }
@@ -494,10 +540,10 @@ textarea:focus, input:focus, button:focus{
         position: relative;
         left: -10px;
     }
-    .add_to_watchlist_btn{
+    .add_to_watchlist_btn, .add_to_watchlist_btn_2, .add_to_watchlist_btn_3{
         width:40px;
         height: 40px;
-    }
+    } 
     .doughnut_bg{
         display:none;
     }

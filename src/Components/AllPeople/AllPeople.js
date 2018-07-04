@@ -48,6 +48,7 @@ export default class AllPeople extends Component {
     return (
       <div className="All_People_Root">
         <div className="AllMovies-search">
+        <img src="./../../Assets/" alt=""/>
           <input
             placeholder="Search for a movie or a person..."
             className="AllMovies-search-bar"
