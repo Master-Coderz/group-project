@@ -7,7 +7,7 @@
   width: 100vw;
   padding-left: 15%;
   height: 5vh;
-  background: url('../../Assets/search-icon.png') no-repeat scroll;
+  /* background: url('../../Assets/search-icon.png') no-repeat scroll; */
   background-size: 50px;
   background-position: -8px;
   background-color: white;
@@ -21,7 +21,11 @@
   top:111px;
   z-index:1;
 }
-input::placeholder{
+.AllMovies-search-bar input{
+  position: relative;
+  left:20%;
+}
+.AllMovies-search-bar input::placeholder{
 position: relative;
 left:50px;
 }

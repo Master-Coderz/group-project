@@ -21,7 +21,7 @@
   top:111px;
   z-index:1;
 }
-input::placeholder{
+.PopularMovies-search-bar input::placeholder{
 position: relative;
 left:50px;
 }

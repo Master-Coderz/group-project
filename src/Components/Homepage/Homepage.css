@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     margin-top:111px;
+    background-color: #F4F4F4;
 }
 
 
@@ -56,7 +57,7 @@
     width: 100%;
     height: 100px;
     background-position: -40px -500px;
-    background-image: radial-gradient(at 30% top, rgba(31, 40, 73, 1) 0%, rgba(8, 28, 36, 1) 70%);
+    /* background-image: radial-gradient(at 30% top, rgba(31, 40, 73, 1) 0%, rgba(8, 28, 36, 1) 70%); */
 }
 
 h2 {
@@ -74,18 +75,21 @@ div.inner_content {
     top: 0;
     left: 0;
     z-index: 2;
-    text-align: center;
-    padding: 20px 0;
+    text-align: left;
+    padding: 20px 0 0 10%;
+    display: flex;
+    align-items: flex-end;
     background-position: -40px -500px;
-    background-image: url('./../../Assets/purple-63b164a075461641b7ef444ea97d9787adf45a9552fe215e20063e3ff02491a8.svg')
+    /* background-image: url('./../../Assets/purple-63b164a075461641b7ef444ea97d9787adf45a9552fe215e20063e3ff02491a8.svg') */
 }
 
 div.inner_content a, div.inner_content2 a {
-    color: #fff;
+    color: black;
     transition: all 0.3s;
     cursor: pointer;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 30px;
+    padding-bottom: 20px;
 }
 
 div.inner_content a:hover {
@@ -102,9 +106,11 @@ div.inner_content2 {
     top: 0;
     left: 0;
     z-index: 2;
-    text-align: center;
-    padding: 20px 0 0 0 ;
-    background-image: url('./../../Assets/blue_pipes.jpg');
+    padding: 0px 10% 0 20px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    /* background-image: url('./../../Assets/blue_pipes.jpg'); */
     background-size: cover;
 
 }
@@ -147,7 +153,7 @@ div.inner_content2 a:hover {
 }
 .footer_img{
     width:100%;
-    height:auto;
+    height:500px;
     background-image: url('./../../Assets/ironmanfooter.jpg');
     background-size:cover;
 }

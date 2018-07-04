@@ -68,11 +68,21 @@ export default class Movie extends Component {
 
 
   render() {
-
+    // const donutColor = function(){
+    //   if(this.state.movie.vote_average<70){
+    //     donutColor = 'yellow'
+    //   }
+    //   else if (this.state.movie.vote_average < 50){
+    //     donutColor = 'red'
+    //   }
+    //   else{
+    //     donutColor = '#00DB76'
+    //   }
+    // }
     const doughnutData = {
       datasets: [{
         label: 'Red',
-        data: [84, 16],
+        data: [this.state.movie.vote_average*10, 100-this.state.movie.vote_average*10],
 
         backgroundColor: [
           '#00DB76',
@@ -182,13 +192,13 @@ export default class Movie extends Component {
                         <div className="rating">{this.state.movie.vote_average * 10} <span className="percentage">%</span></div>
                       </div>
                       <button className='add_to_watchlist_btn' onClick={this.addToWatchlist}>
-                        <img src="" alt="" />
+
                       </button>
-                      <button className='add_to_watchlist_btn' onClick={this.addToWatchlist}>
-                        <img src="" alt="" />
+                      <button className='add_to_watchlist_btn_2'>
+
                       </button>
-                      <button className='add_to_watchlist_btn' onClick={this.addToWatchlist}>
-                        <img src="" alt="" />
+                      <button className='add_to_watchlist_btn_3'>
+
                       </button>
                     </div>
                     <h3 className="Overview">Overview</h3>
@@ -228,7 +238,7 @@ export default class Movie extends Component {
               </div>
 
             </div>
-            <div className= {this.state.toggleReview ? 'reviews_container_hidden reviews_hidden' : 'reviews_container'}>
+            <div className={this.state.toggleReview ? 'reviews_container_hidden reviews_hidden' : 'reviews_container'}>
               {reviews}
             </div>
           </div>
