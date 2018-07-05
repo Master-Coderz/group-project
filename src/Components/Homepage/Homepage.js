@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {Link} from 'react-router-dom'
 import Carousel2 from 'nuka-carousel';
 import {Button, SideNav, SideNavItem} from 'react-materialize'
 import { Carousel } from 'react-bootstrap';
@@ -86,18 +87,15 @@ export default class Homepage extends Component {
     const userWatchlist = this.state.watchlist.map((e, i) => {
       return(
 
-        <SideNavItem key={e.id}>
-        
-          <a href={`/#/movies/${e.movie_id}`} >
 
+        <SideNavItem  href={null}key={e.id}>
+        <div>
+        <Link to={`/movies/${e.movie_id}`} >
              <img className='watchlist-img' src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`} alt=''/>
-            </a>
-           
+        </Link>
+        </div>
         </SideNavItem>
-        // <div key={e.id}>
-        // <img src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`} alt=''/>
-        // <h1>{e.movie_title}</h1>
-        // </div>
+       
       )
     } )
 

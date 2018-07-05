@@ -121,6 +121,7 @@ app.get('/api/getReviews/:movie_id', controller.getReviews)
 app.post('/api/addToWatchlist/:movie_id', controller.addToWatchlist)
 app.get('/api/getUser', controller.getUserInfo)
 app.get('/api/getWatchlist', controller.getWatchlist)
+app.delete('/api/removeMovie/:movie_id', controller.removeFromWatchlist)
 
 
 

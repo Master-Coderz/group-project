@@ -182,7 +182,7 @@ div.inner_content2 a:hover {
     
 }
 
-.sidenav * {
+.sidenav  * {
     padding: 0 !important;
     
 }
@@ -190,3 +190,13 @@ div.inner_content2 a:hover {
 .sidenav *:not(:first-child){
     margin-top: 400px;
 }
+
+.remove-from-list{
+    height: 30px;
+    width: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.5);
+   
+}
+
