@@ -3,24 +3,3 @@
     background-color: white;
     z-index: 10;
 }
-
-.AllMovies-search-bar {
-    width: 100vw;
-    padding-left: 15%;
-    height: 5vh;
-    background: url('./../../Assets//search-icon.png') no-repeat scroll;
-    background-size: 50px;
-    background-position: -8px;
-    background-color: white;
-    border-radius: 0;
-    padding: 0 30px;
-    height: 46px;
-    font-family: Arial, sans-serif;
-    font-style: italic;
-    color:black;
-    position: fixed;
-    top:111px;
-    z-index:1;
-    
-    
-  }

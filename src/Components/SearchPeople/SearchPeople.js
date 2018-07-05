@@ -24,7 +24,7 @@ export default class Search extends Component {
     let searchResults = this.state.searchResults.map((e, i) => {
       return (
         <div key={e.id}>
-          <a href={`/#/people/${e.id}`}>{e.name}</a>
+          <a className='search_link' href={`/#/people/${e.id}`}>{e.name}</a>
         </div>)
     })
 
@@ -32,6 +32,7 @@ export default class Search extends Component {
     return (
       <div>
         <div className="AllMovies-search">
+          <span className='search_icon'></span>
           <input
             placeholder="Search for a person..."
             className="AllMovies-search-bar"
@@ -40,8 +41,8 @@ export default class Search extends Component {
           />
         </div>
 
-        {this.state.searchInput !== '' ? <div className='searchPeople-results'>
-          {searchResults}
+        {this.state.searchInput !== '' ? <div className='search-results'>
+          <div className='search-results-content'>{searchResults}</div>
         </div> : null}
       </div >
     );

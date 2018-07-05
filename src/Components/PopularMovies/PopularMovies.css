@@ -1,30 +1,9 @@
 .PopularMovies-root {
-  background-color: #F4F4F4;
-  margin-top:130px;
+  background: linear-gradient(to right, #141e30, #243b55); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  margin-top:111px;
 }
 
-.PopularMovies-search-bar {
-  width: 100vw;
-  padding-left: 15%;
-  height: 5vh;
-  background: url('../../Assets/search-icon.png') no-repeat scroll;
-  background-size: 50px;
-  background-position: -8px;
-  background-color: white;
-  border-radius: 0;
-  padding: 0 30px;
-  height: 46px;
-  font-family: Arial, sans-serif;
-  font-style: italic;
-  color:black;
-  position: fixed;
-  top:111px;
-  z-index:1;
-}
-.PopularMovies-search-bar input::placeholder{
-position: relative;
-left:50px;
-}
 
 .card {
   display: flex;

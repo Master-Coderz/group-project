@@ -1,36 +1,9 @@
 .TopRatedMovies-root {
   background-color: #F4F4F4;
-  margin-top:130px;
+  margin-top:111px;
+  width:100%;
 }
 
-.AllMovies-search-bar {
-  width: 100vw;
-  padding-left: 15%;
-  height: 5vh;
-  /* background: url('../../Assets/search-icon.png') no-repeat scroll; */
-  background-size: 50px;
-  background-position: -8px;
-  background-color: white;
-  border-radius: 0;
-  padding: 0 30px;
-  height: 46px;
-  font-family: Arial, sans-serif;
-  font-style: italic;
-  color:black;
-  position: fixed;
-  top:111px;
-  z-index:1;
-  padding-left: 45px
-  
-}
-.AllMovies-search-bar input{
-  position: relative;
-  left:10%;
-}
-.AllMovies-search-bar input::placeholder{
-position: relative;
-left:20%;
-}
 
 .card {
   display: flex;
@@ -155,4 +128,5 @@ p.view_more {
   .carousel-img-background {
       height: 100%;
   }
+
 }

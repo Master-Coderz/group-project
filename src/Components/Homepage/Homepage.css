@@ -4,7 +4,10 @@
     display: flex;
     flex-direction: column;
     margin-top:111px;
-    background-color: #F4F4F4;
+    background: linear-gradient(to right, #141e30, #243b55); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.top_carousel{
+margin-top:100px;
 }
 
 
@@ -26,11 +29,11 @@
 
 .carousel-img-background {
     height: auto;
-    width: 100%;
+    width: 50%;
     position: relative;
     z-index: -1;
     /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); */
-    opacity: 0.5;
+    opacity: 0.7;
 }
 
 .carousel-item.active {
@@ -84,7 +87,7 @@ div.inner_content {
 }
 
 div.inner_content a, div.inner_content2 a {
-    color: black;
+    color: white;
     transition: all 0.3s;
     cursor: pointer;
     text-decoration: none;
@@ -167,4 +170,23 @@ div.inner_content2 a:hover {
     }
 }
 
-/* style={{backgroundImage: `url()`, backgroundSize: "cover", backgroundOpacity: 0.5}} */
+.watchlist-img{
+    height: 400px;
+    width: 100%;
+}
+
+.sidenav {
+    background: #232526;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+
+.sidenav * {
+    padding: 0 !important;
+    
+}
+
+.sidenav *:not(:first-child){
+    margin-top: 400px;
+}

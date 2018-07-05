@@ -22,11 +22,12 @@ export default class Search extends Component {
   render() {
 
     let searchResults = this.state.searchResults.filter((e, i) => {
-      return (e.media_type !== 'tv')
+      return (e.media_type !== 'tv' && e.original_language === 'en') 
     }).map((e, i) => {
       return (
         <div key={e.id}>
-          <a href={`/#/movies/${e.id}`}>{e.title}</a>
+          <a className='search_link' href={`/#/movies/${e.id}`}>{e.title}</a>
+          <hr />
         </div>)
     })
 
@@ -34,6 +35,7 @@ export default class Search extends Component {
     return (
       <div>
         <div className="AllMovies-search">
+          <span className='search_icon'></span>
           <input
             placeholder="Search for a movie..."
             className="AllMovies-search-bar"
@@ -42,7 +44,9 @@ export default class Search extends Component {
           />
         </div>
         <div className='search-results'>
-          {searchResults}
+          <div className='search-results-content'>
+            {searchResults}
+          </div>
         </div>
       </div >
     );
