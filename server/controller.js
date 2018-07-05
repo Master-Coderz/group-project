@@ -66,5 +66,21 @@ module.exports = {
         res.sendStatus(500)
         console.log(err)
     } )
+  },
+
+  removeFromWatchlist: (req, res) => {
+    const db = req.app.get('db')
+    user_id = req.user.id
+
+    let {movie_id} = req.params
+
+    db.remove_from_watchlist([user_id, movie_id])
+    .then((list) => {
+      res.send(200).send(list)
+    } )
+    .catch((err) => {
+      res.sendStatus(500)
+      console.log(err)
+    } )
   }
 };

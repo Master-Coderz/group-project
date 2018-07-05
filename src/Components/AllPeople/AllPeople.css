@@ -1,8 +1,10 @@
+
+
 .all_people_container {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 210px;
     justify-content: center;
+    margin-top: 120px
 }
 
 .all_people_individual {

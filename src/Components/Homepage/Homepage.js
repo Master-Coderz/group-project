@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {Link} from 'react-router-dom'
+import Carousel2 from 'nuka-carousel';
+import {Button, SideNav, SideNavItem} from 'react-materialize'
 import { Carousel } from 'react-bootstrap';
 import './Homepage.css';
 export default class Homepage extends Component {
@@ -8,7 +11,9 @@ export default class Homepage extends Component {
     this.state = {
       upcomingMovies: [],
       popularMovies: [],
-      inTheaters: []
+      inTheaters: [],
+      similarMovies: [],
+      watchlist: []
     };
   }
 
@@ -16,9 +21,12 @@ export default class Homepage extends Component {
     this.getUpcoming();
     this.getPopular();
     this.getInTheaters();
+    this.getWatchlist()
     axios.get('/auth/me').then((res) => {
     })
   }
+
+ 
 
   getUpcoming() {
     axios
@@ -50,7 +58,46 @@ export default class Homepage extends Component {
     });
   }
 
+  getSimilar(){
+    axios.get(`https://api.themoviedb.org/3/movie/${550}/recommendations?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`)
+    .then(res => {
+      this.setState({
+        similarMovies: res.data
+      })
+    })
+  }
+
+
+  addToWatchlist = () => {
+    axios.post(`/api/addToWatchlist/${3}`);
+  };
+
+  getWatchlist(){
+    axios.get('/api/getWatchlist')
+    .then((res) => {
+      this.setState({
+        watchlist: res.data
+      })
+    } )
+  }
+
+
   render() {
+
+    const userWatchlist = this.state.watchlist.map((e, i) => {
+      return(
+
+
+        <SideNavItem  href={null}key={e.id}>
+        <div>
+        <Link to={`/movies/${e.movie_id}`} >
+             <img className='watchlist-img' src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`} alt=''/>
+        </Link>
+        </div>
+        </SideNavItem>
+       
+      )
+    } )
 
     const popularMovies = this.state.popularMovies.map((element, i) => {
       if (i === 0 || i === 1 || i === 4 || i === 5) {
@@ -75,6 +122,9 @@ export default class Homepage extends Component {
         </Carousel.Item>
       )
     })
+
+
+    
     const inTheaters = this.state.inTheaters.map((element, index) => {
       // console.log(element.backdrop_path, element.poster_path)
       var url = 'https://image.tmdb.org/t/p/w500/'
@@ -91,11 +141,13 @@ export default class Homepage extends Component {
     })
 
     return (
-      <div className='homepage-root'>
-        <Carousel interval="2000" className='carousel'>
+      <div className='homepage-root' >
+{/*       
+        <Carousel interval="2000" className='carousel top_carousel'>
           {upcomingMovies}
-        </Carousel>
-        <div className="content-divider"><div className="inner_content"><a href="">Popular Movies</a><h2></h2></div></div>
+        </Carousel> */}
+      {/* {upcomingMovies}
+        < div className="content-divider" > <div className="inner_content"><a href="">Popular Movies</a><h2></h2></div></div>
         <div className="popular">
           <div className="column">
             <div className="column-top">
@@ -114,11 +166,21 @@ export default class Homepage extends Component {
           </div>
         </div>
         <div className="content-divider"><div className="inner_content2"><a href="">In Theaters</a><h2></h2></div></div>
-        <Carousel interval='2000' className='carousel'>
+        <Carousel slide='true' interval='2000' className='carousel'>
           {inTheaters}
-        </Carousel>
+        </Carousel> */}
+        <button onClick={() => this.getSimilar()}>Get Similar</button>
         <div className='footer_img' />
-      </div>
-    );
+
+   <SideNav
+   className='sidenav'
+  trigger={<Button>SIDE NAV DEMO</Button>}
+  options={{ closeOnClick: true, edge: 'right' }}>
+  
+ {userWatchlist}
+</SideNav>
+      </div >
+
+);
   }
 }
