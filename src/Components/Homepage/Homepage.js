@@ -180,6 +180,7 @@ export default class Homepage extends Component {
  {userWatchlist}
 </SideNav>
       </div >
-    );
+
+);
   }
 }
