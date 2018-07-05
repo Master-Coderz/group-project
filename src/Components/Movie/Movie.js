@@ -79,29 +79,39 @@ export default class Movie extends Component {
     //     donutColor = '#00DB76'
     //   }
     // }
-    let vote = this.state.movie.vote_average*10
-    const color = function(){
-      
-      if(vote < 50){
+    let vote = this.state.movie.vote_average * 10
+    const color = function () {
+
+      if (vote < 50) {
         return 'red'
       }
-      else if (vote < 70){
+      else if (vote < 70) {
         return 'yellow'
       }
       else {
         return '#00DB76'
       }
     }
-    
+    const bg_color = function () {
+
+      if (vote < 50) {
+        return '#8B0000'
+      }
+      else if (vote < 70) {
+        return '#423F04'
+      }
+      else {
+        return '#0A4827'
+      }
+    }
+
     const doughnutData = {
-      
       datasets: [{
         label: 'Red',
-        data: [this.state.movie.vote_average*10, 100-this.state.movie.vote_average*10],
-
+        data: [this.state.movie.vote_average * 10, 100 - this.state.movie.vote_average * 10],
         backgroundColor: [
           color(),
-          '#0A4827'
+          bg_color()
         ]
       }]
     };
@@ -127,6 +137,7 @@ export default class Movie extends Component {
             <Link to={`/people/${e.id}`}>
               <img
                 src={`https://image.tmdb.org/t/p/w500/${e.profile_path}`}
+                onError={(e) => { e.target.src = "http://futureuniversity.com/wp-content/themes/envision/lib/images/default-placeholder-700x934.png" }}
                 alt=""
               />
             </Link>
