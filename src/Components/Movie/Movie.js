@@ -79,13 +79,28 @@ export default class Movie extends Component {
     //     donutColor = '#00DB76'
     //   }
     // }
+    let vote = this.state.movie.vote_average*10
+    const color = function(){
+      
+      if(vote < 50){
+        return 'red'
+      }
+      else if (vote < 70){
+        return 'yellow'
+      }
+      else {
+        return '#00DB76'
+      }
+    }
+    
     const doughnutData = {
+      
       datasets: [{
         label: 'Red',
         data: [this.state.movie.vote_average*10, 100-this.state.movie.vote_average*10],
 
         backgroundColor: [
-          '#00DB76',
+          color(),
           '#0A4827'
         ]
       }]
