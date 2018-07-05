@@ -4,7 +4,8 @@
     display: flex;
     flex-direction: column;
     margin-top:111px;
-    background-color: #F4F4F4;
+    background: linear-gradient(to right, #141e30, #243b55); 
+
 }
 
 
@@ -84,7 +85,7 @@ div.inner_content {
 }
 
 div.inner_content a, div.inner_content2 a {
-    color: black;
+    color: white;
     transition: all 0.3s;
     cursor: pointer;
     text-decoration: none;
