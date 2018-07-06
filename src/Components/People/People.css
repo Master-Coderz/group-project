@@ -1,4 +1,166 @@
-.person_root {
+.person_root{
+    margin-top:109px;
+    padding:0px;
+    height:100%;
+    width:100%;
+    background-color:rgb(241, 241, 241);
+    display:flex;
+    flex-direction:column;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+}
+.person_img_container{
+    width:30%;
+}
+.person_img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    position: relative;
+}
+.featured_movie_container img:hover{
+    opacity: 0.8
+}
+
+.person_bio_container{
+    width:100%;
+    display:flex; 
+    height:auto;
+}
+.bio{
+    width:70%;
+    display:flex;
+    flex-direction:column;
+    justify-content: flex-start;
+    margin-top: 30px;
+    overflow: scroll;
+
+}
+.person_title h2{
+    font-size:2.7em;
+    padding-bottom:10px;
+    padding-left:5px;
+}
+.overview{
+    font-size:1em;
+    padding-left:10px;
+}
+.overview_header{
+    padding-bottom: 18px;
+    font-size: 1.4em;
+    color:black;
+}
+.person_biography{
+    width:95%;
+    font-size: 20px;
+    line-height: 1.3em;
+}
+.bottom_container{
+    width:100%;
+    height: auto;
+    display:flex;
+    background: linear-gradient(to right, #bdc3c7, #2c3e50); 
+}
+.info_column{
+    width:30%;
+    font-size:11px;
+}
+.info_column_content{
+padding-left:10px;  
+}
+.info_column_container{
+    height:auto;
+    width:100%;
+    display:flex;
+    justify-content: space-between
+}
+.featured_movies_container{
+    width:70%;
+    display:flex;
+    justify-content: center;
+    flex-wrap:wrap;
+    height:100%;
+    padding:10px 5px;
+}
+.featured_movie_container{
+    width:33%;
+    display:flex;
+    flex-direction:column;
+    padding-bottom:5px;
+}
+.featured_movie_container img{
+    border-radius: 5px;
+}
+.featured_title{
+    text-overflow:wrap;
+    text-align:center;
+    color: white;
+    margin-right: 20px;
+}
+.personal_info_p{
+    padding:22px 0 0 5px;
+    font-size:20px;
+}
+.personal_info_header{
+    font-size:3.0em;
+    padding: 10px 0 0 4px;
+}
+.personal_fact{
+    padding-left:10px;
+}
+
+@media only screen and (max-width:710px) {
+    .bio{
+        justify-content: flex-start;
+        padding-left:5px;
+        margin-bottom:15px;
+        margin-top:0;
+    }
+    .person_biography{
+        font-size:11px;
+        line-height: 14px;
+        padding-right: 5px;
+    }
+    .person_img_container{
+        width:32%;
+    }
+    .person_bio_container{
+        padding-bottom:10px;
+    }
+    .person_title h2{
+        position:relative;
+        top:20px;
+        padding:0;
+        font-size:1.3em;
+    }
+    .overview{
+        padding-left:2px;
+    }
+    .overview_header{
+        padding-bottom:5px;
+        font-size:14px;
+    }
+    .featured_title{
+    font-size: 10px;
+    color: white;
+    margin-left: 9px;
+    }
+    .featured_movie_container{
+        width:50%;
+    }
+    .person_img{
+        padding:5px;
+    }
+    .personal_info_header{
+        font-size:1.2em;
+    }
+    .personal_info_p{
+        font-size:10px;
+    }
+}
+
+/* .person_root {
     margin-top: 109px;
     display: flex;
     flex-direction: column;
@@ -8,19 +170,19 @@
 .images_container{
     width:100%;
     z-index:-1;
-    background:rgba(251, 251, 251);
+    background:#F1F1F1;
     display:flex;
     justify-content: center;
     padding-top:50px;
 }
 
-.section_images {
+.images {
     display: flex;
     justify-content: flex-start;
-    flex-wrap: nowrap;
     flex-wrap: wrap;
     align-items: flex-start;
     align-content: center;
+    justify-content: space-between;
 }
 
 .bio {
@@ -37,8 +199,10 @@
     align-content: center;
     justify-content: center;
     font-family: 'Source Sans Pro', Arial, sans-serif;
-    background: #FBFBFB;
+    background: #F1F1F1;
     box-sizing: border-box;
+    position:relative;
+    left:10%;
 }
 
 .person_title {
@@ -83,15 +247,19 @@
     height: 450px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
+    position: relative;
+    left: 20px;
 }
 
 .person_info {
     display: flex;
     flex-direction: column;
-    background: rgba(251, 251, 251);
+    background: #F1F1F1;
     width: calc((100vw - 1000px) / 2 + 300px);
     padding-left: 0;
-    padding-right: 40px;
+    margin-right:20px;
+    align-items: flex-end;
+    
 }
 
 .person_info_content {
@@ -99,8 +267,10 @@
     flex-direction: column;
     align-content: space-between;
     margin-left: 50px;
-    margin-top: 40px;
+    margin-top: 40px; 
     font-family: 'Source Sans Pro', Arial, sans-serif;
+    position:relative;
+    left:20px;
 }
 
 .personal_info_header {
@@ -119,7 +289,7 @@
 
 .middle {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     width: 100%;
 }
 input:focus {
@@ -128,6 +298,7 @@ input:focus {
 
 .featured_movies_container {
     font-family: 'Source Sans Pro', Arial, sans-serif;
+    width:67%;
 }
 .featured_movies_container h1{
     margin: 20px 0 20px 20px;
@@ -141,7 +312,7 @@ input:focus {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: calc((100vw - 1000px) / 2 + 700px);
+    width: 100%;
     padding: 0 20px;
 }
 .featured_movie_container{
@@ -158,3 +329,10 @@ input:focus {
 .featured_title{
     text-overflow:wrap;
 }
+
+@media only screen and (max-width:710px) {
+    section.images{
+        justify-content: center;
+    }
+    
+} */

@@ -166,13 +166,18 @@ section.images {
     line-height: 1.3em;
     font-size: 1.3em;
 }
+.overview_p_container{
+    width:100%;
+    justify-content: center;
+}
 
 .Overview-p {
     font-size: 1em;
     line-height: 1.4em;
     font-weight: 100;
     margin-bottom: 16px;
-    color: #939190
+    color: #939190;
+    width:90%;
 }
 .movie_title_container{
 display:flex;
@@ -451,6 +456,13 @@ textarea:focus, input:focus, button:focus{
     width:100%;
     display:flex;
     justify-content: flex-end;
+}
+.trailer_container{
+    width:90%;;
+}
+iframe{
+    width:100%;
+    height:auto;
 }
 @media only screen and (max-width:710px) {
     section.poster{

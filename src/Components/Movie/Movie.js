@@ -65,8 +65,8 @@ export default class Movie extends Component {
   };
 
   addToWatchlist = () => {
-    let {title, poster_path} = this.state.movie
-    axios.post(`/api/addToWatchlist/${this.props.match.params.id}`, {title, poster_path});
+    let { title, poster_path } = this.state.movie
+    axios.post(`/api/addToWatchlist/${this.props.match.params.id}`, { title, poster_path });
   };
 
   getMovieVideo() {
@@ -90,14 +90,39 @@ export default class Movie extends Component {
     //     donutColor = '#00DB76'
     //   }
     // }
+    let vote = this.state.movie.vote_average * 10
+    const color = function () {
+
+      if (vote < 50) {
+        return 'red'
+      }
+      else if (vote < 70) {
+        return 'yellow'
+      }
+      else {
+        return '#00DB76'
+      }
+    }
+    const bg_color = function () {
+
+      if (vote < 50) {
+        return '#8B0000'
+      }
+      else if (vote < 70) {
+        return '#423F04'
+      }
+      else {
+        return '#0A4827'
+      }
+    }
+
     const doughnutData = {
       datasets: [{
         label: 'Red',
         data: [this.state.movie.vote_average * 10, 100 - this.state.movie.vote_average * 10],
-
         backgroundColor: [
-          '#00DB76',
-          '#0A4827'
+          color(),
+          bg_color()
         ]
       }]
     };
@@ -123,6 +148,7 @@ export default class Movie extends Component {
             <Link to={`/people/${e.id}`}>
               <img
                 src={`https://image.tmdb.org/t/p/w500/${e.profile_path}`}
+                onError={(e) => { e.target.src = "http://futureuniversity.com/wp-content/themes/envision/lib/images/default-placeholder-700x934.png" }}
                 alt=""
               />
             </Link>
@@ -212,11 +238,15 @@ export default class Movie extends Component {
 
                       </button>
                     </div>
-                          {this.state.video ?
-                      < iframe src={`http://www.youtube.com/embed/${this.state.video.key}`}
-                        width="560" height="315" frameborder="0" allowfullscreen></iframe> : null}
+                    <div className="trailer_container">
+                      {this.state.video ?
+                        < iframe src={`http://www.youtube.com/embed/${this.state.video.key}`}
+                          width="560" height="315" frameborder="0" allowfullscreen></iframe> : null}
+                    </div>
                     <h3 className="Overview">Overview</h3>
-                    <p className="Overview-p">{this.state.movie.overview}</p>
+                    <div className="overview_p_container">
+                      <p className="Overview-p">{this.state.movie.overview}</p>
+                    </div>
                     <h3 className="featured_crew">Featured Crew</h3>
                     <div className="featuredCrew">{featuredCrew}</div>
                   </div>

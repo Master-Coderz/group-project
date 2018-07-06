@@ -100,24 +100,22 @@ export default class Homepage extends Component {
       )
     })
     const userWatchlist = this.state.watchlist.map((e, i) => {
-      return(
- 
- 
-        <SideNavItem  href={null}key={e.id}>
-        <div>
-        <Link to={`/movies/${e.movie_id}`} >
-             <img className='watchlist-img' src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`} alt=''/>
-        </Link>
-        </div>
+      return (
+
+
+        <SideNavItem href={null} key={e.id}>
+          <div>
+            <Link to={`/movies/${e.movie_id}`} >
+              <img className='watchlist-img' src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`} alt='' />
+            </Link>
+          </div>
         </SideNavItem>
-      
+
       )
-    } )
+    })
     return (
 
-      <div>
-
-
+      <div className='homepage-root'>
         <div className='contain'>
           <h2 className='movies_type'>Popular Movies</h2>
           <div className='row'>
@@ -126,19 +124,18 @@ export default class Homepage extends Component {
             </div>
           </div>
         </div >
-        <div className='homepage-root' >
 
-          <button onClick={() => this.getSimilar()}>Get Similar</button>
-          <div className='footer_img' />
+        <button onClick={() => this.getSimilar()}>Get Similar</button>
 
-          <SideNav
-            className='sidenav'
-            trigger={<Button>SIDE NAV DEMO</Button>}
-            options={{ closeOnClick: true, edge: 'right' }}>
+        <SideNav
+          className='sidenav'
+          trigger={<Button>SIDE NAV DEMO</Button>}
+          options={{ closeOnClick: true, edge: 'right' }}>
 
-            {userWatchlist}
-          </SideNav>
-        </div >
+          {userWatchlist}
+        </SideNav>
+        <div className='footer_img' />
+
       </div>
     )
   }
