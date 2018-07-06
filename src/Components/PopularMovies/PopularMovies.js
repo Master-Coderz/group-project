@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Search from '../Search'
+import Search from './../SearchMovies/Search'
 import axios from "axios";
 import "./PopularMovies.css";
 import { Link } from "react-router-dom";
@@ -14,7 +14,7 @@ export default class PopularMovies extends Component {
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getMovies()
   }
 
@@ -33,9 +33,17 @@ export default class PopularMovies extends Component {
     }
   };
 
-  loadMore = () => {
+  nextPage = () => {
     this.setState({
-      page: this.state.page + 1
+      page: this.state.page += 1
+    })
+    this.getMovies()
+    window.scrollTo(0, 0)
+  }
+
+  previousPage = () => {
+    this.setState({
+      page: this.state.page -= 1
     })
     this.getMovies()
     window.scrollTo(0, 0)
@@ -135,8 +143,9 @@ export default class PopularMovies extends Component {
         <Search />
         <h2 className="popular-movies-h2">Popular Movies</h2>
         <div className="container">{movies}</div>
-        <button onClick={this.loadMore}>Load More...</button>
-    
+        <span><button onClick={this.previousPage}>Previous Page</button>
+          <button onClick={this.nextPage}>Next Page</button></span>
+
       </div>
     );
   }

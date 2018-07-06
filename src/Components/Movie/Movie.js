@@ -15,11 +15,13 @@ export default class Movie extends Component {
       toggleReview: false,
       review_title: "",
       review_content: "",
-      reviews: []
+      reviews: [],
+      video: []
     };
   }
 
   componentDidMount = async () => {
+    this.getMovieVideo()
     try {
       let res = await axios.get(
         `https://api.themoviedb.org/3/movie/${
@@ -63,9 +65,18 @@ export default class Movie extends Component {
   };
 
   addToWatchlist = () => {
-    axios.post(`/api/addToWatchlist/${this.props.match.params.id}`);
+    let { title, poster_path } = this.state.movie
+    axios.post(`/api/addToWatchlist/${this.props.match.params.id}`, { title, poster_path });
   };
 
+  getMovieVideo() {
+    axios.get(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
+      .then((res) => {
+        this.setState({
+          video: res.data.results[0]
+        })
+      })
+  }
 
   render() {
     // const donutColor = function(){
@@ -187,7 +198,7 @@ export default class Movie extends Component {
                 />
                 <section className="poster">
                   <div className="header_info">
-                    <span>
+                    <span className='movie_title_container'>
                       <h1 className="movie_title">
                         {this.state.movie.title}
                         <span className="movie_year">
@@ -227,8 +238,15 @@ export default class Movie extends Component {
 
                       </button>
                     </div>
+                    <div className="trailer_container">
+                      {this.state.video ?
+                        < iframe src={`http://www.youtube.com/embed/${this.state.video.key}`}
+                          width="560" height="315" frameborder="0" allowfullscreen></iframe> : null}
+                    </div>
                     <h3 className="Overview">Overview</h3>
-                    <p className="Overview-p">{this.state.movie.overview}</p>
+                    <div className="overview_p_container">
+                      <p className="Overview-p">{this.state.movie.overview}</p>
+                    </div>
                     <h3 className="featured_crew">Featured Crew</h3>
                     <div className="featuredCrew">{featuredCrew}</div>
                   </div>
@@ -279,7 +297,7 @@ export default class Movie extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </div >
     );
   }
 }

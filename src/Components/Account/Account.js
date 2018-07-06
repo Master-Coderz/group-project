@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import './Account.css';
-import Search from './../Search';
+import Search from './../SearchMovies/Search'
 
 export default class Account extends Component {
   constructor() {

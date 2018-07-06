@@ -166,13 +166,22 @@ section.images {
     line-height: 1.3em;
     font-size: 1.3em;
 }
+.overview_p_container{
+    width:100%;
+    justify-content: center;
+}
 
 .Overview-p {
     font-size: 1em;
     line-height: 1.4em;
     font-weight: 100;
     margin-bottom: 16px;
-    color: #939190
+    color: #939190;
+    width:90%;
+}
+.movie_title_container{
+display:flex;
+justify-content: space-around;
 }
 
 .movie_title {
@@ -187,6 +196,7 @@ section.images {
 .movie_year {
     color: #9E9C9B;
     font-size:25px;
+    margin-left:10px
 }
 
 .featured_crew {
@@ -447,6 +457,13 @@ textarea:focus, input:focus, button:focus{
     display:flex;
     justify-content: flex-end;
 }
+.trailer_container{
+    width:90%;;
+}
+iframe{
+    width:100%;
+    height:auto;
+}
 @media only screen and (max-width:710px) {
     section.poster{
         width: 100%;
@@ -467,6 +484,10 @@ textarea:focus, input:focus, button:focus{
        word-break: break-word;
        padding: 0 10px;
     }
+    .movie_title_container{
+        display:flex;
+        justify-content: space-around;
+        }
     .top_billed_cast_container{
         justify-content: center;
     }

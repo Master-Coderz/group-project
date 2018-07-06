@@ -1,0 +1,1 @@
+delete from tmdb_watchlist where user_id = $1 and movie_id = $2
