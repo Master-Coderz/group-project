@@ -122,10 +122,25 @@ p.view_more {
 .flex span {
   color: #6E6E6E
 }
-.previous_btn, next_btn{
+.page_btns_container{
+  width:100%;
+  display:flex;
+  justify-content: center;
+}
+.previous_btn, .next_btn{
   height:60px;
   width:60px;
   border-radius:50%;
+  margin:5px;
+  background-size:30px 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.next_btn{
+    background-image: url('./../../Assets/right-arrow.png');
+}
+.previous_btn{
+  background-image: url('./../../Assets/back.png')
 }
 @media only screen and (max-width:497px) {
   .info {

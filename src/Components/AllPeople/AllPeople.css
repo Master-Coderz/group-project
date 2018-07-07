@@ -4,7 +4,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 120px
+    margin-top: 120px;
+    padding-top: 50px;
 }
 
 .all_people_individual {
