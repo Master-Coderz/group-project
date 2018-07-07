@@ -33,37 +33,24 @@ export default class TopRatedMovies extends Component {
     }
   };
 
-  loadMore = () => {
+  
+  nextPage = () => {
     this.setState({
-      page: this.state.page + 1
+      page: this.state.page += 1
     })
     this.getMovies()
     window.scrollTo(0, 0)
   }
 
-  formatDate(date) {
-    var newDate = parseInt(date);
-    var monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ];
-
-    var day = newDate.getDate();
-    var monthIndex = newDate.getMonth();
-    var year = newDate.getFullYear();
-
-    return monthNames[monthIndex] + " " + day + ", " + year;
+  previousPage = () => {
+    this.setState({
+      page: this.state.page -= 1
+    })
+    this.getMovies()
+    window.scrollTo(0, 0)
   }
+
+
 
   cutString(string) {
     if (string.length > 300) {
@@ -135,7 +122,8 @@ export default class TopRatedMovies extends Component {
         <Search />
         <h2 className="popular-movies-h2">Top Rated Movies</h2>
         <div className="container">{movies}</div>
-        <button onClick={this.loadMore}>Load More...</button>
+        <span><button onClick={this.previousPage}>Previous Page</button>
+            <button onClick={this.nextPage}>Next Page</button></span>
 
       </div>
     );

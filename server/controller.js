@@ -87,8 +87,9 @@ module.exports = {
   checkWatchlistMovie: (req, res) => {
     const db = req.app.get('db')
     let { id } = req.params
+    let user_id = req.user.id
 
-    db.check_watchlist([id]).then((movie) => {
+    db.check_watchlist([id, user_id]).then((movie) => {
       console.log(movie)
       if (movie.length !== 0) {
         res.status(200).send(true)
