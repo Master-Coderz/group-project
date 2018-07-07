@@ -5,6 +5,7 @@
 }
 
 
+
 .card {
   display: flex;
   flex-direction: row;
@@ -120,6 +121,11 @@ p.view_more {
 
 .flex span {
   color: #6E6E6E
+}
+.previous_btn, next_btn{
+  height:60px;
+  width:60px;
+  border-radius:50%;
 }
 @media only screen and (max-width:497px) {
   .info {

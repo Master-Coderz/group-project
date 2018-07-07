@@ -23,10 +23,17 @@
     background-position: -40px -500px;
     /* background-image: radial-gradient(at 30% top, rgba(31, 40, 73, 1) 0%, rgba(8, 28, 36, 1) 70%); */
 }
-h2 {
-    padding: 0;
-    box-sizing: border-box;
+.movies_type {
+    font-size: 1.7em;
+    padding: 20px 0 0 20px;
 }
+.movies_type_right{
+    text-align: right;
+    font-size: 1.7em;
+    padding: 0 20px 0 0;
+
+}
+
 div.inner_content {
     box-sizing: border-box;
     width: 100%;
@@ -246,6 +253,8 @@ a:visited {
   position: absolute;
   bottom: 0;
   padding: 10px;
+  font-size: 2em;
+  color: white;
 }
 .row__inner:hover {
   -webkit-transform: translate3d(-62.5px, 0, 0);

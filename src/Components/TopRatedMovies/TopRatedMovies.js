@@ -33,7 +33,7 @@ export default class TopRatedMovies extends Component {
     }
   };
 
-  
+
   nextPage = () => {
     this.setState({
       page: this.state.page += 1
@@ -121,10 +121,9 @@ export default class TopRatedMovies extends Component {
       <div className="TopRatedMovies-root">
         <Search />
         <h2 className="popular-movies-h2">Top Rated Movies</h2>
-        <div className="container">{movies}</div>
-        <span><button onClick={this.previousPage}>Previous Page</button>
-            <button onClick={this.nextPage}>Next Page</button></span>
-
+        <div className="top_rated_container">{movies}</div>
+        <span><button className='previous_btn' onClick={this.previousPage}>Previous Page</button>
+          <button className='next_btn' onClick={this.nextPage}>Next Page</button></span>
       </div>
     );
   }
