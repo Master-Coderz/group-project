@@ -69,14 +69,14 @@ export default class AllPeople extends Component {
 
     return (
       <div className="All_People_Root">
-        <SearchPeople/>
-          <div className='all_people_container'>
-            {people}
-          </div>
-          <span><button onClick={this.previousPage}>Previous Page</button>
-            <button onClick={this.nextPage}>Next Page</button></span>
+        <SearchPeople />
+        <div className='all_people_container'>
+          {people}
+        </div>
+        <span className = 'page_btns_container'><button className='previous_btn' onClick={this.previousPage}></button>
+          <button className='next_btn' onClick={this.nextPage}></button></span>
 
       </div >
-        )
-      }
-    }
+    )
+  }
+}
