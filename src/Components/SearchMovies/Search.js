@@ -33,8 +33,8 @@ export default class Search extends Component {
 
     console.log(searchResults)
     return (
-      <div>
-        <div className="AllMovies-search">
+      <div className="AllMovies-search">
+        <div >
           <span className='search_icon'></span>
           <input
             placeholder="Search for a movie..."

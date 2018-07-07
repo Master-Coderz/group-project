@@ -8,14 +8,15 @@ export default class Homepage extends Component {
     super();
     this.state = {
       upcomingMovies: [],
-      popularMovies: [{id: 1}],
-      inTheaters: [{id: 1}],
+      popularMovies: [{ id: 1 }],
+      inTheaters: [{ id: 1 }],
       similarMovies: [],
       watchlist: []
     };
   }
 
   componentDidMount() {
+    window.scroll(0, 0)
     this.getUpcoming();
     this.getPopular();
     this.getInTheaters();
@@ -65,20 +66,20 @@ export default class Homepage extends Component {
   }
 
 
-  addToWatchlistTheaters(id, title, poster_path){
-   
-    axios.post(`/api/addToWatchlist/${id}`, {title, poster_path}).then((res) => {
+  addToWatchlistTheaters(id, title, poster_path) {
+
+    axios.post(`/api/addToWatchlist/${id}`, { title, poster_path }).then((res) => {
       this.getWatchlist()
-    } )
+    })
   };
 
 
-  addToWatchlistPopular(id, title, poster_path){
+  addToWatchlistPopular(id, title, poster_path) {
 
 
-    axios.post(`/api/addToWatchlist/${id}`, {title, poster_path}).then((res) => {
+    axios.post(`/api/addToWatchlist/${id}`, { title, poster_path }).then((res) => {
       this.getWatchlist()
-    } )
+    })
   };
 
   getWatchlist() {
@@ -99,11 +100,11 @@ export default class Homepage extends Component {
 
         <div className="tile">
           <div className="tile__media">
-          <a href={`/#/movies/${e.id}`}>
+            <a href={`/#/movies/${e.id}`}>
 
-            <img className="tile__img" src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`} alt="" />
-          </a>         
-       </div>
+              <img className="tile__img" src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`} alt="" />
+            </a>
+          </div>
           <div className="tile__details">
             <button onClick={() => this.addToWatchlistTheaters(e.id, e.title, e.poster_path)} className='add_to_watchlist_btn'></button>
             <Link to={`/movies/${e.id}`}>
@@ -121,10 +122,10 @@ export default class Homepage extends Component {
 
         <div className="tile">
           <div className="tile__media">
-          <a href={`/#/movies/${e.id}`}>
+            <a href={`/#/movies/${e.id}`}>
 
-            <img className="tile__img" src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`} alt="" />
-          </a>
+              <img className="tile__img" src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`} alt="" />
+            </a>
           </div>
           <div className="tile__details">
             <button onClick={() => this.addToWatchlistPopular(e.id, e.title, e.poster_path)} className='add_to_watchlist_btn'></button>
@@ -137,10 +138,9 @@ export default class Homepage extends Component {
         </div>
       )
     })
+
     const userWatchlist = this.state.watchlist.map((e, i) => {
       return (
-
-
         <SideNavItem href={null} key={e.id}>
           <div>
             <Link to={`/movies/${e.movie_id}`} >
@@ -163,9 +163,9 @@ export default class Homepage extends Component {
           </div>
         </div > */}
 
-      
 
-            <div className='contain'>
+
+        <div className='contain'>
           <h2 className='movies_type'>Now In Theaters</h2>
           <div className='row'>
             <div className='row__inner'>
@@ -174,8 +174,8 @@ export default class Homepage extends Component {
           </div>
         </div >
 
-          <div className='contain'>
-          <h2 className='movies_type'>Popular Movies</h2>
+        <div className='contain'>
+          <h2 className='movies_type_right'>Popular Movies</h2>
           <div className='row'>
             <div className='row__inner'>
               {popularMovies}
@@ -193,6 +193,7 @@ export default class Homepage extends Component {
         <div className='footer_img' />
 
       </div>
+
     )
   }
 }

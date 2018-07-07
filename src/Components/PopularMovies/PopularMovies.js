@@ -142,7 +142,7 @@ export default class PopularMovies extends Component {
       <div className="PopularMovies-root">
         <Search />
         <h2 className="popular-movies-h2">Popular Movies</h2>
-        <div className="container">{movies}</div>
+        <div className="top_rated_container">{movies}</div>
         <span><button onClick={this.previousPage}>Previous Page</button>
           <button onClick={this.nextPage}>Next Page</button></span>
 
