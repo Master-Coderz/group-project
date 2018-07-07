@@ -52,7 +52,7 @@ export default class TopRatedMovies extends Component {
   }
   render() {
     const movies = this.state.movies.filter((elem, i) => {
-      console.log(elem)
+      // console.log(elem)
       return elem.original_language === 'en'
     }).map((e, i) => {
       var date = moment(e.release_date).format("LL");
@@ -111,7 +111,7 @@ export default class TopRatedMovies extends Component {
       <div className="TopRatedMovies-root">
         <Search />
         <h2 className="popular-movies-h2">Top Rated Movies</h2>
-        <div className="container">{movies}</div>
+        <div className="top_rated_container">{movies}</div>
         <button onClick={this.loadMore}>Load More...</button>
 
       </div>

@@ -462,7 +462,7 @@ textarea:focus, input:focus, button:focus{
 }
 iframe{
     width:100%;
-    height:auto;
+ 
 }
 @media only screen and (max-width:710px) {
     section.poster{
@@ -567,6 +567,9 @@ iframe{
     } 
     .doughnut_bg{
         display:none;
+    }
+    iframe{
+        height:50%;
     }
     }
     @media only screen and (max-width:1024px) {

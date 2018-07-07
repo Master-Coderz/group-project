@@ -134,7 +134,7 @@ export default class NowPlayingMovies extends Component {
       <div className="NowPlayingMovies-root">
         <Search />
         <h2 className="popular-movies-h2">Now Playing</h2>
-        <div className="container">{movies}</div>
+        <div className="top_rated_container">{movies}</div>
         <button onClick={this.loadMore}>Load More...</button>
 
       </div>

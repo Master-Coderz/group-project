@@ -16,6 +16,7 @@ export default class Homepage extends Component {
   }
 
   componentDidMount() {
+    window.scroll(0, 0)
     this.getUpcoming();
     this.getPopular();
     this.getInTheaters();
@@ -99,10 +100,29 @@ export default class Homepage extends Component {
         </div>
       )
     })
-    const userWatchlist = this.state.watchlist.map((e, i) => {
+    let inTheaters = this.state.inTheaters.map((e, i) => {
       return (
 
+        <div className="tile">
+          <div className="tile__media">
+            <a href={`/#/movies/${e.id}`}>
 
+              <img className="tile__img" src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`} alt="" />
+            </a>
+          </div>
+          <div className="tile__details">
+            <button className='add_to_watchlist_btn'></button>
+            <Link to={`/movies/${e.id}`}>
+              <div className="tile__title">
+                {e.title}
+              </div>
+            </Link>
+          </div>
+        </div>
+      )
+    })
+    const userWatchlist = this.state.watchlist.map((e, i) => {
+      return (
         <SideNavItem href={null} key={e.id}>
           <div>
             <Link to={`/movies/${e.movie_id}`} >
@@ -117,25 +137,31 @@ export default class Homepage extends Component {
 
       <div className='homepage-root'>
         <div className='contain'>
-          <h2 className='movies_type'>Popular Movies</h2>
+          <h2 className='movies_type_left'>Popular Movies</h2>
           <div className='row'>
             <div className='row__inner'>
               {popularMovies}
             </div>
+            <h2 className='movies_type_right'>In Theaters</h2>
+            <div className="row">
+              <div className="row__inner">
+                {inTheaters}
+              </div>
+            </div>
           </div>
         </div >
 
-        <button onClick={() => this.getSimilar()}>Get Similar</button>
+        {/* <button onClick={() => this.getSimilar()}>Get Similar</button> */}
+        <div className="homepage_bottom">
+          <SideNav
+            className='sidenav'
+            trigger={<Button>SIDE NAV DEMO</Button>}
+            options={{ closeOnClick: true, edge: 'right' }}>
 
-        <SideNav
-          className='sidenav'
-          trigger={<Button>SIDE NAV DEMO</Button>}
-          options={{ closeOnClick: true, edge: 'right' }}>
+            {userWatchlist}
+          </SideNav>
 
-          {userWatchlist}
-        </SideNav>
-        <div className='footer_img' />
-
+        </div>
       </div>
     )
   }
