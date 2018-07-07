@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+ @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 .homepage-root {
     position: relative;
     display: flex;
@@ -8,45 +8,106 @@
     height:100%;
     color:white;
     font-family: 'Source Sans Pro', Arial, sans-serif;
-   height:100vh;
 }
-
-
-
-
-
 .title-h3,
 .release-date-p {
     color: white;
     text-transform: uppercase;
 }
-
 .title-h3:hover {
     margin-bottom: 5px;
 }
-
 .content-divider {
     width: 100%;
     height: 100px;
     background-position: -40px -500px;
     /* background-image: radial-gradient(at 30% top, rgba(31, 40, 73, 1) 0%, rgba(8, 28, 36, 1) 70%); */
 }
-
 h2 {
     padding: 0;
     box-sizing: border-box;
 }
-
+div.inner_content {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    text-align: left;
+    padding: 20px 0 0 10%;
+    display: flex;
+    align-items: flex-end;
+    background-position: -40px -500px;
+    /* background-image: url('./../../Assets/purple-63b164a075461641b7ef444ea97d9787adf45a9552fe215e20063e3ff02491a8.svg') */
+}
+div.inner_content a, div.inner_content2 a {
+    color: white;
+    transition: all 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+div.inner_content a:hover {
+    color: #4D2F91;
+}
+div.inner_content2 {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    padding: 0px 10% 0 20px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    /* background-image: url('./../../Assets/blue_pipes.jpg'); */
+    background-size: cover;
+}
+div.inner_content2 a:hover {
+    color: #128AB3;
+}
+.popular {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+.popular a {
+    margin-bottom: none;
+}
+.column-top {
+    display: flex;
+}
+.element-title {
+    color: white;
+    text-shadow: 2px 2px black;
+    position: absolute;
+}
+.popular-img-sm {
+    height: 141px;
+    width: 250px;
+    position: relative;
+    vertical-align: bottom;
+}
+.popular-img-lg {
+    height: 281px;
+    width: 500px;
+    vertical-align: bottom;
+}
 .footer_img{
     width:100%;
     height:20vh;
     background-image: url('./../../Assets/ironmanfooter.jpg');
     background-size:cover;
-    position:relative;
-    bottom:0
-
 }
-
 @media only screen and (max-width:710px) {
     .carousel-img {
         height: 400px;
@@ -55,8 +116,6 @@ h2 {
         height: 100%;
     }
 }
-
-
 /* body,
 html {
   padding: 0 10px;
@@ -77,6 +136,11 @@ h1,
 /* p {
   text-align: center;
 } */
+/* p {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+} */
 /* a:link,
 a:hover,
 a:active,
@@ -91,31 +155,11 @@ a:visited {
 } */
 .contain {
   overflow: hidden;
-  width: 90%;
-  margin:auto;
-  overflow-x: hidden;
-}
-.movies_type_left{
-    position: relative;
-    top: 20px;
-    left: 20px;
-    font-size: 1.5em;
-}
-.movies_type_right{
-    position: relative;
-    top: 20px;
-    right: 20px;
-    font-size: 1.5em;
-    text-align:right;
-    width:100%;
-}
-.row {
-  overflow: hidden;
   width: 100%;
 }
-.homepage_bottom{
-    position:relative;
-    bottom:100px;
+.row {
+  overflow: scroll;
+  width: 100%;
 }
 .row__inner {
   transition: 450ms -webkit-transform;
@@ -125,13 +169,12 @@ a:visited {
   white-space: nowrap;
   margin: 70.3125px 0;
   padding-bottom: 10px;
-  overflow:scroll;
 }
 .tile {
   position: relative;
   display: inline-block;
   width: 250px;
-  height: 140.625px;
+  height: 400px;
   margin-right: 10px;
   font-size: 20px;
   cursor: pointer;
@@ -139,11 +182,15 @@ a:visited {
   -webkit-transform-origin: center left;
           transform-origin: center left;
 }
+.tile__media{
+    object-fit: fill;
+}
 .tile__img {
   width: 250px;
-  height: 140.625px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  height: 400px;
+  /* -o-object-fit: cover;
+     object-fit: cover; */
+  object-fit: cover;
 }
 .tile__details {
   position: absolute;
@@ -208,37 +255,32 @@ a:visited {
   opacity: 0.3;
 }
 .tile:hover ~ .tile {
-  -webkit-transform: translate3d(125px, 0, 0);
-          transform: translate3d(125px, 0, 0);
+  -webkit-transform: translate3d(25px, 0, 0);
+          transform: translate3d(25px, 0, 0);
 }
 .row__inner:hover .tile:hover {
-  -webkit-transform: scale(1.5);
-          transform: scale(1.5);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
   opacity: 1;
 }
-
 /* style={{backgroundImage: `url()`, backgroundSize: "cover", backgroundOpacity: 0.5}} */
 .watchlist-img{
     height: 400px;
     width: 100%;
 }
-
 .sidenav {
     background: #232526;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     
 }
-
 .sidenav  * {
     padding: 0 !important;
     
 }
-
 .sidenav *:not(:first-child){
     margin-top: 400px;
 }
-
 .remove-from-list{
     height: 30px;
     width: 20px;
@@ -247,4 +289,3 @@ a:visited {
     color: rgba(255, 255, 255, 0.5);
    
 }
-

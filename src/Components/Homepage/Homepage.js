@@ -181,12 +181,6 @@ export default class Homepage extends Component {
             <div className='row__inner'>
               {popularMovies}
             </div>
-            <h2 className='movies_type_right'>In Theaters</h2>
-            <div className="row">
-              <div className="row__inner">
-                {inTheaters}
-              </div>
-            </div>
           </div>
         </div >
 
