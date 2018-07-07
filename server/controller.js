@@ -29,8 +29,8 @@ module.exports = {
   addToWatchlist: (req, res) => {
     const db = req.app.get("db");
     const user_id = req.user.id;
-    const {title, poster_path} = req.body
-    
+    const { title, poster_path } = req.body
+
 
     db.add_to_watchlist([user_id, req.params.movie_id, title, poster_path])
       .then(() => {
@@ -62,25 +62,40 @@ module.exports = {
     db.get_watchlist([user_id]).then(list => {
       res.status(200).send(list);
     })
-    .catch((err) => {
+      .catch((err) => {
         res.sendStatus(500)
         console.log(err)
-    } )
+      })
   },
 
   removeFromWatchlist: (req, res) => {
     const db = req.app.get('db')
     user_id = req.user.id
 
-    let {movie_id} = req.params
+    let { movie_id } = req.params
 
     db.remove_from_watchlist([user_id, movie_id])
-    .then((list) => {
-      res.send(200).send(list)
-    } )
-    .catch((err) => {
-      res.sendStatus(500)
-      console.log(err)
-    } )
+      .then((list) => {
+        res.send(200).send(list)
+      })
+      .catch((err) => {
+        res.sendStatus(500)
+        console.log(err)
+      })
+  },
+
+  checkWatchlistMovie: (req, res) => {
+    const db = req.app.get('db')
+    let { id } = req.params
+    let user_id = req.user.id
+
+    db.check_watchlist([id, user_id]).then((movie) => {
+      console.log(movie)
+      if (movie.length !== 0) {
+        res.status(200).send(true)
+      } else {
+        res.send(false)
+      }
+    })
   }
 };
