@@ -14,7 +14,6 @@ div.custom_bg {
     margin-left: 20px;
 }
 
-
 .single_column {
     width: 100%;
     margin: 0 auto;
@@ -146,6 +145,28 @@ section.images {
     border: 2.5px solid white;
 }
 .add_to_watchlist_btn_3:hover{
+    background: #FFFFFF;
+    background-image: url('./../../Assets/favourites-filled-star-symbol.png');
+    background-size:20px 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.delete_from_watchlist{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    position: relative;
+    top: 14px;
+    opacity:0.9;
+    margin:0 15px 0 10px;
+    background:transparent;
+    background-image: url('./../../Assets/clear.png');
+    background-size:20px 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 2.5px solid white;
+}
+.delete_from_watchlist:hover{
     background: #FFFFFF;
     background-image: url('./../../Assets/favourites-filled-star-symbol.png');
     background-size:20px 20px;
