@@ -1,7 +1,7 @@
 .account_root{
     width:100%;
     height: 100%;
-    margin-top:157px;
+    margin-top:111px;
     font-family: 'Source Sans Pro', Arial, sans-serif;
 }
 .account_inner_content{
@@ -118,7 +118,7 @@
     padding:10px 0 0 10px
 }
 .user_watchlist_element{
-    border:1px solid black;
+   
     width:200px;
     height:300px;
     left:20%;

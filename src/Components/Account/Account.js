@@ -40,7 +40,9 @@ export default class Account extends Component {
     const userWatchlist = this.state.watchlist.map((e, i) => {
       return (
         <div className='user_watchlist_element' key={e.id}>
-          <img src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`} alt='' />
+        <a href={`/#/movies/${e.movie_id}`}>
+           <img  src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`} alt='' />
+          </a> 
           <h1>{e.movie_title}</h1>
         </div>
       )
@@ -73,7 +75,6 @@ export default class Account extends Component {
     const firstname = this.state.userInfo.firstname
     return (
       <div className="account_root">
-        <Search />
         <div className="account_inner_content">
           <div className="account_inner_content_bg">
             {userInfo}
