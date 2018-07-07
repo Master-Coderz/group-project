@@ -123,6 +123,8 @@ app.get('/api/getUser', controller.getUserInfo)
 app.get('/api/getWatchlist', controller.getWatchlist)
 app.delete('/api/removeMovie/:movie_id', controller.removeFromWatchlist)
 
+app.get('/api/checkWatchlistMovie/:id', controller.checkWatchlistMovie)
+
 
 
 app.listen(SERVER_PORT, () => console.log(`Listening on port: ${SERVER_PORT}`));
