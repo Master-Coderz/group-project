@@ -33,13 +33,23 @@ export default class TopRatedMovies extends Component {
     }
   };
 
-  loadMore = () => {
+  
+  nextPage = () => {
     this.setState({
-      page: this.state.page + 1
+      page: this.state.page += 1
     })
     this.getMovies()
     window.scrollTo(0, 0)
   }
+
+  previousPage = () => {
+    this.setState({
+      page: this.state.page -= 1
+    })
+    this.getMovies()
+    window.scrollTo(0, 0)
+  }
+
 
 
   cutString(string) {
@@ -111,8 +121,9 @@ export default class TopRatedMovies extends Component {
       <div className="TopRatedMovies-root">
         <Search />
         <h2 className="popular-movies-h2">Top Rated Movies</h2>
-        <div className="top_rated_container">{movies}</div>
-        <button onClick={this.loadMore}>Load More...</button>
+        <div className="container">{movies}</div>
+        <span><button onClick={this.previousPage}>Previous Page</button>
+            <button onClick={this.nextPage}>Next Page</button></span>
 
       </div>
     );

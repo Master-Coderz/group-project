@@ -33,9 +33,17 @@ export default class NowPlayingMovies extends Component {
     }
   };
 
-  loadMore = () => {
+  nextPage = () => {
     this.setState({
-      page: this.state.page + 1
+      page: this.state.page += 1
+    })
+    this.getMovies()
+    window.scrollTo(0, 0)
+  }
+
+  previousPage = () => {
+    this.setState({
+      page: this.state.page -= 1
     })
     this.getMovies()
     window.scrollTo(0, 0)
@@ -134,8 +142,9 @@ export default class NowPlayingMovies extends Component {
       <div className="NowPlayingMovies-root">
         <Search />
         <h2 className="popular-movies-h2">Now Playing</h2>
-        <div className="top_rated_container">{movies}</div>
-        <button onClick={this.loadMore}>Load More...</button>
+        <div className="container">{movies}</div>
+        <span><button onClick={this.previousPage}>Previous Page</button>
+            <button onClick={this.nextPage}>Next Page</button></span>
 
       </div>
     );

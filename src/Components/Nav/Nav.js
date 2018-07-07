@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "./../../Assets/Screen Shot 2018-06-27 at 9.21.26 AM.png";
 import menuIcon from "./../../Assets/list-menu-final.png";
 import sideMenuIcon from "./../../Assets/sidemenuicon.png";
+import axios from 'axios'
 import "./Nav.css";
 import "./SideNav.css";
 
@@ -15,10 +16,26 @@ class Nav extends Component {
     };
   }
 
+componentDidMount(){
+  this.checkUser()
+}
+
   show_sidebar(e) {
     this.setState({
       show_sidebar: !this.state.show_sidebar
     });
+  }
+
+  checkUser() {
+    axios.get('/auth/me')
+      .then((res) => {
+        if (res.data) {
+          this.setState({ loggedIn: true })
+        }
+        else {
+          this.setState({ loggedIn: false })
+        }
+      })
   }
 
   render() {
@@ -44,7 +61,7 @@ class Nav extends Component {
             <div className="dropdown">
               <Link className="nav-link link-1" to="/popular/people">
                 People
-          </Link>
+              </Link>
               <div className="dropdown-content">
                 <a href="#/popular/people">Popular People</a>
               </div>
@@ -54,10 +71,10 @@ class Nav extends Component {
             {/* <Link className="nav-link" to="/popular/people">
             Login
           </Link> */}
-            {this.state.loggedIn === true ? <a className='nav-link' href="http://localhost:8888/auth/logout">Logout</a> :<a className='nav-link' href="http://localhost:8888/auth">Login</a>}
+            {this.state.loggedIn === true ? <a className='nav-link' href="http://localhost:8888/auth/logout">Logout</a> : <a className='nav-link' href="http://localhost:8888/auth">Login</a>}
             {this.state.loggedIn === false ? null : (
-              <Link className="nav-link" to="/popular/people">
-              My Profile
+              <Link className="nav-link" to="/account">
+                My Profile
               </Link>
             )}
           </div>
