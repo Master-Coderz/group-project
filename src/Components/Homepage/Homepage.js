@@ -25,7 +25,6 @@ export default class Homepage extends Component {
   }
 
 
-
   getUpcoming() {
     axios
       .get(

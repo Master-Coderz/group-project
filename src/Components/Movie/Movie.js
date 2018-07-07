@@ -16,7 +16,8 @@ export default class Movie extends Component {
       review_title: "",
       review_content: "",
       reviews: [],
-      video: []
+      video: [],
+      onWatchlist: null
     };
   }
 
@@ -37,6 +38,10 @@ export default class Movie extends Component {
         `/api/getReviews/${this.props.match.params.id}`
       );
       this.setState({ reviews: reviews.data });
+      
+      let checkWatchlist = await axios.get(`/api/checkWatchlistMovie/${this.props.match.params.id}`)
+      console.log(checkWatchlist)
+      this.setState({onWatchlist: checkWatchlist.data})
     } catch (err) {
       console.error("componentDidMount failed in Movie.js:", err);
     }
@@ -202,9 +207,8 @@ export default class Movie extends Component {
 
                         <div className="rating">{this.state.movie.vote_average * 10} <span className="percentage">%</span></div>
                       </div>
-                      <button className='add_to_watchlist_btn' onClick={this.addToWatchlist}>
 
-                      </button>
+                      {this.state.onWatchlist ? <span className='test'>Delete from Watchlist</span> : <button className='add_to_watchlist_btn' onClick={this.addToWatchlist}></button> }
                       <button className='add_to_watchlist_btn_2'>
 
                       </button>
