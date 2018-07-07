@@ -8,8 +8,8 @@ export default class Homepage extends Component {
     super();
     this.state = {
       upcomingMovies: [],
-      popularMovies: [],
-      inTheaters: [],
+      popularMovies: [{id: 1}],
+      inTheaters: [{id: 1}],
       similarMovies: [],
       watchlist: []
     };
@@ -23,7 +23,6 @@ export default class Homepage extends Component {
     axios.get('/auth/me').then((res) => {
     })
   }
-
 
 
   getUpcoming() {
@@ -66,8 +65,20 @@ export default class Homepage extends Component {
   }
 
 
-  addToWatchlist = () => {
-    axios.post(`/api/addToWatchlist/${3}`);
+  addToWatchlistTheaters(id, title, poster_path){
+   
+    axios.post(`/api/addToWatchlist/${id}`, {title, poster_path}).then((res) => {
+      this.getWatchlist()
+    } )
+  };
+
+
+  addToWatchlistPopular(id, title, poster_path){
+
+
+    axios.post(`/api/addToWatchlist/${id}`, {title, poster_path}).then((res) => {
+      this.getWatchlist()
+    } )
   };
 
   getWatchlist() {
@@ -81,15 +92,42 @@ export default class Homepage extends Component {
 
 
   render() {
+    console.log(this.state.inTheaters[0].id)
+
+    let inTheaters = this.state.inTheaters.map((e, i) => {
+      return (
+
+        <div className="tile">
+          <div className="tile__media">
+          <a href={`/#/movies/${e.id}`}>
+
+            <img className="tile__img" src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`} alt="" />
+          </a>         
+       </div>
+          <div className="tile__details">
+            <button onClick={() => this.addToWatchlistTheaters(e.id, e.title, e.poster_path)} className='add_to_watchlist_btn'></button>
+            <Link to={`/movies/${e.id}`}>
+              <div className="tile__title">
+                {e.title}
+              </div>
+            </Link>
+          </div>
+        </div>
+      )
+    })
+
     let popularMovies = this.state.popularMovies.map((e, i) => {
       return (
 
         <div className="tile">
           <div className="tile__media">
+          <a href={`/#/movies/${e.id}`}>
+
             <img className="tile__img" src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`} alt="" />
+          </a>
           </div>
           <div className="tile__details">
-            <button className='add_to_watchlist_btn'></button>
+            <button onClick={() => this.addToWatchlistPopular(e.id, e.title, e.poster_path)} className='add_to_watchlist_btn'></button>
             <Link to={`/movies/${e.id}`}>
               <div className="tile__title">
                 {e.title}
@@ -116,7 +154,27 @@ export default class Homepage extends Component {
     return (
 
       <div className='homepage-root'>
-        <div className='contain'>
+        {/* <div className='contain'>
+          <h2 className='movies_type'>Upcoming Movies</h2>
+          <div className='row'>
+            <div className='row__inner'>
+              {upcomingMovies}
+            </div>
+          </div>
+        </div > */}
+
+      
+
+            <div className='contain'>
+          <h2 className='movies_type'>Now In Theaters</h2>
+          <div className='row'>
+            <div className='row__inner'>
+              {inTheaters}
+            </div>
+          </div>
+        </div >
+
+          <div className='contain'>
           <h2 className='movies_type'>Popular Movies</h2>
           <div className='row'>
             <div className='row__inner'>
@@ -125,11 +183,9 @@ export default class Homepage extends Component {
           </div>
         </div >
 
-        <button onClick={() => this.getSimilar()}>Get Similar</button>
-
         <SideNav
           className='sidenav'
-          trigger={<Button>SIDE NAV DEMO</Button>}
+          trigger={<Button >SIDE NAV DEMO</Button>}
           options={{ closeOnClick: true, edge: 'right' }}>
 
           {userWatchlist}

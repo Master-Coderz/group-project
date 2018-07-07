@@ -16,12 +16,18 @@ export default class Movie extends Component {
       review_title: "",
       review_content: "",
       reviews: [],
-      video: []
+      video: [],
+      onWatchlist: null,
+      watchlist: [],
+      loggedIn: false,
     };
   }
 
   componentDidMount = async () => {
+    window.scrollTo(0, 0)
     this.getMovieVideo()
+    this.getWatchlist()
+    this.checkUser()
     try {
       let res = await axios.get(
         `https://api.themoviedb.org/3/movie/${
@@ -37,11 +43,27 @@ export default class Movie extends Component {
         `/api/getReviews/${this.props.match.params.id}`
       );
       this.setState({ reviews: reviews.data });
+      
+      let checkWatchlist = await axios.get(`/api/checkWatchlistMovie/${this.props.match.params.id}`)
+      console.log(checkWatchlist)
+      this.setState({onWatchlist: checkWatchlist.data})
     } catch (err) {
       console.error("componentDidMount failed in Movie.js:", err);
     }
   };
 
+
+  checkUser() {
+    axios.get('/auth/me')
+      .then((res) => {
+        if (res.data) {
+          this.setState({ loggedIn: true })
+        }
+        else {
+          this.setState({ loggedIn: false })
+        }
+      })
+  }
 
   toggleReview = () => {
     this.setState({ toggleReview: !this.state.toggleReview });
@@ -78,18 +100,38 @@ export default class Movie extends Component {
       })
   }
 
+
+  deleteFromWatchlist() {
+    axios.delete(`/api/removeMovie/${this.props.match.params.id}`).then((res) => {
+      console.log('deleted')
+    })
+  }
+
+  getWatchlist() {
+    axios.get('/api/getWatchlist')
+      .then((res) => {
+        this.setState({
+          watchlist: res.data
+        })
+        let onList = this.state.watchlist.filter(e => {
+          return e.id === this.props.match.params.id
+
+        })
+        if (onList.length > 0) {
+          this.setState({ onWatchList: true })
+        }
+
+      })
+  }
+
   render() {
-    // const donutColor = function(){
-    //   if(this.state.movie.vote_average<70){
-    //     donutColor = 'yellow'
-    //   }
-    //   else if (this.state.movie.vote_average < 50){
-    //     donutColor = 'red'
-    //   }
-    //   else{
-    //     donutColor = '#00DB76'
-    //   }
-    // }
+  for(var i = 0; i < this.state.watchlist.length; i++) {
+    if (this.state.watchlist[i].movie_id === this.props.match.params.id) {
+      return this.setState({onWatchList: true})
+    
+    }
+  }
+
     let vote = this.state.movie.vote_average * 10
     const color = function () {
 
@@ -152,7 +194,7 @@ export default class Movie extends Component {
                 alt=""
               />
             </Link>
-            <a href="#" className="top_billed_cast_name">
+            <a href={`/#/people/${e.id}`} className="top_billed_cast_name">
               {e.name}
             </a>
             <p className="top_billed_cast_character">{e.character}</p>
@@ -228,9 +270,8 @@ export default class Movie extends Component {
 
                         <div className="rating">{this.state.movie.vote_average * 10} <span className="percentage">%</span></div>
                       </div>
-                      <button className='add_to_watchlist_btn' onClick={this.addToWatchlist}>
 
-                      </button>
+                      {this.state.onWatchlist ? <span className='test'>Delete from Watchlist</span> : <button className='add_to_watchlist_btn' onClick={this.addToWatchlist}></button> }
                       <button className='add_to_watchlist_btn_2'>
 
                       </button>
@@ -262,8 +303,9 @@ export default class Movie extends Component {
               <h3 className="top_billed_cast_h3">Top Billed Cast</h3>
               <div className="top_billed_cast_container">{topBilledCast}</div>
             </div>
+
             <div className="leave_review">
-              <button className='leave_review_btn' onClick={this.toggleReview}>Leave a review</button>
+              {this.state.loggedIn === true ? <button className='leave_review_btn' onClick={this.toggleReview}>Leave a review</button> : null}
 
               <div className={this.state.toggleReview ? 'review_form rf_show' : 'review_form rf_hidden'}>
                 <input

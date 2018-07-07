@@ -14,6 +14,8 @@ export default class People extends Component {
   }
 
   componentDidMount = async () => {
+    window.scrollTo(0, 0)
+
     try {
       const res = await axios.get(
         `https://api.themoviedb.org/3/person/${
