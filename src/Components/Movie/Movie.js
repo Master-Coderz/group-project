@@ -20,6 +20,8 @@ export default class Movie extends Component {
       onWatchlist: null,
       watchlist: [],
       loggedIn: false,
+      editReview: false,
+      user: {}
     };
   }
 
@@ -57,7 +59,7 @@ export default class Movie extends Component {
     axios.get('/auth/me')
       .then((res) => {
         if (res.data) {
-          this.setState({ loggedIn: true })
+          this.setState({ loggedIn: true, user: res.data })
         }
         else {
           this.setState({ loggedIn: false })
@@ -90,7 +92,7 @@ export default class Movie extends Component {
     let { title, poster_path } = this.state.movie
     axios.post(`/api/addToWatchlist/${this.props.match.params.id}`, { title, poster_path }).then((res) => {
       window.location.reload()
-    } )
+    })
 
   };
 
@@ -114,7 +116,18 @@ export default class Movie extends Component {
   deleteReview = (review_id) => {
     axios.delete(`/api/deleteReview/${review_id}`).then((res) => {
       console.log('deleted')
-    } )
+    })
+  }
+
+  toggleEdit = () => {
+    this.setState({editReview: true})
+  }
+
+  editReview = (review_id) => {
+    let {review_title, review_content} = this.state
+    axios.put(`/api/updateReview/${review_id}`, {review_title, review_content}).then(res => {
+      console.log(res)
+    })
   }
 
   getWatchlist() {
@@ -212,6 +225,7 @@ export default class Movie extends Component {
         );
       });
     const reviews = this.state.reviews.map((elem, i) => {
+      console.log(elem)
       var review_date = moment(elem.date_added).format("LL");
       return (
         <div className='review_card' key={elem.review_id}>
@@ -222,10 +236,21 @@ export default class Movie extends Component {
           <div className="review_bottom">
             <p className="review_title">{elem.review_title}</p>
             <p className="review_content">{elem.review_content}</p>
-            <button onClick={() => this.deleteReview(elem.review_id) }>Delete</button>
+
+            {elem.user_id === this.state.user.id ?
+              <div>
+                {this.state.editReview ? 
+                <button onClick={() => this.editReview(elem.review_id)}>Save</button> 
+                :
+                <button onClick={() => this.toggleEdit()}>Edit</button>
+                }
+                <button onClick={() => this.deleteReview(elem.review_id)}>Delete</button>
+              </div>
+              : null}
+
           </div>
         </div>
-      );
+      )
     });
     const Background = `https://image.tmdb.org/t/p/w500/${
       this.state.movie.backdrop_path
@@ -314,7 +339,7 @@ export default class Movie extends Component {
               <h3 className="top_billed_cast_h3">Top Billed Cast</h3>
               <div className="top_billed_cast_container">{topBilledCast}</div>
             </div>
-
+            
             <div className="leave_review">
               {this.state.loggedIn === true ? <button className='leave_review_btn' onClick={this.toggleReview}>Leave a review</button> : null}
 
@@ -334,7 +359,20 @@ export default class Movie extends Component {
                 </div>
               </div>
 
-            </div>
+            { this.state.editReview ? 
+              <div className="edit_review">
+                  <input
+                    placeholder="Title"
+                    onChange={e => this.handleInput("review_title", e.target.value)}
+                    value={this.state.review_title}
+                  />
+                  <textarea
+                    placeholder="Review"
+                    onChange={e => this.handleInput("review_content", e.target.value)}
+                    value={this.state.review_content}
+                  />
+              </div> : null }
+          
             <div className={this.state.toggleReview ? 'reviews_container_hidden reviews_hidden' : 'reviews_container'}>
               {reviews}
             </div>
@@ -351,6 +389,7 @@ export default class Movie extends Component {
           </div>
         </div>
       </div >
+      </div>
     );
   }
 }

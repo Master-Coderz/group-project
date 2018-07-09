@@ -113,10 +113,10 @@ module.exports = {
 
   updateReview: (req, res) => {
     const db = req.app.get('db')
-    // let user_id = req.user.id
+    let user_id = req.user.id
     let {review_content, review_title} = req.body
     let {review_id} = req.params
-    db.update_review([review_title, review_content, 1, review_id]).then((review) => {
+    db.update_review([review_title, review_content, user_id, review_id]).then((review) => {
       res.status(200).send(review)
 
     } )

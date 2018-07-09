@@ -610,3 +610,8 @@ iframe{
         margin-left:0;
     }
     }
+
+    .edit_review {
+        position: relative;
+        bottom: 300px;
+    }
