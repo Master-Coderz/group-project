@@ -486,6 +486,11 @@ iframe{
  
 }
 @media only screen and (max-width:710px) {
+    div.wrapper div.flex {
+        /* margin-left:-30px; */
+        position: relative;
+        left:-38px;
+    }
     section.poster{
         width: 100%;
     }
@@ -498,8 +503,10 @@ iframe{
     .images_inner {
         justify-content:center;
     }
-    .Overview{
-        padding-left: 40px;
+    .overview{
+        overflow:scroll;
+        max-height:11em;
+        font-size:10px;
     }
     .Overview-p {
        word-break: break-word;

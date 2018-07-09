@@ -37,8 +37,8 @@ export default class Search extends Component {
         <div >
           <span className='search_icon'></span>
           <input
-            placeholder="Search for a movie..."
             className="AllMovies-search-bar"
+            placeholder="Search for a movie..."
             onChange={e => this.handleSearch('searchInput', e.target.value)}
             value={this.state.searchInput}
           />
