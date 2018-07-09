@@ -118,4 +118,8 @@ p.view_more {
   .carousel-img-background {
       height: 100%;
   }
+  .card{
+    width: 90%;
+
+  }
 }
