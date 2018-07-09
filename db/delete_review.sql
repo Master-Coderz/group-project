@@ -1,0 +1,1 @@
+delete from tmdb_reviews where user_id = $1 and review_id = $2

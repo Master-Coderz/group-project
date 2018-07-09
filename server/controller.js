@@ -90,12 +90,39 @@ module.exports = {
     let user_id = req.user.id
 
     db.check_watchlist([id, user_id]).then((movie) => {
-      console.log(movie)
       if (movie.length !== 0) {
         res.status(200).send(true)
       } else {
         res.send(false)
       }
     })
+  },
+
+  deleteReview: (req, res) => {
+    const db = req.app.get('db')
+    let user_id = req.user.id
+    let {review_id} = req.params
+    db.delete_review([user_id, review_id]).then((result) => {
+      res.sendStatus(200)
+    } )
+    .catch((err) => {
+      res.status(500).send(err)
+    } )
+    
+  },
+
+  updateReview: (req, res) => {
+    const db = req.app.get('db')
+    // let user_id = req.user.id
+    let {review_content, review_title} = req.body
+    let {review_id} = req.params
+    db.update_review([review_title, review_content, 1, review_id]).then((review) => {
+      res.status(200).send(review)
+
+    } )
+    .catch((err) => {
+      res.status(500).send(err)
+      console.log(err)
+    } )
   }
 };
