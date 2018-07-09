@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom'
 import "./People.css";
+const moment = require("moment");
 
 export default class People extends Component {
   constructor() {
@@ -32,7 +33,6 @@ export default class People extends Component {
   };
 
   render() {
-    console.log(this.state.person)
     const featuredMovies = this.state.featuredMovies
       .sort((a, b) => {
         return b.popularity - a.popularity;
@@ -51,7 +51,7 @@ export default class People extends Component {
           </div>
         );
       });
-    console.log(this.state.featuredMovies.length)
+    console.log(this.state.person)
     return (
       <div className='person_root'>
         <div className="person_bio_container">
@@ -62,6 +62,8 @@ export default class People extends Component {
                 this.state.person.profile_path
                 }`}
               alt=""
+              onError={(e) => { e.target.src = "http://futureuniversity.com/wp-content/themes/envision/lib/images/default-placeholder-700x934.png" }}
+
             />
           </div>
           <div className="bio">
@@ -87,8 +89,8 @@ export default class People extends Component {
               <p className="personal_info_p"><p>Place Of Birth</p><p className="personal_fact">{this.state.person.place_of_birth}</p></p>
               <p className="personal_info_p"><p>Official Site</p><p className="personal_fact">{this.state.person.homepage ? this.state.person.homepage : '--'}</p></p>
               <p className="personal_info_p"><p>Known Credits</p><p className="personal_fact">{this.state.featuredMovies.length ? this.state.featuredMovies.length : '--'}</p></p>
-              <p className="personal_info_p">{this.state.person.known_for}</p>
-              <p className="personal_info_p">{this.state.person.known_for}</p>
+              <p className="personal_info_p"><p>Born</p><p className="personal_fact"> {moment(this.state.person.birthday).format('LL')}</p></p>
+              <p className="personal_info_p"><p>Died</p> <p className="personal_fact">{this.state.person.deathday !==null?moment(this.state.person.deathday).format('LL'):'--'}</p></p>
             </div>
           </div>
           <div className="featured_movies_container">

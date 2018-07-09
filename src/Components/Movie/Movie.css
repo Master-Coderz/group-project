@@ -151,7 +151,7 @@ section.images {
     background-position: center;
     background-repeat: no-repeat;
 }
-.delete_from_watchlist{
+.delete_from_watchlist_btn{
     height: 50px;
     width: 50px;
     border-radius: 50%;
@@ -160,7 +160,7 @@ section.images {
     opacity:0.9;
     margin:0 15px 0 10px;
     background:transparent;
-    background-image: url('./../../Assets/clear.png');
+    background-image: url('./../../Assets/clear-button-white.png');
     background-size:20px 20px;
     background-position: center;
     background-repeat: no-repeat;

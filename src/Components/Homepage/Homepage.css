@@ -4,7 +4,8 @@
     display: flex;
     flex-direction: column;
     margin-top:111px;
-    background: linear-gradient(to right, #141e30, #243b55); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background: linear-gradient(to right, #141e30, #243b55); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-color:black;
     height:100%;
     color:white;
     font-family: 'Source Sans Pro', Arial, sans-serif;
@@ -82,6 +83,14 @@ div.inner_content2 {
 div.inner_content2 a:hover {
     color: #128AB3;
 }
+.sidenav_container{
+    display:flex;
+    justify-content: flex-end;
+}
+.sidenav_btn{
+    background-color: #00DD72;
+}
+
 .popular {
     display: flex;
     justify-content: center;
@@ -250,14 +259,19 @@ a:visited {
 .tile:hover .tile__details {
   opacity: 1;
 }
+.homepage_movie_title, .tile__title{
+    word-break: break-word;
+    white-space: normal;
+}
 .tile__title {
   position: absolute;
   bottom: 0;
   padding: 10px;
   font-size: 2em;
   color: white;
-  overflow:auto;
+
 }
+
 
 .row__inner:hover {
   -webkit-transform: translate3d(-62.5px, 0, 0);

@@ -43,10 +43,10 @@ export default class Movie extends Component {
         `/api/getReviews/${this.props.match.params.id}`
       );
       this.setState({ reviews: reviews.data });
-      
+
       let checkWatchlist = await axios.get(`/api/checkWatchlistMovie/${this.props.match.params.id}`)
       console.log(checkWatchlist)
-      this.setState({onWatchlist: checkWatchlist.data})
+      this.setState({ onWatchlist: checkWatchlist.data })
     } catch (err) {
       console.error("componentDidMount failed in Movie.js:", err);
     }
@@ -89,6 +89,7 @@ export default class Movie extends Component {
   addToWatchlist = () => {
     let { title, poster_path } = this.state.movie
     axios.post(`/api/addToWatchlist/${this.props.match.params.id}`, { title, poster_path });
+    window.location.reload();
   };
 
   getMovieVideo() {
@@ -101,9 +102,10 @@ export default class Movie extends Component {
   }
 
 
-  deleteFromWatchlist() {
+  deleteFromWatchlist = () => {
     axios.delete(`/api/removeMovie/${this.props.match.params.id}`).then((res) => {
       console.log('deleted')
+      window.location.reload()
     })
   }
 
@@ -125,12 +127,12 @@ export default class Movie extends Component {
   }
 
   render() {
-  for(var i = 0; i < this.state.watchlist.length; i++) {
-    if (this.state.watchlist[i].movie_id === this.props.match.params.id) {
-      return this.setState({onWatchList: true})
-    
+    for (var i = 0; i < this.state.watchlist.length; i++) {
+      if (this.state.watchlist[i].movie_id === this.props.match.params.id) {
+        return this.setState({ onWatchList: true })
+
+      }
     }
-  }
 
     let vote = this.state.movie.vote_average * 10
     const color = function () {
@@ -271,7 +273,7 @@ export default class Movie extends Component {
                         <div className="rating">{this.state.movie.vote_average * 10} <span className="percentage">%</span></div>
                       </div>
 
-                      {this.state.onWatchlist ? <span className='test'>Delete from Watchlist</span> : <button className='add_to_watchlist_btn' onClick={this.addToWatchlist}></button> }
+                      {this.state.onWatchlist ? <button className='delete_from_watchlist_btn' onClick={this.deleteFromWatchlist}></button> : <button className='add_to_watchlist_btn' onClick={this.addToWatchlist}></button>}
                       <button className='add_to_watchlist_btn_2'>
 
                       </button>
