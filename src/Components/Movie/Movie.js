@@ -56,6 +56,7 @@ export default class Movie extends Component {
   checkUser() {
     axios.get('/auth/me')
       .then((res) => {
+        console.log(res)
         if (res.data) {
           this.setState({ loggedIn: true })
         }
