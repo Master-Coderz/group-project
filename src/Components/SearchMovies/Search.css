@@ -70,8 +70,6 @@
     left:40px;
     z-index:-1;
     overflow:scroll;
-    min-height:11.5em;
-
     /* padding:15px 0 0 0;    */
   }
   .search-results-content{
