@@ -97,22 +97,22 @@ export default class Homepage extends Component {
 
     let inTheaters = this.state.inTheaters.map((e, i) => {
       return (
-
+        
         <div className="tile">
+        <Link to={`/movies/${e.id}`}>
           <div className="tile__media">
-            <a href={`/#/movies/${e.id}`}>
 
               <img className="tile__img" src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`} alt="" />
-            </a>
+         
           </div>
           <div className="tile__details">
             <button onClick={() => this.addToWatchlistTheaters(e.id, e.title, e.poster_path)} className='add_to_watchlist_btn'></button>
-            <Link to={`/movies/${e.id}`}>
+     
               <div className="tile__title">
                 {e.title}
               </div>
-            </Link>
           </div>
+            </Link>
         </div>
       )
     })
@@ -121,20 +121,21 @@ export default class Homepage extends Component {
       return (
 
         <div className="tile">
+                <Link to={`/movies/${e.id}`}>
+
           <div className="tile__media">
-            <a href={`/#/movies/${e.id}`}>
+          
 
               <img className="tile__img" src={`https://image.tmdb.org/t/p/w500/${e.poster_path}`} alt="" />
-            </a>
+          
           </div>
           <div className="tile__details">
             <button onClick={() => this.addToWatchlistPopular(e.id, e.title, e.poster_path)} className='add_to_watchlist_btn'></button>
-            <Link to={`/movies/${e.id}`}>
               <div className="tile__title">
                 {e.title}
               </div>
-            </Link>
           </div>
+            </Link>
         </div>
       )
     })
@@ -190,7 +191,6 @@ export default class Homepage extends Component {
 
           {userWatchlist}
         </SideNav>
-        <div className='footer_img' />
 
       </div>
 

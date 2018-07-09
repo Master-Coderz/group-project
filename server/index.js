@@ -122,9 +122,9 @@ app.post('/api/addToWatchlist/:movie_id', controller.addToWatchlist)
 app.get('/api/getUser', controller.getUserInfo)
 app.get('/api/getWatchlist', controller.getWatchlist)
 app.delete('/api/removeMovie/:movie_id', controller.removeFromWatchlist)
-
+app.delete('/api/deleteReview/:review_id', controller.deleteReview)
 app.get('/api/checkWatchlistMovie/:id', controller.checkWatchlistMovie)
-
+app.put('/api/updateReview/:review_id', controller.updateReview)
 
 
 app.listen(SERVER_PORT, () => console.log(`Listening on port: ${SERVER_PORT}`));
