@@ -151,7 +151,7 @@ section.images {
     background-position: center;
     background-repeat: no-repeat;
 }
-.delete_from_watchlist{
+.delete_from_watchlist_btn{
     height: 50px;
     width: 50px;
     border-radius: 50%;
@@ -160,7 +160,7 @@ section.images {
     opacity:0.9;
     margin:0 15px 0 10px;
     background:transparent;
-    background-image: url('./../../Assets/clear.png');
+    background-image: url('./../../Assets/clear-button-white.png');
     background-size:20px 20px;
     background-position: center;
     background-repeat: no-repeat;
@@ -486,6 +486,11 @@ iframe{
  
 }
 @media only screen and (max-width:710px) {
+    div.wrapper div.flex {
+        /* margin-left:-30px; */
+        position: relative;
+        left:-38px;
+    }
     section.poster{
         width: 100%;
     }
@@ -498,8 +503,10 @@ iframe{
     .images_inner {
         justify-content:center;
     }
-    .Overview{
-        padding-left: 40px;
+    .overview{
+        overflow:scroll;
+        max-height:11em;
+        font-size:10px;
     }
     .Overview-p {
        word-break: break-word;

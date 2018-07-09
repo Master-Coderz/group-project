@@ -108,6 +108,7 @@ export default class Movie extends Component {
 
   deleteFromWatchlist = () => {
     axios.delete(`/api/removeMovie/${this.props.match.params.id}`).then((res) => {
+      console.log('deleted')
       window.location.reload()
     })
   }
@@ -306,7 +307,7 @@ export default class Movie extends Component {
                         <div className="rating">{this.state.movie.vote_average * 10} <span className="percentage">%</span></div>
                       </div>
 
-                      {this.state.onWatchlist ? <span className='test'>Delete from Watchlist</span> : <button className='add_to_watchlist_btn' onClick={this.addToWatchlist}></button>}
+                      {this.state.onWatchlist ? <button className='delete_from_watchlist_btn' onClick={this.deleteFromWatchlist}></button> : <button className='add_to_watchlist_btn' onClick={this.addToWatchlist}></button>}
                       <button className='add_to_watchlist_btn_2'>
 
                       </button>

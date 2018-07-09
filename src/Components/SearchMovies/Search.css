@@ -33,23 +33,26 @@
 
   .AllMovies-search{
     width: 100%;
-    height: 30px;
+    height: 35px;
     background-color: white;
     display:flex;
-    align-items: center;
-    border-bottom: grey solid 1px;
+    align-items: center !important;
+    border: grey solid 1px;
     position:fixed;
     z-index:3;
   }
   .AllMovies-search-bar{
-    height:100%;
+    height:100% !important; 
+    margin:0 !important;
     border:none;
     font-style: italic;
     font-family: Arial, sans-serif;
     position:relative;
     left:17%;
-    width:100%;
+    border:none !important;
+    width:100% !important;
   }
+  
 
   .search_icon{
       width:30px;
@@ -63,16 +66,19 @@
   .search-results{
     background-color:white;
     width:100%;
-    position: absolute;
-    z-index:1;
-    padding:15px 0 0 0;   
+    position: relative;
+    left:40px;
+    z-index:-1;
+    overflow:scroll;
+    /* padding:15px 0 0 0;    */
   }
   .search-results-content{
-  position: relative;
-  left:20%;
-  top:20px;
-  font-size:15px;
-  
+    position: relative;
+    top: 138px;
+    left: 10px;
+    background-color:white;
+    overflow:scroll;
+    z-index:2;
   }
   .search_link{
     color:black;
