@@ -192,15 +192,6 @@ export default class Homepage extends Component {
             </div>
           </div>
         </div >
-
-        <SideNav
-          className='sidenav'
-          trigger={<Button >SIDE NAV DEMO</Button>}
-          options={{ closeOnClick: true, edge: 'right' }}>
-
-          {userWatchlist}
-        </SideNav>
-
       </div>
 
     )
