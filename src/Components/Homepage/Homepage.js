@@ -109,7 +109,7 @@ export default class Homepage extends Component {
             <button onClick={() => this.addToWatchlistTheaters(e.id, e.title, e.poster_path)} className='add_to_watchlist_btn'></button>
      
               <div className="tile__title">
-                {e.title}
+               <p className="homepage_movie_title">{e.title}</p> 
               </div>
           </div>
             </Link>
@@ -167,6 +167,15 @@ export default class Homepage extends Component {
 
 
         <div className='contain'>
+          <div className="sidenav_container">
+            <SideNav
+              className='sidenav'
+              trigger={<Button className ='sidenav_btn' >My Watchlist</Button>}
+              options={{ closeOnClick: true, edge: 'right' }}>
+
+              {userWatchlist}
+            </SideNav>
+          </div>
           <h2 className='movies_type'>Now In Theaters</h2>
           <div className='row'>
             <div className='row__inner'>

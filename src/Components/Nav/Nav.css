@@ -64,6 +64,8 @@
     overflow: hidden;
     top: 35px;
     left: 24px;
+    opacity:1 !important;
+    box-shadow: none !important;
 }
 
 .dropdown-content a {
