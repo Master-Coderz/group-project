@@ -88,7 +88,10 @@ export default class Movie extends Component {
 
   addToWatchlist = () => {
     let { title, poster_path } = this.state.movie
-    axios.post(`/api/addToWatchlist/${this.props.match.params.id}`, { title, poster_path });
+    axios.post(`/api/addToWatchlist/${this.props.match.params.id}`, { title, poster_path }).then((res) => {
+      window.location.reload()
+    } )
+
   };
 
   getMovieVideo() {
@@ -101,10 +104,16 @@ export default class Movie extends Component {
   }
 
 
-  deleteFromWatchlist() {
+  deleteFromWatchlist = () => {
     axios.delete(`/api/removeMovie/${this.props.match.params.id}`).then((res) => {
-      console.log('deleted')
+      window.location.reload()
     })
+  }
+
+  deleteReview = (review_id) => {
+    axios.delete(`/api/deleteReview/${review_id}`).then((res) => {
+      console.log('deleted')
+    } )
   }
 
   getWatchlist() {
@@ -212,6 +221,7 @@ export default class Movie extends Component {
           <div className="review_bottom">
             <p className="review_title">{elem.review_title}</p>
             <p className="review_content">{elem.review_content}</p>
+            <button onClick={() => this.deleteReview(elem.review_id) }>Delete</button>
           </div>
         </div>
       );
@@ -309,12 +319,12 @@ export default class Movie extends Component {
 
               <div className={this.state.toggleReview ? 'review_form rf_show' : 'review_form rf_hidden'}>
                 <input
-                  placeholder="title"
+                  placeholder="Title"
                   onChange={e => this.handleInput("review_title", e.target.value)}
                   value={this.state.review_title}
                 />
                 <textarea
-                  placeholder="thoughts, comments, concerns...?"
+                  placeholder="Review"
                   onChange={e => this.handleInput("review_content", e.target.value)}
                   value={this.state.review_content}
                 />
