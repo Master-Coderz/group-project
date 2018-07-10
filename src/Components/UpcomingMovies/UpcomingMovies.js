@@ -143,9 +143,9 @@ export default class UpcomingMovies extends Component {
       <div className="UpcomingMovies-root">
         <Search />
         <h2 className="popular-movies-h2">Upcoming Movies</h2>
-        <div className="container">{movies}</div>
-        <span><button onClick={this.previousPage}>Previous Page</button>
-            <button onClick={this.nextPage}>Next Page</button></span>
+        <div className="top_rated_container">{movies}</div>
+        <span className='page_btns_container'><button className='previous_btn' onClick={this.previousPage}></button>
+          <button className='next_btn' onClick={this.nextPage}></button></span>
 
       </div>
     );

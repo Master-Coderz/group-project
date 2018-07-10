@@ -483,8 +483,56 @@ textarea:focus, input:focus, button:focus{
 }
 iframe{
     width:100%;
- 
 }
+.review_btn_container{
+    display: flex;
+    align-items: baseline;
+    position: relative;
+    top: 3px;
+    justify-content: flex-end;
+}
+.delete_btn{
+    background: url('./../../Assets/garbage.png');
+    background-size:20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    height:30px;
+    width:50px;
+    border: none !important;
+
+}
+.edit_btn{
+    border: none !important;
+    position: relative;
+    bottom: 6px;
+}
+.save_btn{
+    position:relative;
+    bottom:8px;
+    width: 70px;
+    height: 30px;
+    border-radius: 4px;
+}
+.cancel_btn{
+    position:relative;
+    bottom:8px;
+    width: 70px;
+    height: 30px;
+    border-radius: 4px; 
+}
+.save_btn:hover{
+    background:black;
+    color:white;
+}
+
+.edit_review {
+    position: relative;
+    padding:0 5px 0 10px
+}
+.edit_review_textarea{
+    height:11em;
+}
+
 @media only screen and (max-width:710px) {
     div.wrapper div.flex {
         /* margin-left:-30px; */
@@ -525,6 +573,7 @@ iframe{
     .review_card{
         font-size:12px;
         margin: 10px 0px;
+        width:100%;
     }
     .reviews_container{
         width:98%;
@@ -599,6 +648,10 @@ iframe{
     iframe{
         height:50%;
     }
+    .save_btn{
+        width:50px;
+        height:20px;
+    }
     }
     @media only screen and (max-width:1024px) {
         .movie-img{
@@ -611,7 +664,3 @@ iframe{
     }
     }
 
-    .edit_review {
-        position: relative;
-        bottom: 300px;
-    }

@@ -23,27 +23,23 @@ export default class Search extends Component {
 
     let searchResults = this.state.searchResults.map((e, i) => {
       return (
-        <div key={e.id}>
+        <div className='search_link_container' key={e.id}>
           <a className='search_link' href={`/#/people/${e.id}`}>{e.name}</a>
         </div>)
     })
 
     console.log(searchResults)
     return (
-      <div>
-        <div className="AllMovies-search">
-          <span className='search_icon'></span>
-          <input
-            placeholder="Search for a person..."
-            className="AllMovies-search-bar"
-            onChange={e => this.handleSearch('searchInput', e.target.value)}
-            value={this.state.searchInput}
-          />
-        </div>
-
-        {this.state.searchInput !== '' ? <div className='search-results'>
-          <div className='search-results-content'>{searchResults}</div>
-        </div> : null}
+      <div className="AllMovies-search">
+        <input
+          className="search_input"
+          placeholder="Search for a person..."
+          onChange={e => this.handleSearch('searchInput', e.target.value)}
+          value={this.state.searchInput}
+        />
+        {this.state.searchInput.length>0?<div className={searchResults.length>0?"movies_search_results":"movies_search_results_hidden"}>
+          {searchResults}
+        </div>:null}
       </div >
     );
   }
