@@ -377,6 +377,7 @@ export default class Movie extends Component {
               {reviews}
             </div>
           </div>
+        </div>
           <div className="grey_column">
             <div className="grey_column_content">
               <p className="grey_column_title">Facts</p>
@@ -387,7 +388,6 @@ export default class Movie extends Component {
               <p className="grey_column_release_information"><p>Runtime</p>{this.state.movie.runtime} Minutes</p>
             </div>
           </div>
-        </div>
       </div >
       </div>
     );
