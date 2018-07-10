@@ -121,12 +121,12 @@ export default class Movie extends Component {
   }
 
   toggleEdit = () => {
-    this.setState({editReview: true})
+    this.setState({ editReview: true })
   }
 
   editReview = (review_id) => {
-    let {review_title, review_content} = this.state
-    axios.put(`/api/updateReview/${review_id}`, {review_title, review_content}).then(res => {
+    let { review_title, review_content } = this.state
+    axios.put(`/api/updateReview/${review_id}`, { review_title, review_content }).then(res => {
       console.log(res)
     })
   }
@@ -239,13 +239,13 @@ export default class Movie extends Component {
             <p className="review_content">{elem.review_content}</p>
 
             {elem.user_id === this.state.user.id ?
-              <div>
-                {this.state.editReview ? 
-                <button onClick={() => this.editReview(elem.review_id)}>Save</button> 
-                :
-                <button onClick={() => this.toggleEdit()}>Edit</button>
+              <div className='review_btn_container'>
+                {this.state.editReview ?
+                  <button className='save_btn' onClick={() => this.editReview(elem.review_id)}>Save</button>
+                  :
+                  <button className='edit_btn' onClick={() => this.toggleEdit()}> . . . </button>
                 }
-                <button onClick={() => this.deleteReview(elem.review_id)}>Delete</button>
+                <button className='delete_btn' onClick={() => this.deleteReview(elem.review_id)}></button>
               </div>
               : null}
 
@@ -339,7 +339,7 @@ export default class Movie extends Component {
               <h3 className="top_billed_cast_h3">Top Billed Cast</h3>
               <div className="top_billed_cast_container">{topBilledCast}</div>
             </div>
-            
+
             <div className="leave_review">
               {this.state.loggedIn === true ? <button className='leave_review_btn' onClick={this.toggleReview}>Leave a review</button> : null}
 
@@ -359,25 +359,27 @@ export default class Movie extends Component {
                 </div>
               </div>
 
-            { this.state.editReview ? 
-              <div className="edit_review">
-                  <input
-                    placeholder="Title"
-                    onChange={e => this.handleInput("review_title", e.target.value)}
-                    value={this.state.review_title}
-                  />
-                  <textarea
-                    placeholder="Review"
-                    onChange={e => this.handleInput("review_content", e.target.value)}
-                    value={this.state.review_content}
-                  />
-              </div> : null }
-          
-            <div className={this.state.toggleReview ? 'reviews_container_hidden reviews_hidden' : 'reviews_container'}>
-              {reviews}
+
+
+              <div className={this.state.toggleReview ? 'reviews_container_hidden reviews_hidden' : 'reviews_container'}>
+                {this.state.editReview ?
+                  <div className="edit_review">
+                    <input
+                      placeholder="Title"
+                      onChange={e => this.handleInput("review_title", e.target.value)}
+                      value={this.state.review_title}
+                    />
+                    <textarea
+                      className = 'edit_review_textarea'
+                      placeholder="Review"
+                      onChange={e => this.handleInput("review_content", e.target.value)}
+                      value={this.state.review_content}
+                    />
+                  </div> : null}
+                {reviews}
+              </div>
             </div>
           </div>
-        </div>
           <div className="grey_column">
             <div className="grey_column_content">
               <p className="grey_column_title">Facts</p>
@@ -388,7 +390,7 @@ export default class Movie extends Component {
               <p className="grey_column_release_information"><p>Runtime</p>{this.state.movie.runtime} Minutes</p>
             </div>
           </div>
-      </div >
+        </div >
       </div>
     );
   }
