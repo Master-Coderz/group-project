@@ -58,6 +58,7 @@ export default class Movie extends Component {
   checkUser() {
     axios.get('/auth/me')
       .then((res) => {
+        console.log(res)
         if (res.data) {
           this.setState({ loggedIn: true, user: res.data })
         }
@@ -257,7 +258,6 @@ export default class Movie extends Component {
       }`;
 
     const date = this.state.movie.release_date.slice(0, 4)
-    console.log(this.state.movie)
     return (
       <div className='Movie_root'>
         <div
