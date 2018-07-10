@@ -121,7 +121,7 @@ export default class Movie extends Component {
   }
 
   toggleEdit = () => {
-    this.setState({ editReview: true })
+    this.setState({ editReview: !this.state.editReview })
   }
 
   editReview = (review_id) => {
@@ -241,7 +241,9 @@ export default class Movie extends Component {
             {elem.user_id === this.state.user.id ?
               <div className='review_btn_container'>
                 {this.state.editReview ?
-                  <button className='save_btn' onClick={() => this.editReview(elem.review_id)}>Save</button>
+                  <span>
+                    <button className='save_btn' onClick={() => this.editReview(elem.review_id)}>Save</button>
+                    <button className="cancel_btn" onClick={() => this.toggleEdit()}>Cancel</button></span>
                   :
                   <button className='edit_btn' onClick={() => this.toggleEdit()}> . . . </button>
                 }
@@ -370,7 +372,7 @@ export default class Movie extends Component {
                       value={this.state.review_title}
                     />
                     <textarea
-                      className = 'edit_review_textarea'
+                      className='edit_review_textarea'
                       placeholder="Review"
                       onChange={e => this.handleInput("review_content", e.target.value)}
                       value={this.state.review_content}

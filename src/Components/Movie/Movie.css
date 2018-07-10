@@ -513,6 +513,13 @@ iframe{
     height: 30px;
     border-radius: 4px;
 }
+.cancel_btn{
+    position:relative;
+    bottom:8px;
+    width: 70px;
+    height: 30px;
+    border-radius: 4px; 
+}
 .save_btn:hover{
     background:black;
     color:white;
