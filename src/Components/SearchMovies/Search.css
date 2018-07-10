@@ -1,37 +1,61 @@
-/* .search-results {
-    padding-top: 30px;
-    background-color: white;
-    z-index: 10;
+.AllMovies-search{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  position: fixed;
+  z-index: 2;
+  border-bottom:1px solid black;
+  align-items:center;
+  height:40px;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  background-color:white;
+
 }
 
+/* .search_icon{
+  height:20px;
+  width:20px;
+} */
+.search_input{
+  position:relative;
+  left:17%;
+  border-bottom:none !important;
+  top:10px;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+}
+.search_input:focus{
+    border-bottom: none!important;
+    box-shadow: none!important;
+}
+.search_input::placeholder{
+  font-style:italic;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
 
-.AllMovies-search-bar {
-    width: 100vw;
-    padding-left: 15%;
-    height: 5vh;
-    background: url('../../Assets/search-icon.png') no-repeat scroll;
-    background-size: 50px;
-    background-position: -8px;
-    background-color: white;
-    border-radius: 0;
-    padding: 0 30px;
-    height: 46px;
-    font-family: Arial, sans-serif;
-    font-style: italic;
-    color:black;
-    position: fixed;
-    top:111px;
-    z-index:1; 
-  }
-   input{
-    position: relative;
-    left:22%;
-  }
-  input::placeholder{
-  position: relative;
-  } */
-
-  .AllMovies-search{
+}
+.movies_search_results_hidden{
+  display:none;
+}
+.movies_search_results{
+  width:70%;
+  position:absolute;
+  z-index:2;
+  top:40px;
+  left:17%;
+  padding-top:15px;
+  background-color:white;
+  max-height:21.5em;
+  overflow:scroll;
+}
+.search_link{
+  padding: 5px 0 5px 10px;
+  text-decoration: none;
+  color: black;
+}
+.search_link:hover{
+  text-decoration:none;
+  color:grey;
+}
+  /* .AllMovies-search{
     width: 100%;
     height: 35px;
     background-color: white;
@@ -63,14 +87,17 @@
       background-size: 30px;
       background-position: center;
   }
+  .search_relative{
+    position:relative;
+  }
   .search-results{
     background-color:white;
     width:100%;
-    position: relative;
+    position: absolute;
+    bottom:100px;
     left:40px;
     z-index:-1;
     overflow:scroll;
-    /* padding:15px 0 0 0;    */
   }
   .search-results-content{
     position: relative;
@@ -97,4 +124,4 @@
     .search-results-content {
         width:90%;
     }
-}
+} */

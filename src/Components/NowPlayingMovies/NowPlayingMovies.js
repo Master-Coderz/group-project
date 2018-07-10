@@ -142,7 +142,7 @@ export default class NowPlayingMovies extends Component {
       <div className="NowPlayingMovies-root">
         <Search />
         <h2 className="popular-movies-h2">Now Playing</h2>
-        <div className="container">{movies}</div>
+        <div className="top_rated_container">{movies}</div>
         <span className = 'page_btns_container'><button className='previous_btn' onClick={this.previousPage}></button>
           <button className='next_btn' onClick={this.nextPage}></button></span>
 

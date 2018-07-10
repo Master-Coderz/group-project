@@ -22,10 +22,11 @@ export default class Search extends Component {
   render() {
 
     let searchResults = this.state.searchResults.filter((e, i) => {
-      return (e.media_type !== 'tv' && e.original_language === 'en') 
+      return (e.media_type !== 'tv' && e.original_language === 'en')
     }).map((e, i) => {
       return (
-        <div key={e.id}>
+        <div className='search_link_container' key={e.id}>
+          <img className='search_icon' src="./../../Assets/search-icon.png" alt="" />
           <a className='search_link' href={`/#/movies/${e.id}`}>{e.title}</a>
           <hr />
         </div>)
@@ -34,20 +35,15 @@ export default class Search extends Component {
     console.log(searchResults)
     return (
       <div className="AllMovies-search">
-        <div >
-          <span className='search_icon'></span>
-          <input
-            className="AllMovies-search-bar"
-            placeholder="Search for a movie..."
-            onChange={e => this.handleSearch('searchInput', e.target.value)}
-            value={this.state.searchInput}
-          />
-        </div>
-        <div className='search-results'>
-          <div className='search-results-content'>
-            {searchResults}
-          </div>
-        </div>
+        <input
+          className="search_input"
+          placeholder="Search for a movie..."
+          onChange={e => this.handleSearch('searchInput', e.target.value)}
+          value={this.state.searchInput}
+        />
+        {this.state.searchInput.length>0?<div className={searchResults.length>0?"movies_search_results":"movies_search_results_hidden"}>
+          {searchResults}
+        </div>:null}
       </div >
     );
   }
