@@ -1,0 +1,30 @@
+{
+    "info": {
+		"name": "Enpoint Testing Mini Project",
+		"_postman_id": "19cc9f3c-5c32-bb75-dcf4-389952be47f0",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET - All Students",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:4000/api/students",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"students"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+    }

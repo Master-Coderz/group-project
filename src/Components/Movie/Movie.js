@@ -258,7 +258,6 @@ export default class Movie extends Component {
       }`;
 
     const date = this.state.movie.release_date.slice(0, 4)
-    console.log(this.state.movie)
     return (
       <div className='Movie_root'>
         <div
