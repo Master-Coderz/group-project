@@ -3,6 +3,8 @@ import Search from './../SearchMovies/Search'
 import axios from "axios";
 import "./NowPlayingMovies.css";
 import { Link } from "react-router-dom";
+import { Doughnut, Bar } from "react-chartjs-2";
+
 
 const moment = require("moment");
 export default class NowPlayingMovies extends Component {
@@ -49,33 +51,10 @@ export default class NowPlayingMovies extends Component {
     window.scrollTo(0, 0)
   }
 
-  formatDate(date) {
-    var newDate = parseInt(date);
-    var monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ];
-
-    var day = newDate.getDate();
-    var monthIndex = newDate.getMonth();
-    var year = newDate.getFullYear();
-
-    return monthNames[monthIndex] + " " + day + ", " + year;
-  }
 
   cutString(string) {
-    if (string.length > 300) {
-      string = string.slice(0, 250) + "...";
+    if (string.length > 250) {
+      string = string.slice(0, 200) + "...";
     } else {
       null;
     }
@@ -86,6 +65,41 @@ export default class NowPlayingMovies extends Component {
       console.log(elem)
       return elem.original_language === 'en'
     }).map((e, i) => {
+      let vote = e.vote_average * 10
+      const color = function () {
+
+        if (vote < 50) {
+          return 'red'
+        }
+        else if (vote < 70) {
+          return 'yellow'
+        }
+        else {
+          return '#00DB76'
+        }
+      }
+      const bg_color = function () {
+
+        if (vote < 50) {
+          return '#8B0000'
+        }
+        else if (vote < 70) {
+          return '#423F04'
+        }
+        else {
+          return '#0A4827'
+        }
+      }
+      let doughnutData = {
+        datasets: [{
+          label: 'Red',
+          data: [e.vote_average * 10, 100 - e.vote_average * 10],
+          backgroundColor: [
+            color(),
+            bg_color()
+          ]
+        }]
+      };
       var date = moment(e.release_date).format("LL");
       var overview = this.cutString(e.overview);
       return (
@@ -102,19 +116,25 @@ export default class NowPlayingMovies extends Component {
           </div>
           <div className="info">
             <div className="wrapper">
-              <div className="outer_ring">
-                <div
-                  className="user_score_chart 55b23927c3a368648e00ed60"
-                  data-percent="67.0"
-                  data-track-color="#423d0f"
-                  data-bar-color="#d2d531"
-                >
-                  <div className="percent">
-                    <span className="icon icon-r67" />
-                  </div>
-                  <canvas height="32" width="32" />
-                </div>
+            <div className="individual_doughnut_container">
+                <Doughnut data={doughnutData} options={{
+                  layout: {
+                    padding: {
+                      left: 0,
+                    }
+                  },
+                  cutoutPercentage: 75,
+                  elements: {
+                    arc: {
+                      borderWidth: 0
+                    }
+                  },
+                  tooltips: {
+                    enabled: false,
+                  }
+                }} />
               </div>
+              <div className="movie_card_rating">{e.vote_average * 10} <span className="individual_percentage">%</span></div>
               <div className="flex">
                 <a
                   id="movie_351286"

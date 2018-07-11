@@ -25,6 +25,38 @@ div.info {
   overflow: hidden;
   background-color: white;
 }
+.movie_card_rating{
+  position: relative;
+  right: 69px;
+  top: 14px;
+  display: flex;
+  font-size: 13px;
+  font-family: 'Coda Caption', sans-serif;
+}
+.individual_doughnut_container{
+    width: 100px;
+    height: 10px;
+    position:relative;
+    right: 10px;
+    bottom: 10px;
+    border-radius:50%;
+}
+.individual_doughnut_bg{
+  left: 55px;
+  top: 5px;
+  border-radius: 50%;
+  position: relative;
+  height: 50px;
+  width: 50px;
+  background-color: #021D23;
+}
+.individual_percentage{
+  font-size: 8px;
+  position: relative;
+  top: -5px;
+  left: -2px;
+}
+
 
 .image_content {
   width: 185px;
@@ -42,6 +74,8 @@ div.wrapper div.flex {
   align-items: center;
   margin-left: 10px;
   background-color: white;
+  position: relative;
+  right: 40px;
 }
 
 div.wrapper a {
@@ -105,7 +139,7 @@ p.view_more {
   margin: 0 0 4px 20px;
   font-weight: 600;
   position: relative;
-  top: 40px;
+  top: 60px;
 }
 
 .flex span {
@@ -117,5 +151,8 @@ p.view_more {
   }
   .carousel-img-background {
       height: 100%;
+  }
+  .individual_doughnut_container{
+    display:none;
   }
 }
