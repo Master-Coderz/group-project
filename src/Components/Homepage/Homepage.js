@@ -106,7 +106,7 @@ export default class Homepage extends Component {
          
           </div>
           <div className="tile__details">
-            <button onClick={() => this.addToWatchlistTheaters(e.id, e.title, e.poster_path)} className='add_to_watchlist_btn'></button>
+            <button  onClick={() => this.addToWatchlistTheaters(e.id, e.title, e.poster_path)} className='add_to_watchlist_btn'></button>
      
               <div className="tile__title">
                <p className="homepage_movie_title">{e.title}</p> 
