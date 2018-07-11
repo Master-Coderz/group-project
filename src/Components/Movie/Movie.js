@@ -320,7 +320,7 @@ export default class Movie extends Component {
                     <div className="trailer_container">
                       {this.state.video ?
                         < iframe src={`http://www.youtube.com/embed/${this.state.video.key}`}
-                          width="560" height="315" frameborder="0" allowfullscreen></iframe> : null}
+                          width="560" height="315" frameborder="0" allowFullScreen></iframe> : null}
                     </div>
                     <h3 className="Overview">Overview</h3>
                     <div className="overview_p_container">

@@ -12,6 +12,7 @@
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "hashrouter": "^1.1.1",
+    "jest": "^23.4.0",
     "massive": "^5.0.0",
     "moment": "^2.22.2",
     "nuka-carousel": "^4.2.4",
@@ -35,7 +36,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "nodemonConfig": {
