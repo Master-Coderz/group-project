@@ -7,7 +7,6 @@ const express = require('express'),
     Auth0Strategy = require('passport-auth0'),
     controller = require("./controller");
 
-app.use(expess.static(`${_dirname}/../build`))
 
 
 const {
@@ -31,6 +30,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
+app.use(expess.static(`${_dirname}/../build`))
 
 app.use(
     session({
