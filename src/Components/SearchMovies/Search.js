@@ -26,7 +26,7 @@ export default class Search extends Component {
     }).map((e, i) => {
       return (
         <div className='search_link_container' key={e.id}>
-          <img className='search_icon' src="./../../Assets/search-icon.png" alt="" />
+          <img className='search_icon' src="./../../Assets/search.png" alt="" />
           <a className='search_link' href={`/#/movies/${e.id}`}>{e.title}</a>
           <hr />
         </div>)
@@ -35,15 +35,16 @@ export default class Search extends Component {
     console.log(searchResults)
     return (
       <div className="AllMovies-search">
+        <div className="search_icon"></div>
         <input
           className="search_input"
           placeholder="Search for a movie..."
           onChange={e => this.handleSearch('searchInput', e.target.value)}
           value={this.state.searchInput}
         />
-        {this.state.searchInput.length>0?<div className={searchResults.length>0?"movies_search_results":"movies_search_results_hidden"}>
+        {this.state.searchInput.length > 0 ? <div className={searchResults.length > 0 ? "movies_search_results" : "movies_search_results_hidden"}>
           {searchResults}
-        </div>:null}
+        </div> : null}
       </div >
     );
   }
