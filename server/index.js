@@ -30,7 +30,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use(expess.static(`${_dirname}/../build`))
+app.use(express.static(`${__dirname}/../build`))
 
 app.use(
     session({
