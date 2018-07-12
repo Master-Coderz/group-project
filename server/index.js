@@ -15,7 +15,9 @@ const {
     DOMAIN,
     CLIENT_ID,
     CLIENT_SECRET,
-    CALLBACK_URL
+    CALLBACK_URL,
+    SUCCESS_REDIRECT,
+    FAILURE_REDIRECT
 } = process.env
 
 massive(process.env.CONNECTION_STRING).then(dbInstance =>
@@ -26,6 +28,7 @@ massive(process.env.CONNECTION_STRING).then(dbInstance =>
 
 const app = express();
 
+app.use(express.static(`${__dirname}/../build`))
 app.use(bodyParser.json());
 
 
@@ -85,8 +88,8 @@ passport.deserializeUser((id, done) => {
 app.get(
     "/auth",
     passport.authenticate("auth0", {
-        successRedirect: "http://localhost:3000/#/",
-        failureRedirect: "http://localhost:3000"
+        successRedirect: SUCCESS_REDIRECT,
+        failureRedirect: FAILURE_REDIRECT
     })
 );
 app.get("/auth/logout", (req, res) => {
@@ -101,8 +104,8 @@ app.get("/auth/logout", (req, res) => {
 app.get(
     "/auth/callback",
     passport.authenticate("auth0", {
-        successRedirect: "http://localhost:3000/",
-        failureRedirect: "http://localhost:3000"
+        successRedirect: SUCCESS_REDIRECT,
+        failureRedirect: FAILURE_REDIRECT
     })
 );
 

@@ -87,6 +87,8 @@ export default class Movie extends Component {
       .then(() => {
         this.setState({ review_title: "", review_content: "" });
       });
+      window.location.reload()
+
   };
 
   addToWatchlist = () => {
@@ -117,6 +119,8 @@ export default class Movie extends Component {
   deleteReview = (review_id) => {
     axios.delete(`/api/deleteReview/${review_id}`).then((res) => {
       console.log('deleted')
+      window.location.reload()
+
     })
   }
 
@@ -127,8 +131,10 @@ export default class Movie extends Component {
   editReview = (review_id) => {
     let { review_title, review_content } = this.state
     axios.put(`/api/updateReview/${review_id}`, { review_title, review_content }).then(res => {
-      console.log(res)
+      window.location.reload()
+
     })
+   
   }
 
   getWatchlist() {

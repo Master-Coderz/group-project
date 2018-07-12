@@ -71,7 +71,7 @@ class Nav extends Component {
             {/* <Link className="nav-link" to="/popular/people">
             Login
           </Link> */}
-            {this.state.loggedIn === true ? <a className='nav-link' href="http://localhost:8888/auth/logout">Logout</a> : <a className='nav-link' href="http://localhost:8888/auth">Login</a>}
+            {this.state.loggedIn === true ? <a className='nav-link' href={process.env.REACT_APP_LOGOUT}>Logout</a> : <a className='nav-link' href={process.env.REACT_APP_LOGIN}>Login</a>}
             {this.state.loggedIn === false ? null : (
               <Link className="nav-link" to="/account">
                 My Profile
@@ -80,7 +80,7 @@ class Nav extends Component {
           </div>
           <img className='hamburger-menu' onClick={e => this.show_sidebar()} src={menuIcon} alt="" />
           <div className="mobile-db-logo">
-            <Link to = "/">
+            <Link to="/">
               <img className='secondary-logo' src={logo} alt="" />
             </Link>
           </div>
