@@ -37,7 +37,7 @@
   .search_input::placeholder{
     font-style:italic;
     font-family: 'Source Sans Pro', Arial, sans-serif;
-  
+    color:black;
   }
   .movies_search_results_hidden{
     display:none;

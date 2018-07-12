@@ -83,6 +83,7 @@
 @media only screen and (max-width:414px) {
     .sidebar {
         width: 35vw;
+       z-index:5;
     }
 }
 

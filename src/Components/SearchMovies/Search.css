@@ -12,10 +12,11 @@
 
 }
 
-/* .search_icon{
-  height:20px;
-  width:20px;
-} */
+.search_icon{
+  background-image: url('./../../Assets/search.png');
+  height:100%;
+  width:50px;
+}
 .search_input{
   position:relative;
   left:17%;
@@ -30,6 +31,7 @@
 .search_input::placeholder{
   font-style:italic;
   font-family: 'Source Sans Pro', Arial, sans-serif;
+  color:black;
 
 }
 .movies_search_results_hidden{
