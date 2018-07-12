@@ -16,9 +16,9 @@ class Nav extends Component {
     };
   }
 
-componentDidMount(){
-  this.checkUser()
-}
+  componentDidMount() {
+    this.checkUser()
+  }
 
   show_sidebar(e) {
     this.setState({
@@ -80,7 +80,9 @@ componentDidMount(){
           </div>
           <img className='hamburger-menu' onClick={e => this.show_sidebar()} src={menuIcon} alt="" />
           <div className="mobile-db-logo">
-            <img className='secondary-logo' src={logo} alt="" />
+            <Link to = "/">
+              <img className='secondary-logo' src={logo} alt="" />
+            </Link>
           </div>
         </div>
         <div className={this.state.show_sidebar === false ? 'sidebar' : 'sidebar sidebar-show'}>
@@ -88,17 +90,17 @@ componentDidMount(){
             Movies
           </Link>
             <ul className='side-links'>
-              <a href="#">Popular</a>
-              <a href="#">Top Rated</a>
-              <a href="#">Upcoming</a>
-              <a href="#">Now Playing</a>
+              <a href="#/popular/movies">Popular</a>
+              <a href="#/top_rated/movies">Top Rated</a>
+              <a href="#/upcoming/movies">Upcoming</a>
+              <a href="#/now_playing/movies">Now Playing</a>
             </ul>
           </div>
           <div className="side-link"><Link className='main-side-link' to="/popular/movies">
             People
           </Link>
             <ul className='side-links'>
-              <a href="#">Popular People</a>
+              <a href="#/popular/people">Popular People</a>
             </ul></div>
           <div className="side-link">Login</div>
           {this.state.loggedIn === true ? <div className="account_nav_link side-link">Account</div> : null}
