@@ -11,12 +11,6 @@
   background-color:white;
 
 }
-
-.search_icon{
-  background-image: url('./../../Assets/search.png');
-  height:100%;
-  width:50px;
-}
 .search_input{
   position:relative;
   left:17%;
@@ -56,6 +50,12 @@
 .search_link:hover{
   text-decoration:none;
   color:grey;
+}
+@media only screen and (max-width:497px) {
+.search_link{
+  font-size:14px;
+}
+
 }
   /* .AllMovies-search{
     width: 100%;

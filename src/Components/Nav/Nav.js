@@ -80,7 +80,7 @@ class Nav extends Component {
           </div>
           <img className='hamburger-menu' onClick={e => this.show_sidebar()} src={menuIcon} alt="" />
           <div className="mobile-db-logo">
-            <Link to = "/">
+            <Link to="/">
               <img className='secondary-logo' src={logo} alt="" />
             </Link>
           </div>
@@ -102,7 +102,7 @@ class Nav extends Component {
             <ul className='side-links'>
               <a href="#/popular/people">Popular People</a>
             </ul></div>
-          <div className="side-link">Login</div>
+          <div className="side-link"><a className='side-link login_side_link' href="http://localhost:8888/auth">Login</a></div>
           {this.state.loggedIn === true ? <div className="account_nav_link side-link">Account</div> : null}
         </div>
       </div>
