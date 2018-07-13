@@ -58,7 +58,7 @@
 }
 
 .side-links>a {
-    color: #2F444A;
+    color: #D3D3D3;
     padding: none;
     text-decoration: none;
     font-size: 16px;
@@ -70,12 +70,17 @@
 }
 
 .side-link:hover {
-    border: 0.5px dotted white;
     color: lightgray;
 }
 
 .side-links>a:hover {
     color: lightgray;
+}
+.login_side_link{
+    position:relative;
+    right:5px;
+    color:white;
+
 }
 
 @media only screen and (max-width:738px) {}
